@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
-* Студент: [Павел Елфимов](https://up.htmlacademy.ru/react/2/user/182558).
-* Наставник: `Неизвестно`.
+- Студент: [Павел Елфимов](https://up.htmlacademy.ru/react/2/user/182558).
+- Наставник: [Евгений Кудрявцев](https://htmlacademy.ru/profile/id1216433).
 
 ---
 
