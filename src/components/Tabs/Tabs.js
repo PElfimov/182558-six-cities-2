@@ -1,4 +1,29 @@
 import React from "react";
+import LocationsCity from '../LocationsCity/LocationsCity';
+const cities = [{
+  name: `Paris`,
+  isActive: false
+},
+{
+  name: `Cologne`,
+  isActive: false
+},
+{
+  name: `Brussels`,
+  isActive: true
+},
+{
+  name: `Amsterdam`,
+  isActive: false
+},
+{
+  name: `Hamburg`,
+  isActive: false
+},
+{
+  name: `Dusseldorf`,
+  isActive: false
+}];
 
 
 export default function Tabs() {
@@ -6,36 +31,7 @@ export default function Tabs() {
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Paris</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Cologne</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Brussels</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item tabs__item--active">
-              <span>Amsterdam</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Hamburg</span>
-            </a>
-          </li>
-          <li className="locations__item">
-            <a className="locations__item-link tabs__item" href="#">
-              <span>Dusseldorf</span>
-            </a>
-          </li>
+          {cities.map((it, i) => <LocationsCity key={name + i} name={it.name} isActive={it.isActive} />)}
         </ul>
       </section>
     </div>
