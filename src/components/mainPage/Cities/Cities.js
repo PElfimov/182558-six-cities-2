@@ -1,7 +1,6 @@
 import React from "react";
 import CityCard from "../CityCard/CityCard";
 
-
 export default function Cities() {
   return (
     <div className="cities">
@@ -24,11 +23,11 @@ export default function Cities() {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
+            <CityCard
+              isPremium={true}
+              cost={120}
+              name='Beautiful & luxurious apartment at great location'
+              rating={55} />
 
           </div>
         </section>
