@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-CityCard.propTypes = {
+HotelCard.propTypes = {
   isPremium: PropTypes.bool,
   cost: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  type: PropTypes.oneOf([`Private room`, `Apartment`]).isRequired,
 };
 
 function Premium() {
@@ -16,7 +17,7 @@ function Premium() {
   );
 }
 
-export default function CityCard(props) {
+export default function HotelCard(props) {
   return (
     <article className="cities__place-card place-card">
       {props.isPremium && <Premium />}
@@ -48,7 +49,7 @@ export default function CityCard(props) {
         <h2 className="place-card__name">
           <a href="#">{props.name}</a>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{props.type}</p>
       </div>
     </article>
   );

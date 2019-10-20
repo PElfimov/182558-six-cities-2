@@ -1,7 +1,7 @@
 import React from "react";
 import Header from '../Header/Header';
 import Tabs from "../../Tabs/Tabs";
-import Cities from "../Cities/Cities";
+import City from "../City/City";
 
 export default function Main() {
   return (
@@ -10,7 +10,7 @@ export default function Main() {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <Tabs />
-        <Cities />
+        <City />
       </main>
     </div>
   );
