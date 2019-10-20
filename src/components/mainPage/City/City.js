@@ -1,8 +1,40 @@
 import React from "react";
-import CityCard from "../CityCard/CityCard";
+import HotelCard from "../HotelCard/HotelCard";
 
+const hotels = [{
+  isPremium: true,
+  cost: 120,
+  name: `Beautiful & luxurious apartment at great location`,
+  rating: 55,
+  type: `Apartment`,
+}, {
+  isPremium: false,
+  cost: 132,
+  name: `Wood and stone place`,
+  rating: 80,
+  type: `Apartment`,
+}, {
+  isPremium: true,
+  cost: 120,
+  name: `Canal View Prinsengracht`,
+  rating: 55,
+  type: `Apartment`,
+}, {
+  isPremium: true,
+  cost: 80,
+  name: `Nice, cozy, warm big bed apartment`,
+  rating: 100,
+  type: `Apartment`,
+}, {
+  isPremium: true,
+  cost: 120,
+  name: `Wood and stone place`,
+  rating: 88,
+  type: `Private room`,
+},
+];
 
-export default function Cities() {
+export default function City() {
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -24,12 +56,15 @@ export default function Cities() {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
-            <CityCard />
-
+            {hotels.map((it, i) =>
+              <HotelCard
+                key={name + i}
+                name={it.name}
+                isPremium={it.isPremium}
+                cost={it.cost}
+                rating={it.rating}
+                type={it.type}
+              />)}
           </div>
         </section>
         <div className="cities__right-section">
