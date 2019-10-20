@@ -1,5 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
+
+LocationsCity.propTypes = {
+  name: PropTypes.oneOf([`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`]),
+  isActive: PropTypes.bool.isRequired
+};
+
 
 export default function LocationsCity(props) {
   return (
