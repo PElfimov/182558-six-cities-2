@@ -91,7 +91,9 @@ exports[`HotelCard correctly renders after relaunch 1`] = `
       className="place-card__name"
     >
       <a
+        className="jsTitle"
         href="#"
+        onClick={[MockFunction]}
       >
         Best
       </a>

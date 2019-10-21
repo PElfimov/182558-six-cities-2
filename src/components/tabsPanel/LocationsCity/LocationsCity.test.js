@@ -6,7 +6,8 @@ it(`LocationsCity correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<LocationsCity
       name={`Paris`}
-      isActive={true} />)
+      isActive={true}
+      onClick={jest.fn()} />)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

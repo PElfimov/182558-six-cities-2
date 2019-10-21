@@ -79,6 +79,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item "
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Paris
@@ -91,6 +92,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item "
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Cologne
@@ -103,6 +105,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item  tabs__item--active"
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Brussels
@@ -115,6 +118,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item "
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Amsterdam
@@ -127,6 +131,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item "
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Hamburg
@@ -139,6 +144,7 @@ exports[`Main correctly renders after relaunch 1`] = `
             <a
               className="locations__item-link tabs__item "
               href="#"
+              onClick={[Function]}
             >
               <span>
                 Dusseldorf
@@ -314,7 +320,9 @@ exports[`Main correctly renders after relaunch 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="jsTitle"
                     href="#"
+                    onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
                   </a>
@@ -409,7 +417,9 @@ exports[`Main correctly renders after relaunch 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="jsTitle"
                     href="#"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>
@@ -511,7 +521,9 @@ exports[`Main correctly renders after relaunch 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="jsTitle"
                     href="#"
+                    onClick={[Function]}
                   >
                     Canal View Prinsengracht
                   </a>
@@ -613,7 +625,9 @@ exports[`Main correctly renders after relaunch 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="jsTitle"
                     href="#"
+                    onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
                   </a>
@@ -715,7 +729,9 @@ exports[`Main correctly renders after relaunch 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="jsTitle"
                     href="#"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>

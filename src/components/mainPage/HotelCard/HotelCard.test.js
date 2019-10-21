@@ -9,7 +9,8 @@ it(`HotelCard correctly renders after relaunch`, () => {
       cost={0}
       name={`Best`}
       rating={0}
-      type={`Private room`} />)
+      type={`Private room`}
+      onClick={jest.fn()} />)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

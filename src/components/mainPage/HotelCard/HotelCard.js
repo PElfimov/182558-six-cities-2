@@ -7,6 +7,7 @@ HotelCard.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   type: PropTypes.oneOf([`Private room`, `Apartment`]).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 function Premium() {
@@ -47,7 +48,7 @@ export default function HotelCard(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{props.name}</a>
+          <a className="jsTitle" onClick={props.onClick} href="#">{props.name}</a>
         </h2>
         <p className="place-card__type">{props.type}</p>
       </div>
