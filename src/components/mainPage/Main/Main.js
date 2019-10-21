@@ -1,7 +1,7 @@
 import React from "react";
 import Header from '../Header/Header';
-import Tabs from "../../Tabs/Tabs";
 import City from "../City/City";
+import Tabs from '../../tabsPanel/Tabs/Tabs';
 
 export default function Main() {
   return (
@@ -9,7 +9,7 @@ export default function Main() {
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <Tabs />
+        <Tabs/>
         <City />
       </main>
     </div>
