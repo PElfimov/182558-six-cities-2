@@ -34,6 +34,11 @@ const hotels = [{
 },
 ];
 
+function handleClick() {
+
+
+}
+
 export default function City() {
   return (
     <div className="cities">
@@ -64,6 +69,7 @@ export default function City() {
                 cost={it.cost}
                 rating={it.rating}
                 type={it.type}
+                onClick={handleClick}
               />)}
           </div>
         </section>

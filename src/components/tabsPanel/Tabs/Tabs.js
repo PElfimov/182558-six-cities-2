@@ -25,13 +25,22 @@ const cities = [{
   isActive: false
 }];
 
+function handleClick() {
+
+
+}
 
 export default function Tabs() {
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {cities.map((it, i) => <LocationsCity key={name + i} name={it.name} isActive={it.isActive} />)}
+          {cities.map((it, i) =>
+            <LocationsCity
+              key={name + i}
+              name={it.name}
+              isActive={it.isActive}
+              onClick={handleClick} />)}
         </ul>
       </section>
     </div>
