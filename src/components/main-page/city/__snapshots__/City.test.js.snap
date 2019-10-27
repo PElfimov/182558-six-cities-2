@@ -79,6 +79,7 @@ exports[`City correctly renders after relaunch 1`] = `
       >
         <article
           className="cities__place-card place-card"
+          onMouseOver={[Function]}
         >
           <div
             className="place-card__mark"
@@ -183,6 +184,7 @@ exports[`City correctly renders after relaunch 1`] = `
         </article>
         <article
           className="cities__place-card place-card"
+          onMouseOver={[Function]}
         >
           <div
             className="cities__image-wrapper place-card__image-wrapper"
@@ -280,6 +282,7 @@ exports[`City correctly renders after relaunch 1`] = `
         </article>
         <article
           className="cities__place-card place-card"
+          onMouseOver={[Function]}
         >
           <div
             className="place-card__mark"
@@ -384,6 +387,7 @@ exports[`City correctly renders after relaunch 1`] = `
         </article>
         <article
           className="cities__place-card place-card"
+          onMouseOver={[Function]}
         >
           <div
             className="place-card__mark"
@@ -488,6 +492,7 @@ exports[`City correctly renders after relaunch 1`] = `
         </article>
         <article
           className="cities__place-card place-card"
+          onMouseOver={[Function]}
         >
           <div
             className="place-card__mark"

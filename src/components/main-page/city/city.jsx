@@ -3,9 +3,7 @@ import HotelCard from "../hotel-card/hotel-card";
 import offers from "../../../mocks/offers";
 
 function handleClick() {}
-function handleHover(answer) {
-  console.log(answer);
-}
+function handleHover() {}
 
 export default function City() {
   return (
