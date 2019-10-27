@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Tabs from './Tabs';
+import City from './city';
 
-it(`Tabs correctly renders after relaunch`, () => {
+it(`City correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<Tabs />)
+    .create(<City />)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import LocationsCity from './LocationsCity';
+import LocationsCity from './locations-city';
 
 it(`LocationsCity correctly renders after relaunch`, () => {
   const tree = renderer

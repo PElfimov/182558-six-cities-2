@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import City from './City';
+import Main from './main';
 
-it(`City correctly renders after relaunch`, () => {
+it(`Main correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<City />)
+    .create(<Main />)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

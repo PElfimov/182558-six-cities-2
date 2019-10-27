@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Header from './Header';
+import Header from './header';
 
 it(`Header correctly renders after relaunch`, () => {
   const tree = renderer

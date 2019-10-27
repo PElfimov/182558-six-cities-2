@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HotelCard from './HotelCard';
+import HotelCard from './hotel-card';
 
 it(`HotelCard correctly renders after relaunch`, () => {
   const tree = renderer
