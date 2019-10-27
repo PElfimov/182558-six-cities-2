@@ -1,45 +1,11 @@
 import React from "react";
 import HotelCard from "../hotel-card/hotel-card";
-
-const hotels = [
-  {
-    isPremium: true,
-    cost: 120,
-    name: `Beautiful & luxurious apartment at great location`,
-    rating: 55,
-    type: `Apartment`
-  },
-  {
-    isPremium: false,
-    cost: 132,
-    name: `Wood and stone place`,
-    rating: 80,
-    type: `Apartment`
-  },
-  {
-    isPremium: true,
-    cost: 120,
-    name: `Canal View Prinsengracht`,
-    rating: 55,
-    type: `Apartment`
-  },
-  {
-    isPremium: true,
-    cost: 80,
-    name: `Nice, cozy, warm big bed apartment`,
-    rating: 100,
-    type: `Apartment`
-  },
-  {
-    isPremium: true,
-    cost: 120,
-    name: `Wood and stone place`,
-    rating: 88,
-    type: `Private room`
-  }
-];
+import offers from "../../../mocks/offers";
 
 function handleClick() {}
+function handleHover(answer) {
+  console.log(answer);
+}
 
 export default function City() {
   return (
@@ -72,16 +38,8 @@ export default function City() {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            {hotels.map((it, i) => (
-              <HotelCard
-                key={name + i}
-                name={it.name}
-                isPremium={it.isPremium}
-                cost={it.cost}
-                rating={it.rating}
-                type={it.type}
-                onClick={handleClick}
-              />
+            {offers.map((it, i) => (
+              <HotelCard key={name + i} offer={it} onClick={handleClick} onHover={handleHover} />
             ))}
           </div>
         </section>
