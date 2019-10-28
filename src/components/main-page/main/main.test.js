@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App';
+import Main from './main';
 
 const offers = [
   {
@@ -40,9 +40,10 @@ const offers = [
   }
 ];
 
-it(`App correctly renders after relaunch`, () => {
+it(`Main correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<App offers={offers} />)
+    .create(<Main offers={offers} />)
+
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

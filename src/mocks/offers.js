@@ -1,7 +1,3 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import App from './App';
-
 const offers = [
   {
     isPremium: true,
@@ -40,9 +36,4 @@ const offers = [
   }
 ];
 
-it(`App correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(<App offers={offers} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
+export default offers;

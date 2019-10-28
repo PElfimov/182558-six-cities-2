@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App';
-
+import City from './city';
 const offers = [
   {
     isPremium: true,
@@ -40,9 +39,10 @@ const offers = [
   }
 ];
 
-it(`App correctly renders after relaunch`, () => {
+it(`City correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<App offers={offers} />)
+    .create(<City offers={offers} />)
+
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
