@@ -10,7 +10,8 @@ export default class City extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeCard: {}
+      activeCard: {},
+      activeCity: [52.38333, 4.9]
     };
 
     this._handleHover = this._handleHover.bind(this);
@@ -24,6 +25,7 @@ export default class City extends PureComponent {
 
   render() {
     const offers = this.props.offers;
+    const activeCity = this.state.activeCity;
     return (
       <div className="cities">
         <div className="cities__places-container container">
@@ -43,7 +45,7 @@ export default class City extends PureComponent {
             </div>
           </section>
           <div className="cities__right-section">
-            <Map offers={offers} city={[52.38333, 4.9]} />
+            <Map offers={offers} city={activeCity} />
           </div>
         </div>
       </div>

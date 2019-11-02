@@ -7,13 +7,6 @@ export default class Map extends React.PureComponent {
     super(props);
     this.ref = React.createRef();
     this.el = null;
-
-    this.state = {
-      city: [52.38333, 4.9],
-      zoom: 12,
-      tileLayer: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    };
   }
 
   render() {
@@ -38,7 +31,6 @@ export default class Map extends React.PureComponent {
       zoomControl: false,
       marker: true
     });
-
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -47,27 +39,16 @@ export default class Map extends React.PureComponent {
     this.el.setView(city, zoom);
   }
 
+  renderOffers(points) {
+    for (const point of points) {
+      leaflet.marker(point, {icon: this.icon}).addTo(this.el);
+    }
+  }
+
   componentDidMount() {
-    const {city, zoom, tileLayer, attribution} = this.state;
-    const nodeMap = this.ref.current;
-
-    const map = leaflet.map(nodeMap, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
-    });
-    map.setView(city, zoom);
-
-    leaflet
-      .tileLayer(tileLayer, {
-        attribution
-      })
-      .addTo(map);
-
-    this.props.offers.forEach((offer) => {
-      leaflet.marker(offer.coordinates, {icon: this.icon}).addTo(map);
-    });
+    const {city, offers} = this.props;
+    this.createArea({city, elem: this.ref.current});
+    this.renderOffers(offers.map((el) => el.coordinates));
   }
 }
 
