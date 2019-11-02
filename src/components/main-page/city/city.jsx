@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import propTypes from "./prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
-import PointsMap from "../../map/points-map";
+import PointsMap from "../../points-map/points-map";
 
 function handleClick() {}
 
