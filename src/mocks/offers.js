@@ -1,5 +1,6 @@
 const offers = [
   {
+    id: `h0001`,
     isPremium: true,
     cost: 120,
     name: `Beautiful & luxurious apartment at great location`,
@@ -8,6 +9,7 @@ const offers = [
     coordinates: [52.3909553943508, 4.85309666406198]
   },
   {
+    id: `h0002`,
     isPremium: false,
     cost: 132,
     name: `Wood and stone place`,
@@ -16,6 +18,7 @@ const offers = [
     coordinates: [52.369553943508, 4.85309666406198]
   },
   {
+    id: `h0003`,
     isPremium: true,
     cost: 120,
     name: `Canal View Prinsengracht`,
@@ -24,6 +27,7 @@ const offers = [
     coordinates: [52.3909553943508, 4.929309666406198]
   },
   {
+    id: `h0004`,
     isPremium: true,
     cost: 80,
     name: `Nice, cozy, warm big bed apartment`,
@@ -32,6 +36,7 @@ const offers = [
     coordinates: [52.3809553943508, 4.939309666406198]
   },
   // {
+  //   id: `h0005`,
   //   isPremium: true,
   //   cost: 120,
   //   name: `Wood and stone place`,

@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
+import Map from "../../map/map";
 
 function handleClick() {}
 
@@ -42,7 +43,7 @@ export default class City extends PureComponent {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <Map offers={offers} city={[52.38333, 4.9]} />
           </div>
         </div>
       </div>
@@ -53,11 +54,13 @@ export default class City extends PureComponent {
 City.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.exact({
+        id: PropTypes.string,
         isPremium: PropTypes.bool,
         cost: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
-        type: PropTypes.oneOf([`Private room`, `Apartment`])
+        type: PropTypes.oneOf([`Private room`, `Apartment`]),
+        coordinates: PropTypes.array
       })
   ).isRequired
 };
