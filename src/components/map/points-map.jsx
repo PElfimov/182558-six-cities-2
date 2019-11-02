@@ -2,7 +2,7 @@ import leaflet from "leaflet";
 import React from "react";
 import propTypes from "./prop-types";
 
-export default class Map extends React.PureComponent {
+export default class PointsMap extends React.PureComponent {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
@@ -52,4 +52,4 @@ export default class Map extends React.PureComponent {
   }
 }
 
-Map.propTypes = propTypes;
+PointsMap.propTypes = propTypes;
