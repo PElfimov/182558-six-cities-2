@@ -1,7 +1,8 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import propTypes from "./prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
+import PointsMap from "../../points-map/points-map";
 
 function handleClick() {}
 
@@ -9,7 +10,8 @@ export default class City extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeCard: {}
+      activeCard: {},
+      activeCity: [52.38333, 4.9]
     };
 
     this._handleHover = this._handleHover.bind(this);
@@ -23,6 +25,7 @@ export default class City extends PureComponent {
 
   render() {
     const offers = this.props.offers;
+    const activeCity = this.state.activeCity;
     return (
       <div className="cities">
         <div className="cities__places-container container">
@@ -42,7 +45,7 @@ export default class City extends PureComponent {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <PointsMap offers={offers} city={activeCity} />
           </div>
         </div>
       </div>
@@ -50,14 +53,4 @@ export default class City extends PureComponent {
   }
 }
 
-City.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.exact({
-        isPremium: PropTypes.bool,
-        cost: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        type: PropTypes.oneOf([`Private room`, `Apartment`])
-      })
-  ).isRequired
-};
+City.propTypes = propTypes;

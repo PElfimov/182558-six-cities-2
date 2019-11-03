@@ -39,6 +39,8 @@ const offers = [
   }
 ];
 
+jest.mock(`../../points-map/points-map`, () => jest.fn().mockReturnValue(null));
+
 it(`City correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<City offers={offers} />)

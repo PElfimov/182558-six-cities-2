@@ -34,16 +34,7 @@ const offers = [
     rating: 100,
     type: `Apartment`,
     coordinates: [52.3809553943508, 4.939309666406198]
-  },
-  // {
-  //   id: `h0005`,
-  //   isPremium: true,
-  //   cost: 120,
-  //   name: `Wood and stone place`,
-  //   rating: 88,
-  //   type: `Private room`,
-  //   coordinates: [52.3909553943508, 4.85309666406198]
-  // }
-];
+  }];
+const activeCity = [52.38333, 4.9];
 
-export default offers;
+export {offers, activeCity};

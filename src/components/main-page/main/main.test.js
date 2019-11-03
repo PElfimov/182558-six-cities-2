@@ -40,6 +40,8 @@ const offers = [
   }
 ];
 
+jest.mock(`../../points-map/points-map`, () => jest.fn().mockReturnValue(null));
+
 it(`Main correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<Main offers={offers} />)

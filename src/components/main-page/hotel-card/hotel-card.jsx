@@ -64,11 +64,13 @@ export default function HotelCard(props) {
 
 HotelCard.propTypes = {
   offer: PropTypes.exact({
+    id: PropTypes.string,
     isPremium: PropTypes.bool,
     cost: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    type: PropTypes.oneOf([`Private room`, `Apartment`]).isRequired
+    type: PropTypes.oneOf([`Private room`, `Apartment`]),
+    coordinates: PropTypes.array
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired

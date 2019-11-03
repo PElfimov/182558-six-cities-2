@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './App';
+import App from './app';
 
 const offers = [
   {
@@ -39,6 +39,8 @@ const offers = [
     type: `Private room`
   }
 ];
+
+jest.mock(`../points-map/points-map`, () => jest.fn().mockReturnValue(null));
 
 it(`App correctly renders after relaunch`, () => {
   const tree = renderer
