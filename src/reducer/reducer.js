@@ -1,6 +1,6 @@
 const initialState = {
   city: ``,
-  offers: [],
+  cityOffers: [],
   cities: []
 };
 
@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {city: action.payload});
     case ActionType.SET_OFFERS:
-      return Object.assign({}, state, {offers: action.payload});
+      return Object.assign({}, state, {cityOffers: action.payload});
     case ActionType.SET_CITIES:
       return Object.assign({}, state, {cities: action.payload});
   }

@@ -1,35 +1,12 @@
 import React from "react";
 import LocationsCity from "../locations-city/locations-city";
-const cities = [
-  {
-    name: `Paris`,
-    isActive: false
-  },
-  {
-    name: `Cologne`,
-    isActive: false
-  },
-  {
-    name: `Brussels`,
-    isActive: true
-  },
-  {
-    name: `Amsterdam`,
-    isActive: false
-  },
-  {
-    name: `Hamburg`,
-    isActive: false
-  },
-  {
-    name: `Dusseldorf`,
-    isActive: false
-  }
-];
+import propTypes from "./prop-types";
 
 function handleClick() {}
 
-export default function Tabs() {
+export default function Tabs(props) {
+  const {cities} = props;
+  console.log(cities);
   return (
     <div className="tabs">
       <section className="locations container">
@@ -47,3 +24,5 @@ export default function Tabs() {
     </div>
   );
 }
+
+Tabs.propTypes = propTypes;
