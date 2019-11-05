@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import Header from "../main-page/header/header";
 import City from "../main-page/city/city";
@@ -6,7 +6,7 @@ import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../reducer/reducer";
 
-class App extends React.Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
     this._initialState();

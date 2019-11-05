@@ -4,8 +4,10 @@ import Tabs from './tabs';
 
 it(`Tabs correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<Tabs />)
-
+    .create(<Tabs
+      cities={[`City1`, `City2`, `City3`]}
+      onChangeCity={jest.fn()}
+      activeCity={`City1`} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

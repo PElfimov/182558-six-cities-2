@@ -77,7 +77,7 @@ describe(`reducer returns right state`, () => {
     ];
     const state = {
       city: ``,
-      offers: [],
+      cityOffers: [],
       cities: []
     };
 
@@ -90,7 +90,7 @@ describe(`reducer returns right state`, () => {
 
     expect(reducer(state, action)).toEqual({
       city: ``,
-      offers: [
+      cityOffers: [
         {
           id: 1,
           city: {name: `Moscow`}
