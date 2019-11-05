@@ -16,13 +16,18 @@ class App extends React.Component {
     const cities = getCitiesListFromOffers(this.props.offers);
     const offers = getFilteredOffers(this.props.offers, cities[0]);
     this.props.setCities(cities);
-    this.props.changeCity(cities[0]);
-    this.props.changeOffers(offers);
+    this.props.changeCity(cities[0], offers);
+  }
+
+  replaceOffers(city) {
+    const {offers} = this.props;
+    const citiesOffers = getFilteredOffers(offers, city);
+    this.props.changeCity(city, citiesOffers);
   }
 
   render() {
-    const {offers, city, changeCity, cityOffers} = this.props;
-    const cities = getCitiesListFromOffers(offers);
+    const {city, cities, cityOffers} = this.props;
+
     return (
       <div className="page page--gray page--main">
         <Header />
@@ -31,7 +36,7 @@ class App extends React.Component {
           <Tabs
             cities={cities}
             activeCity={city}
-            onChangeCity={(selectedCity) => changeCity(selectedCity)}
+            onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
           />
           <City offers={cityOffers} />
         </main>
@@ -53,10 +58,8 @@ const mapDispatchToProps = (dispatch) => ({
   setCities: (cities) => {
     dispatch(ActionCreator.setCities(cities));
   },
-  changeCity: (city) => {
+  changeCity: (city, offers) => {
     dispatch(ActionCreator.changeCity(city));
-  },
-  changeOffers: (offers) => {
     dispatch(ActionCreator.setOffers(offers));
   }
 });
