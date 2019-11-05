@@ -5,7 +5,10 @@ import classNames from "classnames";
 export default function LocationsCity(props) {
   const clickHandler = (evt) => {
     evt.preventDefault();
-    const city = evt.target.childNodes[0].nodeValue;
+    let city = evt.target.childNodes[0].nodeValue;
+    if (!city) {
+      city = evt.target.childNodes[0].innerText;
+    }
     props.onClick(city);
   };
   return (
