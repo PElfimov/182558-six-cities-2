@@ -2,7 +2,11 @@ import PropTypes from 'prop-types';
 
 export default {
   offers: PropTypes.arrayOf(PropTypes.exact({
-    id: PropTypes.string,
+    id: PropTypes.number,
+    city: PropTypes.exact({
+      name: PropTypes.string,
+      coordinates: PropTypes.arrayOf(PropTypes.number)
+    }),
     isPremium: PropTypes.bool,
     cost: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
