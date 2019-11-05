@@ -4,7 +4,7 @@ import Header from "../main-page/header/header";
 import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
-import {ActionCreator, getCitiesListFromOffers} from "../../reducer/reducer";
+import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../reducer/reducer";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,13 +14,15 @@ class App extends React.Component {
 
   _initialState() {
     const cities = getCitiesListFromOffers(this.props.offers);
+    const offers = getFilteredOffers(this.props.offers, cities[0]);
     this.props.setCities(cities);
     this.props.changeCity(cities[0]);
+    this.props.changeOffers(offers);
   }
 
   render() {
-    const {offers, city, changeCity} = this.props;
-    const cities = getCitiesListFromOffers(this.props.offers);
+    const {offers, city, changeCity, cityOffers} = this.props;
+    const cities = getCitiesListFromOffers(offers);
     return (
       <div className="page page--gray page--main">
         <Header />
@@ -31,7 +33,7 @@ class App extends React.Component {
             activeCity={city}
             onChangeCity={(selectedCity) => changeCity(selectedCity)}
           />
-          <City offers={offers} />
+          <City offers={cityOffers} />
         </main>
       </div>
     );
@@ -53,6 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
+  },
+  changeOffers: (offers) => {
+    dispatch(ActionCreator.setOffers(offers));
   }
 });
 
