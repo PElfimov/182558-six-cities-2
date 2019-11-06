@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 export default {
-  city: PropTypes.arrayOf(PropTypes.number).isRequired,
   offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number,
     city: PropTypes.exact({

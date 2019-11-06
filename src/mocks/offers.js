@@ -28,42 +28,42 @@ const offers = [
   {
     id: 3,
     city: {
-      name: `Amsterdam`,
-      coordinates: [52.38333, 4.9]
+      name: `Biysk`,
+      coordinates: [52.5430489, 85.1953536]
     },
     isPremium: true,
     cost: 120,
     name: `Canal View Prinsengracht`,
     rating: 55,
     type: `Apartment`,
-    coordinates: [52.3909553943508, 4.929309666406198]
+    coordinates: [52.5430489, 85.1953536]
   },
   {
     id: 4,
     city: {
-      name: `Amsterdam`,
-      coordinates: [52.38333, 4.9]
+      name: `Biysk`,
+      coordinates: [52.5430489, 85.1953536]
     },
     isPremium: true,
     cost: 80,
     name: `Nice, cozy, warm big bed apartment`,
     rating: 100,
     type: `Apartment`,
-    coordinates: [52.3809553943508, 4.939309666406198]
+    coordinates: [52.5540599, 85.1953536]
   },
 
   {
     id: 5,
     city: {
       name: `Biysk`,
-      coordinates: [52.38333, 4.9]
+      coordinates: [52.5430489, 85.1953536]
     },
     isPremium: true,
     cost: 80,
     name: `Nice, cozy, warm big bed apartment`,
     rating: 100,
     type: `Apartment`,
-    coordinates: [52.3809553943508, 4.939309666406195]
+    coordinates: [52.5430489, 85.2053536]
   },
   {
     id: 6,
@@ -82,14 +82,14 @@ const offers = [
     id: 7,
     city: {
       name: `Moscow`,
-      coordinates: [52.38333, 4.9]
+      coordinates: [55.7507481, 37.6251301]
     },
     isPremium: true,
     cost: 80,
     name: `Nice, cozy, warm big bed apartment`,
     rating: 100,
     type: `Apartment`,
-    coordinates: [52.3809553943508, 4.939309666406195]
+    coordinates: [55.7507481, 37.6251301]
   },
   {
     id: 8,

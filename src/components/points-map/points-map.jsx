@@ -45,10 +45,19 @@ export default class PointsMap extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    const {city, offers} = this.props;
+  componentDidUpdate() {
+    const {offers} = this.props;
+    const city = offers[0].city.coordinates;
+    if (this.el) {
+      this.el.remove();
+    }
+
     this.createArea({city, elem: this.ref.current});
     this.renderOffers(offers.map((el) => el.coordinates));
+  }
+
+  componentWillUnmount() {
+    this.el = null;
   }
 }
 
