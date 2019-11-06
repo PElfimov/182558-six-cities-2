@@ -10,6 +10,11 @@ it(`LocationsCity is correctly rendered after relaunch E2E test`, () => {
   const clickHandler = jest.fn();
   const app = shallow(<LocationsCity name={`Paris`} isActive={true} onClick={clickHandler} />);
   const startButton = app.find(`a`);
-  startButton.simulate(`click`);
+  startButton.simulate(`click`, {
+    preventDefault: () => {},
+    target: {
+      childNodes: [{nodeValue: `Some City`}]
+    }
+  });
   expect(clickHandler).toHaveBeenCalledTimes(1);
 });

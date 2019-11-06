@@ -9,7 +9,6 @@ import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../r
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this._initialState();
   }
 
   _initialState() {
@@ -23,6 +22,9 @@ class App extends PureComponent {
     const {offers} = this.props;
     const citiesOffers = getFilteredOffers(offers, city);
     this.props.changeCity(city, citiesOffers);
+  }
+  componentDidMount() {
+    this._initialState();
   }
 
   render() {
