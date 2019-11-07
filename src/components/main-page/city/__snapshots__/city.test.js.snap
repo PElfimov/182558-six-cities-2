@@ -18,7 +18,8 @@ exports[`City correctly renders after relaunch 1`] = `
       <b
         className="places__found"
       >
-        312 places to stay in Amsterdam
+        5
+         places to stay in Amsterdam
       </b>
       <form
         action="#"

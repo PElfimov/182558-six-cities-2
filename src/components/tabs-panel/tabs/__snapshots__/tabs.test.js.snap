@@ -14,38 +14,12 @@ exports[`Tabs correctly renders after relaunch 1`] = `
         className="locations__item"
       >
         <a
-          className="locations__item-link tabs__item "
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
-            Paris
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item "
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
-            Cologne
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
           className="locations__item-link tabs__item  tabs__item--active"
           href="#"
           onClick={[Function]}
         >
           <span>
-            Brussels
+            City1
           </span>
         </a>
       </li>
@@ -58,7 +32,7 @@ exports[`Tabs correctly renders after relaunch 1`] = `
           onClick={[Function]}
         >
           <span>
-            Amsterdam
+            City2
           </span>
         </a>
       </li>
@@ -71,20 +45,7 @@ exports[`Tabs correctly renders after relaunch 1`] = `
           onClick={[Function]}
         >
           <span>
-            Hamburg
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item "
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
-            Dusseldorf
+            City3
           </span>
         </a>
       </li>
