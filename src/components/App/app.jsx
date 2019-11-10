@@ -5,6 +5,9 @@ import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../reducer/reducer";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
+const WithActiveCard = withActiveCard(City);
 
 class App extends PureComponent {
   constructor(props) {
@@ -40,7 +43,7 @@ class App extends PureComponent {
             activeCity={city}
             onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
           />
-          <City offers={cityOffers} />
+          <WithActiveCard offers={cityOffers} />
         </main>
       </div>
     );
