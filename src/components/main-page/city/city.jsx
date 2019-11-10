@@ -17,8 +17,8 @@ const City = (props) => {
           <b className="places__found">{sumOffers} places to stay in Amsterdam</b>
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
-            {offers.map((it, i) => (
-              <HotelCard key={name + i} offer={it} onClick={handleClick} onHover={handleHover} />
+            {offers.map((it) => (
+              <HotelCard key={it.id} offer={it} onClick={handleClick} onHover={handleHover} />
             ))}
           </div>
         </section>
