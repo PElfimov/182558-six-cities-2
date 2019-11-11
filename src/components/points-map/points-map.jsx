@@ -1,12 +1,13 @@
 import leaflet from "leaflet";
 import React from "react";
-import propTypes from "./prop-types";
+import PropTypes from "prop-types";
 
-export default class PointsMap extends React.PureComponent {
+export default class PointsMap extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
     this.el = null;
+    this.markerGroup = null;
   }
 
   render() {
@@ -17,9 +18,9 @@ export default class PointsMap extends React.PureComponent {
     );
   }
 
-  get icon() {
+  createIcon(isActive) {
     return leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: isActive ? `img/pin-active.svg` : `img/pin.svg`,
       iconSize: [30, 30]
     });
   }
@@ -39,21 +40,29 @@ export default class PointsMap extends React.PureComponent {
     this.el.setView(city, zoom);
   }
 
-  renderOffers(points) {
-    for (const point of points) {
-      leaflet.marker(point, {icon: this.icon}).addTo(this.el);
+  renderOffers(offers, activeId) {
+    if (this.markerGroup) {
+      this.markerGroup.clearLayers();
     }
+    this.markerGroup = leaflet.layerGroup().addTo(this.el);
+    for (const point of offers) {
+      let isActiveMarker = activeId === point.id ? true : false;
+      leaflet
+        .marker(point.coordinates, {icon: this.createIcon(isActiveMarker)})
+        .addTo(this.markerGroup);
+    }
+    // markerGroup.clearLayers();
   }
 
   componentDidUpdate() {
-    const {offers} = this.props;
+    const {offers, activeCard} = this.props;
+    const activeId = activeCard.id;
     const city = offers[0].city.coordinates;
     if (this.el) {
       this.el.remove();
     }
-
     this.createArea({city, elem: this.ref.current});
-    this.renderOffers(offers.map((el) => el.coordinates));
+    this.renderOffers(offers, activeId);
   }
 
   componentWillUnmount() {
@@ -61,4 +70,33 @@ export default class PointsMap extends React.PureComponent {
   }
 }
 
-PointsMap.propTypes = propTypes;
+PointsMap.propTypes = {
+  offers: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.number,
+        city: PropTypes.exact({
+          name: PropTypes.string,
+          coordinates: PropTypes.arrayOf(PropTypes.number)
+        }),
+        isPremium: PropTypes.bool,
+        cost: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        type: PropTypes.oneOf([`Private room`, `Apartment`]),
+        coordinates: PropTypes.array
+      })
+  ).isRequired,
+  activeCard: PropTypes.exact({
+    id: PropTypes.number,
+    city: PropTypes.exact({
+      name: PropTypes.string,
+      coordinates: PropTypes.arrayOf(PropTypes.number)
+    }),
+    isPremium: PropTypes.bool,
+    cost: PropTypes.number,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    type: PropTypes.oneOf([`Private room`, `Apartment`]),
+    coordinates: PropTypes.array
+  })
+};
