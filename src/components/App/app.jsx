@@ -6,6 +6,7 @@ import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import ModelOffers from '../../store/model-offers/model-offers';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -20,6 +21,7 @@ class App extends PureComponent {
     const offers = getFilteredOffers(this.props.offers, cities[0]);
     this.props.setCities(cities);
     this.props.changeCity(cities[0], offers);
+
   }
 
   replaceOffers(city) {
@@ -27,8 +29,10 @@ class App extends PureComponent {
     const citiesOffers = getFilteredOffers(offers, city);
     this.props.changeCity(city, citiesOffers);
   }
-  componentDidMount() {
-    this._initialState();
+  componentDidUpdate(prevProps) {
+    if (this.props.offers.length !== prevProps.offers.length) {
+      this._initialState();
+    }
   }
 
   render() {
@@ -58,7 +62,7 @@ const mapStateToProps = (state, ownProps) =>
     city: state.localData.city,
     cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
-    // offerss: ModelOffers.parseOffers(state.externalData.offers),
+    offers: ModelOffers.parseOffers(state.externalData.offers),
 
   });
 

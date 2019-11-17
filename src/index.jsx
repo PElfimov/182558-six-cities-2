@@ -3,7 +3,6 @@ import {Provider} from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app";
-import offers from "./mocks/offers";
 import localData from "./store/reducer/local-data/local-data";
 import configureAPI from "./api";
 import thunk from "redux-thunk";
@@ -30,7 +29,7 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App offers={offers} />
+        <App />
       </Provider>,
       document.querySelector(`#root`)
   );
