@@ -1,45 +1,7 @@
-import {reducer, ActionCreator, ActionType, getFilteredOffers, getCitiesListFromOffers} from './reducer';
+import localData from './local-data';
+import {ActionType} from '../../actions/action-creator/action-creator';
 
-describe(`Actions creator returns right action`, () => {
-  it(`for changing current city`, () => {
-    const city = `Moscow`;
-    const action = ActionCreator.changeCity(city);
-
-    expect(action).toEqual({
-      type: ActionType.CHANGE_CITY,
-      payload: `Moscow`
-    });
-  });
-
-  it(`for changing offers`, () => {
-    const offers = [
-      {
-        id: 1,
-        city: {
-          name: `Moscow`
-        }
-      }
-    ];
-    const action = ActionCreator.setOffers(offers);
-
-    expect(action).toEqual({
-      type: ActionType.SET_OFFERS,
-      payload: offers
-    });
-  });
-
-  it(`for setting cities list`, () => {
-    const cities = [`Moscow`, `Berlin`];
-    const action = ActionCreator.setCities(cities);
-
-    expect(action).toEqual({
-      type: ActionType.SET_CITIES,
-      payload: cities
-    });
-  });
-});
-
-describe(`reducer returns right state`, () => {
+describe(`localData returns right state`, () => {
   it(`with changing city action`, () => {
     const city = `Biysk`;
     const state = {
@@ -52,7 +14,7 @@ describe(`reducer returns right state`, () => {
       payload: city
     };
 
-    expect(reducer(state, action)).toEqual({
+    expect(localData(state, action)).toEqual({
       city: `Biysk`,
       offers: [],
       cities: []
@@ -88,7 +50,7 @@ describe(`reducer returns right state`, () => {
     };
 
 
-    expect(reducer(state, action)).toEqual({
+    expect(localData(state, action)).toEqual({
       city: ``,
       cityOffers: [
         {
@@ -123,7 +85,7 @@ describe(`reducer returns right state`, () => {
     };
 
 
-    expect(reducer(state, action)).toEqual({
+    expect(localData(state, action)).toEqual({
       city: ``,
       offers: [],
       cities: [`Biysk`, `Berlin`]
@@ -131,62 +93,3 @@ describe(`reducer returns right state`, () => {
   });
 });
 
-describe(`getFilteredOffers function`, () => {
-  it(`returns correctly filtered array`, () => {
-    const city = `Biysk`;
-    const offers = [{
-      id: 1,
-      city: {name: `Biysk`}
-    },
-    {
-      id: 2,
-      city: {name: `Moscow`}
-    },
-    {
-      id: 3,
-      city: {name: `Biysk`}
-    },
-    {
-      id: 4,
-      city: {name: `Paris`}
-    }
-    ];
-
-    expect(getFilteredOffers(offers, city))
-      .toEqual([{
-        id: 1,
-        city: {name: `Biysk`}
-      }, {
-        id: 3,
-        city: {name: `Biysk`}
-      }]
-      );
-  });
-});
-
-
-describe(`getCitiesListFromOffers function`, () => {
-  it(`returns correctly filtered array`, () => {
-    const offers = [{
-      id: 1,
-      city: {name: `Biysk`}
-    },
-    {
-      id: 2,
-      city: {name: `Moscow`}
-    },
-    {
-      id: 3,
-      city: {name: `Biysk`}
-    },
-    {
-      id: 4,
-      city: {name: `Paris`}
-    }
-    ];
-
-    expect(getCitiesListFromOffers(offers))
-      .toEqual([`Biysk`, `Moscow`, `Paris`]);
-
-  });
-});
