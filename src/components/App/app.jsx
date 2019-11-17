@@ -58,6 +58,7 @@ const mapStateToProps = (state, ownProps) =>
     city: state.localData.city,
     cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
+    // offerss: ModelOffers.parseOffers(state.externalData.offers),
 
   });
 
