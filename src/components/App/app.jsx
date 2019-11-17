@@ -4,8 +4,9 @@ import Header from "../main-page/header/header";
 import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
-import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/reducer/local-data/reducer";
+import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
 
 const WithActiveCard = withActiveCard(City);
 
@@ -54,9 +55,10 @@ App.propTypes = propTypes;
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
-    city: state.city,
-    cityOffers: state.cityOffers,
-    cities: state.cities
+    city: state.localData.city,
+    cityOffers: state.localData.cityOffers,
+    cities: state.localData.cities,
+
   });
 
 const mapDispatchToProps = (dispatch) => ({

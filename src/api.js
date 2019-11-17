@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ActionCreator} from "./store/reducer/local-data/reducer";
+import {ActionCreator} from "./store/actions/action-creator/action-creator";
 
 const createAPI = (dispatch) => {
   const api = axios.create({
