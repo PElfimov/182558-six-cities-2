@@ -1,7 +1,7 @@
 const initialState = {
   city: ``,
   cityOffers: [],
-  cities: []
+  cities: [],
 };
 
 Object.freeze(initialState);
