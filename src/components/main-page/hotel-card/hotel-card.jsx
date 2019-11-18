@@ -12,7 +12,7 @@ function Premium() {
 export default function HotelCard(props) {
   const {onClick, onHover, offer} = props;
   const answer = offer;
-  const {isPremium, cost, rating, name, type} = offer;
+  const {isPremium, cost, rating, name, type, previewImage} = offer;
 
   return (
     <article
@@ -25,7 +25,7 @@ export default function HotelCard(props) {
         <a href="#">
           <img
             className="place-card__image"
-            src="img/apartment-01.jpg"
+            src={previewImage}
             width="260"
             height="200"
             alt="Place image"
@@ -47,7 +47,7 @@ export default function HotelCard(props) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: rating + `%`}}></span>
+            <span style={{width: rating * 20 + `%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -67,14 +67,23 @@ HotelCard.propTypes = {
     id: PropTypes.number,
     city: PropTypes.exact({
       name: PropTypes.string,
-      coordinates: PropTypes.arrayOf(PropTypes.number)
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number,
     }),
     isPremium: PropTypes.bool,
-    cost: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    type: PropTypes.oneOf([`Private room`, `Apartment`]),
-    coordinates: PropTypes.array
+    isFavorite: PropTypes.bool,
+    cost: PropTypes.number,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    type: PropTypes.string,
+    coordinates: PropTypes.array,
+    previewImage: PropTypes.string,
+    images: PropTypes.arrayOf(PropTypes.string),
+    bedrooms: PropTypes.number,
+    maxAdults: PropTypes.number,
+    goods: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.object,
+    description: PropTypes.string,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired

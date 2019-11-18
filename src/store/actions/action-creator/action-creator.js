@@ -1,11 +1,3 @@
-const initialState = {
-  city: ``,
-  cityOffers: [],
-  cities: []
-};
-
-Object.freeze(initialState);
-
 const getCitiesListFromOffers = (offers) => {
   const citiesList = offers.map((offer) => offer.city.name);
 
@@ -19,7 +11,8 @@ const getFilteredOffers = (offers, city) => {
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   SET_OFFERS: `SET_OFFERS`,
-  SET_CITIES: `SET_CITIES`
+  SET_CITIES: `SET_CITIES`,
+  LOAD_OFFERS: `LOAD_OFFERS`
 };
 
 const ActionCreator = {
@@ -34,25 +27,14 @@ const ActionCreator = {
   setCities: (cities) => ({
     type: ActionType.SET_CITIES,
     payload: cities
+  }),
+  loadOffers: (offers) => ({
+    type: ActionType.LOAD_OFFERS,
+    payload: offers
   })
 };
 
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.CHANGE_CITY:
-      return Object.assign({}, state, {city: action.payload});
-    case ActionType.SET_OFFERS:
-      return Object.assign({}, state, {cityOffers: action.payload});
-    case ActionType.SET_CITIES:
-      return Object.assign({}, state, {cities: action.payload});
-  }
-
-  return state;
-};
-
 export {
-  reducer,
   ActionCreator,
   ActionType,
   getFilteredOffers,
