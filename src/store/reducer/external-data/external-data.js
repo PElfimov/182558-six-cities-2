@@ -10,6 +10,10 @@ const externalData = (state = externalState, action) => {
     case ActionType.LOAD_OFFERS: return Object.assign({}, state, {
       offers: action.payload
     });
+
+    case ActionType.REQUIRE_AUTHORIZATION: Object.assign({}, state, {
+      isAuthorizationRequired: action.payload
+    });
   }
 
   return state;

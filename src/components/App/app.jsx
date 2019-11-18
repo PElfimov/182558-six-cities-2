@@ -36,7 +36,7 @@ class App extends PureComponent {
     }
   }
 
-  isSignInRender(isAuthorizationRequired) {
+  renderScreen(isAuthorizationRequired) {
     if (isAuthorizationRequired) {
       const {city, cities, cityOffers} = this.props;
       return <div className="page page--gray page--main">
@@ -62,7 +62,7 @@ class App extends PureComponent {
 
     return (
       <React.Fragment>
-        {this.isSignInRender(isAuthorizationRequired)}
+        {this.renderScreen(isAuthorizationRequired)}
       </React.Fragment>
     );
   }
