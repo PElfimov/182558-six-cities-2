@@ -7,6 +7,7 @@ import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import ModelOffers from '../../store/model-offers/model-offers';
+import SignIn from '../sign-in/sign-in';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -35,11 +36,10 @@ class App extends PureComponent {
     }
   }
 
-  render() {
-    const {city, cities, cityOffers} = this.props;
-
-    return (
-      <div className="page page--gray page--main">
+  isSignInRender(isAuthorizationRequired) {
+    if (isAuthorizationRequired) {
+      const {city, cities, cityOffers} = this.props;
+      return <div className="page page--gray page--main">
         <Header />
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
@@ -50,7 +50,20 @@ class App extends PureComponent {
           />
           <WithActiveCard offers={cityOffers} />
         </main>
-      </div>
+      </div>;
+    } else {
+      return <SignIn />;
+    }
+  }
+
+
+  render() {
+    const {isAuthorizationRequired} = this.props;
+
+    return (
+      <React.Fragment>
+        {this.isSignInRender(isAuthorizationRequired)}
+      </React.Fragment>
     );
   }
 }
@@ -63,6 +76,7 @@ const mapStateToProps = (state, ownProps) =>
     cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
     offers: ModelOffers.parseOffers(state.externalData.offers),
+    isAuthorizationRequired: state.externalData.isAuthorizationRequired,
 
   });
 

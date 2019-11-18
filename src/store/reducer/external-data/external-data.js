@@ -1,7 +1,8 @@
 import {ActionType} from "../../actions/action-creator/action-creator";
 
 const externalState = {
-  offers: []
+  offers: [],
+  isAuthorizationRequired: false
 };
 
 const externalData = (state = externalState, action) => {
