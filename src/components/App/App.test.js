@@ -1,12 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Enzyme, {shallow} from 'enzyme';
+import toJSON from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
 import {App} from './app';
-
-jest.mock(`../points-map/points-map`, () => jest.fn().mockReturnValue(null));
-jest.mock(`../main-page/city/city`, () => jest.fn().mockReturnValue(null));
-jest.mock(`../tabs-panel/tabs/tabs`, () => jest.fn().mockReturnValue(null));
-jest.mock(`../../mocks/testMocks`);
-
+Enzyme.configure({adapter: new Adapter()});
 
 const offers = [
   {
@@ -52,11 +49,11 @@ const offers = [
 const setCities = jest.fn();
 const changeCity = jest.fn();
 
-it(`APP correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(<App offers={offers}
-      setCities={setCities}
-      changeCity={changeCity} />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+it(`SignIn correctly renders after relaunch`, () => {
+  const tree = shallow(<App offers={offers}
+    setCities={setCities}
+    changeCity={changeCity}
+  />);
+
+  expect(toJSON(tree)).toMatchSnapshot();
 });

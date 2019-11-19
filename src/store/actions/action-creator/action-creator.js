@@ -13,7 +13,8 @@ const ActionType = {
   SET_OFFERS: `SET_OFFERS`,
   SET_CITIES: `SET_CITIES`,
   LOAD_OFFERS: `LOAD_OFFERS`,
-  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  ADD_LOGIN: `ADD_LOGIN`,
 };
 
 const ActionCreator = {
@@ -36,6 +37,10 @@ const ActionCreator = {
   requireAuthorization: (status) => ({
     type: ActionType.REQUIRE_AUTHORIZATION,
     payload: status,
+  }),
+  addLogin: (loginData) => ({
+    type: ActionType.ADD_LOGIN,
+    payload: loginData,
   }),
 };
 

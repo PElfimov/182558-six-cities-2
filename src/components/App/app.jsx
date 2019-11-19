@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import Header from "../main-page/header/header";
+import Header from "../header/header";
 import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
@@ -8,9 +8,11 @@ import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../s
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import ModelOffers from '../../store/model-offers/model-offers';
 import SignIn from '../sign-in/sign-in';
+import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 
 
 const WithActiveCard = withActiveCard(City);
+const SignInWrapped = withSignIn(SignIn);
 
 class App extends PureComponent {
   constructor(props) {
@@ -52,7 +54,7 @@ class App extends PureComponent {
         </main>
       </div>;
     } else {
-      return <SignIn />;
+      return <SignInWrapped />;
     }
   }
 

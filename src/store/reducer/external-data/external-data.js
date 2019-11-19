@@ -2,7 +2,8 @@ import {ActionType} from "../../actions/action-creator/action-creator";
 
 const externalState = {
   offers: [],
-  isAuthorizationRequired: false
+  isAuthorizationRequired: false,
+  login: null,
 };
 
 const externalData = (state = externalState, action) => {
@@ -11,9 +12,13 @@ const externalData = (state = externalState, action) => {
       offers: action.payload
     });
 
-    case ActionType.REQUIRE_AUTHORIZATION: Object.assign({}, state, {
+    case ActionType.REQUIRE_AUTHORIZATION: return Object.assign({}, state, {
       isAuthorizationRequired: action.payload
     });
+    case ActionType.ADD_LOGIN: return Object.assign({}, state, {
+      login: action.payload,
+    });
+
   }
 
   return state;
