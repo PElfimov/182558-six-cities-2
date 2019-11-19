@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header correctly renders after relaunch 1`] = `
+exports[`Sign in  correctly renders after relaunch 1`] = `
 <header
   className="header"
 >
@@ -43,9 +43,7 @@ exports[`Header correctly renders after relaunch 1`] = `
               />
               <span
                 className="header__user-name user__name"
-              >
-                Oliver.conner@gmail.com
-              </span>
+              />
             </a>
           </li>
         </ul>

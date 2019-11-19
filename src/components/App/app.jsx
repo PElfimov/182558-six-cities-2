@@ -1,15 +1,18 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import Header from "../main-page/header/header";
+import Header from "../header/header";
 import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import ModelOffers from '../../store/model-offers/model-offers';
+import SignIn from '../sign-in/sign-in';
+import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 
 
 const WithActiveCard = withActiveCard(City);
+const SignInWrapped = withSignIn(SignIn);
 
 class App extends PureComponent {
   constructor(props) {
@@ -35,11 +38,10 @@ class App extends PureComponent {
     }
   }
 
-  render() {
-    const {city, cities, cityOffers} = this.props;
-
-    return (
-      <div className="page page--gray page--main">
+  renderScreen(isAuthorizationRequired) {
+    if (isAuthorizationRequired) {
+      const {city, cities, cityOffers} = this.props;
+      return <div className="page page--gray page--main">
         <Header />
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
@@ -50,7 +52,20 @@ class App extends PureComponent {
           />
           <WithActiveCard offers={cityOffers} />
         </main>
-      </div>
+      </div>;
+    } else {
+      return <SignInWrapped />;
+    }
+  }
+
+
+  render() {
+    const {isAuthorizationRequired} = this.props;
+
+    return (
+      <React.Fragment>
+        {this.renderScreen(isAuthorizationRequired)}
+      </React.Fragment>
     );
   }
 }
@@ -63,6 +78,7 @@ const mapStateToProps = (state, ownProps) =>
     cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
     offers: ModelOffers.parseOffers(state.externalData.offers),
+    isAuthorizationRequired: state.externalData.isAuthorizationRequired,
 
   });
 

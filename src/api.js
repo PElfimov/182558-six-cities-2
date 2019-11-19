@@ -9,7 +9,7 @@ const createAPI = (dispatch) => {
   });
 
   const onSuccess = (response) => response;
-  const onFali = (err) => {
+  const onFail = (err) => {
     if (err.response.status === 403) {
       dispatch(ActionCreator.requireAuthorization());
     }
@@ -17,7 +17,7 @@ const createAPI = (dispatch) => {
     return err;
   };
 
-  api.interceptors.response.use(onSuccess, onFali);
+  api.interceptors.response.use(onSuccess, onFail);
 
   return api;
 };

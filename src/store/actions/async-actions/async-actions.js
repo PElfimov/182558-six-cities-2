@@ -6,6 +6,16 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.loadOffers(response.data));
       });
+  },
+  checkLogin: (email, password) => (dispatch, _, api) => {
+    return api.post(`/login`, {
+      email,
+      password
+    })
+      .then((response) => {
+        dispatch(ActionCreator.requireAuthorization(true));
+        dispatch(ActionCreator.addLogin(response.data));
+      });
   }
 };
 

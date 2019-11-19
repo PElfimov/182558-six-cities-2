@@ -1,6 +1,9 @@
 import React from "react";
+import {connect} from 'react-redux';
+import PropTypes from "prop-types";
 
-export default function Header() {
+function Header(props) {
+  const {login} = props;
   return (
     <header className="header">
       <div className="container">
@@ -21,7 +24,7 @@ export default function Header() {
               <li className="header__nav-item user">
                 <a className="header__nav-link header__nav-link--profile" href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  <span className="header__user-name user__name">{login ? login.email : `Sign in` }</span>
                 </a>
               </li>
             </ul>
@@ -31,3 +34,15 @@ export default function Header() {
     </header>
   );
 }
+Header.propTypes = {
+  login: PropTypes.object
+};
+
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    login: state.externalData.login,
+  });
+
+export {Header};
+export default connect(mapStateToProps, null)(Header);
+
