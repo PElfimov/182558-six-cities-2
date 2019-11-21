@@ -9,6 +9,7 @@ import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import ModelOffers from '../../store/model-offers/model-offers';
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
+import {Switch, Route, Redirect} from "react-router-dom";
 
 
 const WithActiveCard = withActiveCard(City);
