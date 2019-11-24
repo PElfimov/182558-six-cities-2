@@ -39,34 +39,28 @@ class App extends PureComponent {
     }
   }
 
-  renderScreen(isAuthorizationRequired) {
-    if (isAuthorizationRequired) {
-      const {city, cities, cityOffers} = this.props;
-      return <div className="page page--gray page--main">
-        <Header />
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <Tabs
-            cities={cities}
-            activeCity={city}
-            onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
-          />
-          <WithActiveCard offers={cityOffers} />
-        </main>
-      </div>;
-    } else {
-      return <SignInWrapped />;
-    }
-  }
-
 
   render() {
-    const {isAuthorizationRequired} = this.props;
-
+    const {city, cities, cityOffers} = this.props;
     return (
-      <React.Fragment>
-        {this.renderScreen(isAuthorizationRequired)}
-      </React.Fragment>
+      <Switch>
+        <Route path="/" exact render={() =>
+          <div className="page page--gray page--main">
+            <Header />
+            <main className="page__main page__main--index">
+              <h1 className="visually-hidden">Cities</h1>
+              <Tabs
+                cities={cities}
+                activeCity={city}
+                onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
+              />
+              <WithActiveCard offers={cityOffers} />
+            </main>
+          </div>
+        } />
+        <Route path="/login" component={SignInWrapped} />
+
+      </Switch>
     );
   }
 }
