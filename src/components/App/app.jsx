@@ -39,24 +39,31 @@ class App extends PureComponent {
     }
   }
 
+  _getMainPage() {
+    const {city, cities, cityOffers} = this.props;
+    return (
+      <div className="page page--gray page--main">
+        <Header />
+        <main className="page__main page__main--index">
+          <h1 className="visually-hidden">Cities</h1>
+          <Tabs
+            cities={cities}
+            activeCity={city}
+            onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
+          />
+          <WithActiveCard offers={cityOffers} />
+        </main>
+      </div>
+    );
+  }
+
 
   render() {
-    const {city, cities, cityOffers} = this.props;
+
     return (
       <Switch>
         <Route path="/" exact render={() =>
-          <div className="page page--gray page--main">
-            <Header />
-            <main className="page__main page__main--index">
-              <h1 className="visually-hidden">Cities</h1>
-              <Tabs
-                cities={cities}
-                activeCity={city}
-                onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
-              />
-              <WithActiveCard offers={cityOffers} />
-            </main>
-          </div>
+          this._getMainPage()
         } />
         <Route path="/login" component={SignInWrapped} />
 
