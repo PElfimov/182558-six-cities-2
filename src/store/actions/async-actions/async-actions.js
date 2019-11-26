@@ -7,7 +7,7 @@ const Operation = {
         dispatch(ActionCreator.loadOffers(response.data));
       });
   },
-  checkLogin: (email, password) => (dispatch, _, api) => {
+  checkLogin: (email, password, history) => (dispatch, _, api) => {
     return api.post(`/login`, {
       email,
       password
@@ -15,6 +15,7 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(true));
         dispatch(ActionCreator.addLogin(response.data));
+        history.push(`/`);
       });
   }
 };
