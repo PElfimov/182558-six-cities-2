@@ -17,6 +17,19 @@ const Operation = {
         dispatch(ActionCreator.addLogin(response.data));
         history.push(`/`);
       });
+  },
+  favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {
+    const convertStatus = Number(status);
+    return api.post(`/favorite/${id}/${convertStatus}`)
+    .then((response) => {
+      if (!response.error) {
+        const state = getState();
+        const {places} = state.offers;
+
+        const updatePlaces = places.map((item) => item.id === response.id ? response : item);
+        dispatch(ActionCreator.loadOffers(updatePlaces));
+      }
+    });
   }
 };
 
