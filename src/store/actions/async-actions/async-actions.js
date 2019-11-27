@@ -18,15 +18,14 @@ const Operation = {
         history.push(`/`);
       });
   },
-  favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {
+  favoriteHotelHandler: (id, status) => (dispatch, getState, api) => {
     const convertStatus = Number(status);
     return api.post(`/favorite/${id}/${convertStatus}`)
     .then((response) => {
       if (!response.error) {
         const state = getState();
-        const {places} = state.offers;
-
-        const updatePlaces = places.map((item) => item.id === response.id ? response : item);
+        const {offers} = state.externalData;
+        const updatePlaces = offers.map((item) => item.id === response.data.id ? response.data : item);
         dispatch(ActionCreator.loadOffers(updatePlaces));
       }
     });

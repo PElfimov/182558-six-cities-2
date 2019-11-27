@@ -18,7 +18,7 @@ const City = (props) => {
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
             {offers.map((it) => (
-              <HotelCard key={it.id} offer={it} onClick={handleClick} onHover={handleHover} />
+              <HotelCard key={it.id.toString()} offer={it} onClick={handleClick} onHover={handleHover} />
             ))}
           </div>
         </section>

@@ -39,5 +39,6 @@ const activeCity = [52.38333, 4.9];
 
 const getCitiesListFromOffers = jest.fn();
 const getFilteredOffers = jest.fn();
+const toString = jest.fn();
 
-export {offers, activeCity, getCitiesListFromOffers, getFilteredOffers};
+export {offers, activeCity, getCitiesListFromOffers, getFilteredOffers, toString};

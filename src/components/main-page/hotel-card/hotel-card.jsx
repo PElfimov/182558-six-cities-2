@@ -42,7 +42,7 @@ function HotelCard(props) {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <BookmarkButton
-            isBookmarkAdded ={isFavorite}
+            isBookmarkAdded={isFavorite}
             onClick={_isFavoriteHotelHandler}
           />
         </div>
@@ -64,7 +64,7 @@ function HotelCard(props) {
 
   function _isFavoriteHotelHandler(evt) {
     evt.preventDefault();
-    let status = !isFavorite;
+    let status = isFavorite ? 0 : 1;
     favoriteHotelHandler(id, status, history);
   }
 

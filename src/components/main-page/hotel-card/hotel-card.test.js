@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HotelCard from './hotel-card';
+import {HotelCard} from './hotel-card';
 
 const offer = {
   isPremium: true,
