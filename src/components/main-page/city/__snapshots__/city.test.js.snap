@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignIn correctly renders after relaunch 1`] = `
+<div
+  className="cities"
+>
+  <div
+    className="cities__places-container container"
+  >
+    <section
+      className="cities__places places"
+    >
+      <h2
+        className="visually-hidden"
+      >
+        Places
+      </h2>
+      <b
+        className="places__found"
+      >
+        5
+         places to stay in Amsterdam
+      </b>
+      <FilterHotels />
+      <div
+        className="cities__places-list places__list tabs__content"
+      >
+        <Connect(HotelCard)
+          key="undefined"
+          offer={
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Beautiful & luxurious apartment at great location",
+              "rating": 55,
+              "type": "Apartment",
+            }
+          }
+          onClick={[Function]}
+          onHover={[MockFunction]}
+        />
+        <Connect(HotelCard)
+          key="undefined"
+          offer={
+            Object {
+              "cost": 132,
+              "isPremium": false,
+              "name": "Wood and stone place",
+              "rating": 80,
+              "type": "Apartment",
+            }
+          }
+          onClick={[Function]}
+          onHover={[MockFunction]}
+        />
+        <Connect(HotelCard)
+          key="undefined"
+          offer={
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Canal View Prinsengracht",
+              "rating": 55,
+              "type": "Apartment",
+            }
+          }
+          onClick={[Function]}
+          onHover={[MockFunction]}
+        />
+        <Connect(HotelCard)
+          key="undefined"
+          offer={
+            Object {
+              "cost": 80,
+              "isPremium": true,
+              "name": "Nice, cozy, warm big bed apartment",
+              "rating": 100,
+              "type": "Apartment",
+            }
+          }
+          onClick={[Function]}
+          onHover={[MockFunction]}
+        />
+        <Connect(HotelCard)
+          key="undefined"
+          offer={
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Wood and stone place",
+              "rating": 88,
+              "type": "Private room",
+            }
+          }
+          onClick={[Function]}
+          onHover={[MockFunction]}
+        />
+      </div>
+    </section>
+    <div
+      className="cities__right-section"
+    >
+      <PointsMap
+        offers={
+          Array [
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Beautiful & luxurious apartment at great location",
+              "rating": 55,
+              "type": "Apartment",
+            },
+            Object {
+              "cost": 132,
+              "isPremium": false,
+              "name": "Wood and stone place",
+              "rating": 80,
+              "type": "Apartment",
+            },
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Canal View Prinsengracht",
+              "rating": 55,
+              "type": "Apartment",
+            },
+            Object {
+              "cost": 80,
+              "isPremium": true,
+              "name": "Nice, cozy, warm big bed apartment",
+              "rating": 100,
+              "type": "Apartment",
+            },
+            Object {
+              "cost": 120,
+              "isPremium": true,
+              "name": "Wood and stone place",
+              "rating": 88,
+              "type": "Private room",
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

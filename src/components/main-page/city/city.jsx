@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
 import PointsMap from "../../points-map/points-map";
-
-function handleClick() {}
-
 const City = (props) => {
   const {offers, handleHover, activeCard} = props;
   const sumOffers = offers.length;
@@ -17,9 +14,9 @@ const City = (props) => {
           <b className="places__found">{sumOffers} places to stay in Amsterdam</b>
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
-            {offers.map((it) => (
-              <HotelCard key={it.id.toString()} offer={it} onClick={handleClick} onHover={handleHover} />
-            ))}
+            {offers.map((it) => {
+              return (<HotelCard key={`${it.id}`} offer={it} onClick={() => {}} onHover={handleHover} />);
+            })}
           </div>
         </section>
         <div className="cities__right-section">
