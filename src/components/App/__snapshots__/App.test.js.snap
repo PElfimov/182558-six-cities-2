@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignIn correctly renders after relaunch 1`] = `
-<Fragment>
-  <WithSignIn />
-</Fragment>
+<Switch>
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    component={[Function]}
+    path="/login"
+  />
+  <Route
+    render={[Function]}
+  />
+</Switch>
 `;
