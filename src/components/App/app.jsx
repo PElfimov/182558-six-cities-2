@@ -66,7 +66,15 @@ class App extends PureComponent {
           this._getMainPage()
         } />
         <Route path="/login" component={SignInWrapped} />
-
+        <Route
+          render={() => (
+            <h1>
+              404.
+              <br />
+              <small>Page not found</small>
+            </h1>
+          )}
+        />
       </Switch>
     );
   }
