@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
 import PointsMap from "../../points-map/points-map";
+import withHistory from './../../../hocs/with-history/with-history';
+
+const HotelCardWrapped = withHistory(HotelCard);
+
 const City = (props) => {
   const {offers, handleHover, activeCard} = props;
   const sumOffers = offers.length;
@@ -15,7 +19,7 @@ const City = (props) => {
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
             {offers.map((it) => {
-              return (<HotelCard key={`${it.id}`} offer={it} onClick={() => {}} onHover={handleHover} />);
+              return (<HotelCardWrapped key={`${it.id}`} offer={it} onClick={() => {}} onHover={handleHover} />);
             })}
           </div>
         </section>

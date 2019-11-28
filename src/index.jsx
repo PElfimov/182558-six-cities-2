@@ -10,11 +10,11 @@ import thunk from "redux-thunk";
 import {compose} from "recompose";
 import externalData from './store/reducer/external-data/external-data';
 import Operation from './store/actions/async-actions/async-actions';
-import {createBrowserHistory} from "history";
+import history from "./history";
 
 
 const init = () => {
-  const history = createBrowserHistory();
+
   const api = configureAPI((...args) => store.dispatch(...args));
 
   const reducer = combineReducers({
