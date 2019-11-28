@@ -9,7 +9,7 @@ const initialState = {
 Object.freeze(initialState);
 
 
-const localData = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {city: action.payload});
@@ -22,4 +22,4 @@ const localData = (state = initialState, action) => {
   return state;
 };
 
-export default localData;
+export default reducer;

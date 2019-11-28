@@ -6,7 +6,7 @@ const externalState = {
   login: null,
 };
 
-const externalData = (state = externalState, action) => {
+const reducer = (state = externalState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS: return Object.assign({}, state, {
       offers: action.payload
@@ -24,4 +24,4 @@ const externalData = (state = externalState, action) => {
   return state;
 };
 
-export default externalData;
+export default reducer;
