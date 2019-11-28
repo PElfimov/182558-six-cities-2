@@ -10,6 +10,7 @@ import ModelOffers from '../../store/model-offers/model-offers';
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 import {Switch, Route} from "react-router-dom";
+import Favorites from '../favorites/favorites';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -65,7 +66,8 @@ class App extends PureComponent {
         <Route path="/" exact render={() =>
           this._getMainPage()
         } />
-        <Route path="/login" component={SignInWrapped} />
+        <Route path="/login" exact component={SignInWrapped} />
+        <Route path="/favorites" component={Favorites} />
         <Route
           render={() => (
             <h1>

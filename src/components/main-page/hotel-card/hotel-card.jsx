@@ -13,7 +13,7 @@ function Premium() {
 }
 
 function HotelCard(props) {
-  const {onClick, onHover, offer, history, favoriteHotelHandler} = props;
+  const {onClick, onHover, offer, history, favoriteHotelHandler, view = `cities`} = props;
   const answer = offer;
   const {isPremium, isFavorite, cost, rating, name, type, previewImage, id} = offer;
 
@@ -22,9 +22,9 @@ function HotelCard(props) {
       onMouseOver={() => {
         onHover(answer);
       }}
-      className="cities__place-card place-card">
+      className={`${view}__place-card place-card`}>
       {isPremium && <Premium />}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${view}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img
             className="place-card__image"
@@ -97,6 +97,7 @@ HotelCard.propTypes = {
   onHover: PropTypes.func.isRequired,
   favoriteHotelHandler: PropTypes.func,
   history: PropTypes.object,
+  view: PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({
