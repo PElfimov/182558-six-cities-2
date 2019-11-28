@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
 import PointsMap from "../../points-map/points-map";
+import withHistory from './../../../hocs/with-history/with-history';
 
-function handleClick() {}
+const HotelCardWrapped = withHistory(HotelCard);
 
 const City = (props) => {
   const {offers, handleHover, activeCard} = props;
@@ -17,9 +18,9 @@ const City = (props) => {
           <b className="places__found">{sumOffers} places to stay in Amsterdam</b>
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
-            {offers.map((it) => (
-              <HotelCard key={it.id} offer={it} onClick={handleClick} onHover={handleHover} />
-            ))}
+            {offers.map((it) => {
+              return (<HotelCardWrapped key={`${it.id}`} offer={it} onClick={() => {}} onHover={handleHover} />);
+            })}
           </div>
         </section>
         <div className="cities__right-section">
@@ -59,14 +60,23 @@ City.propTypes = {
     id: PropTypes.number,
     city: PropTypes.exact({
       name: PropTypes.string,
-      coordinates: PropTypes.arrayOf(PropTypes.number)
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number,
     }),
     isPremium: PropTypes.bool,
+    isFavorite: PropTypes.bool,
     cost: PropTypes.number,
     name: PropTypes.string,
     rating: PropTypes.number,
-    type: PropTypes.oneOf([`Private room`, `Apartment`]),
-    coordinates: PropTypes.array
+    type: PropTypes.string,
+    coordinates: PropTypes.array,
+    previewImage: PropTypes.string,
+    images: PropTypes.arrayOf(PropTypes.string),
+    bedrooms: PropTypes.number,
+    maxAdults: PropTypes.number,
+    goods: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.object,
+    description: PropTypes.string,
   })
 };
 

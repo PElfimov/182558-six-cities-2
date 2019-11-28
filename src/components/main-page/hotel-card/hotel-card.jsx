@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import BookmarkButton from "../../bookmark-button/bookmark-button";
+import Operation from './../../../store/actions/async-actions/async-actions';
+import {connect} from 'react-redux';
 
 function Premium() {
   return (
@@ -9,10 +12,10 @@ function Premium() {
   );
 }
 
-export default function HotelCard(props) {
-  const {onClick, onHover, offer} = props;
+function HotelCard(props) {
+  const {onClick, onHover, offer, history, favoriteHotelHandler} = props;
   const answer = offer;
-  const {isPremium, cost, rating, name, type, previewImage} = offer;
+  const {isPremium, isFavorite, cost, rating, name, type, previewImage, id} = offer;
 
   return (
     <article
@@ -38,12 +41,10 @@ export default function HotelCard(props) {
             <b className="place-card__price-value">&euro;{cost}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <BookmarkButton
+            isBookmarkAdded={isFavorite}
+            onClick={_isFavoriteHotelHandler}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -60,6 +61,13 @@ export default function HotelCard(props) {
       </div>
     </article>
   );
+
+  function _isFavoriteHotelHandler(evt) {
+    evt.preventDefault();
+    let status = isFavorite ? 0 : 1;
+    favoriteHotelHandler(id, status, history);
+  }
+
 }
 
 HotelCard.propTypes = {
@@ -86,5 +94,18 @@ HotelCard.propTypes = {
     description: PropTypes.string,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
-  onHover: PropTypes.func.isRequired
+  onHover: PropTypes.func.isRequired,
+  favoriteHotelHandler: PropTypes.func,
+  history: PropTypes.object,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  favoriteHotelHandler: (id, status, history) => {
+    dispatch(Operation.favoriteHotelHandler(id, status, history));
+  }
+});
+
+
+export {HotelCard};
+
+export default connect(null, mapDispatchToProps)(HotelCard);

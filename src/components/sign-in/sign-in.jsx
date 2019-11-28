@@ -64,24 +64,26 @@ class SignIn extends PureComponent {
 
   _authFormSubmitHandler(evt) {
     evt.preventDefault();
-    const {email, password, checkLogin} = this.props;
+    const {email, password, checkLogin, history} = this.props;
     if (email.length && password.length) {
-      checkLogin(email, password);
+      checkLogin(email, password, history);
     }
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  checkLogin: (email, password) => {
-    dispatch(Operation.checkLogin(email, password));
+  checkLogin: (email, password, history) => {
+    dispatch(Operation.checkLogin(email, password, history));
   }
 });
+
 
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   checkLogin: PropTypes.func,
   addValueFormChangeHandler: PropTypes.func.isRequired,
+  history: PropTypes.object,
 };
 
 export {SignIn};

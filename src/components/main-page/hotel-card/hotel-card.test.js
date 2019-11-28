@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import HotelCard from './hotel-card';
+import {HotelCard} from './hotel-card';
+
+jest.mock(`../../../mocks/test-mocks`);
 
 const offer = {
   isPremium: true,

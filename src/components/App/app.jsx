@@ -9,6 +9,7 @@ import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import ModelOffers from '../../store/model-offers/model-offers';
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
+import {Switch, Route} from "react-router-dom";
 
 
 const WithActiveCard = withActiveCard(City);
@@ -38,10 +39,10 @@ class App extends PureComponent {
     }
   }
 
-  renderScreen(isAuthorizationRequired) {
-    if (isAuthorizationRequired) {
-      const {city, cities, cityOffers} = this.props;
-      return <div className="page page--gray page--main">
+  _getMainPage() {
+    const {city, cities, cityOffers} = this.props;
+    return (
+      <div className="page page--gray page--main">
         <Header />
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
@@ -52,20 +53,29 @@ class App extends PureComponent {
           />
           <WithActiveCard offers={cityOffers} />
         </main>
-      </div>;
-    } else {
-      return <SignInWrapped />;
-    }
+      </div>
+    );
   }
 
 
   render() {
-    const {isAuthorizationRequired} = this.props;
 
     return (
-      <React.Fragment>
-        {this.renderScreen(isAuthorizationRequired)}
-      </React.Fragment>
+      <Switch>
+        <Route path="/" exact render={() =>
+          this._getMainPage()
+        } />
+        <Route path="/login" component={SignInWrapped} />
+        <Route
+          render={() => (
+            <h1>
+              404.
+              <br />
+              <small>Page not found</small>
+            </h1>
+          )}
+        />
+      </Switch>
     );
   }
 }

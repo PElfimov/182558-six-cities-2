@@ -1,6 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import City from './city';
+import Enzyme, {shallow} from 'enzyme';
+import toJSON from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({adapter: new Adapter()});
+
 const offers = [
   {
     isPremium: true,
@@ -39,12 +43,8 @@ const offers = [
   }
 ];
 
-jest.mock(`../../points-map/points-map`, () => jest.fn().mockReturnValue(null));
+it(`SignIn correctly renders after relaunch`, () => {
+  const tree = shallow(<City offers={offers} handleHover={jest.fn()} />);
 
-it(`City correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(<City offers={offers} handleHover={jest.fn()} />)
-
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(toJSON(tree)).toMatchSnapshot();
 });
