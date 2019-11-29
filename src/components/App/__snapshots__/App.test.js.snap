@@ -9,7 +9,20 @@ exports[`SignIn correctly renders after relaunch 1`] = `
   />
   <Route
     component={[Function]}
+    exact={true}
     path="/login"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Favorites)",
+        "type": [Function],
+      }
+    }
+    path="/favorites"
   />
   <Route
     render={[Function]}
