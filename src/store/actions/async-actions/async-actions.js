@@ -24,9 +24,9 @@ const Operation = {
     .then((response) => {
       if (!response.isAxiosError) {
         const state = getState();
-        const {cityOffers} = state.localData;
+        const {offers} = state.externalData;
 
-        const updatePlaces = cityOffers.map((item) => {
+        const updatePlaces = offers.map((item) => {
           if (item.id === response.data.id) {
             const element = Object.assign({}, item);
             element.isFavorite = !item.isFavorite;
@@ -35,7 +35,7 @@ const Operation = {
             return item;
           }
         });
-        dispatch(ActionCreator.setOffers(updatePlaces));
+        dispatch(ActionCreator.loadOffers(updatePlaces));
       } else {
         history.push(`/login`);
       }
