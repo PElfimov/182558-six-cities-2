@@ -57,7 +57,9 @@ class PointsMap extends React.Component {
   }
 
   componentDidUpdate() {
+
     const {offers, activeCard} = this.props;
+    console.log(`new prpps `, activeCard);
     const activeId = activeCard.id;
     const city = offers[0].city.coordinates;
     if (this.el) {
