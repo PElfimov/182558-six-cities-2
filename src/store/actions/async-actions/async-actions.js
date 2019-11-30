@@ -1,9 +1,11 @@
 import {ActionCreator} from "../action-creator/action-creator";
+import ModelOffers from '../../model-offers/model-offers';
 
 const Operation = {
   loadOffers: () => (dispatch, _, api) => {
     return api.get(`/hotels`).then((response) => {
-      dispatch(ActionCreator.loadOffers(response.data));
+      const offers = ModelOffers.parseOffers(response.data);
+      dispatch(ActionCreator.loadOffers(offers));
     });
   },
   checkLogin: (email, password, history) => (dispatch, _, api) => {

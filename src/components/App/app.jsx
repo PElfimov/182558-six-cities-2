@@ -6,7 +6,6 @@ import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
-import ModelOffers from '../../store/model-offers/model-offers';
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 import {Switch, Route} from "react-router-dom";
@@ -89,7 +88,7 @@ const mapStateToProps = (state, ownProps) =>
     city: state.localData.city,
     cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
-    offers: ModelOffers.parseOffers(state.externalData.offers),
+    offers: state.externalData.offers,
     isAuthorizationRequired: state.externalData.isAuthorizationRequired,
 
   });
