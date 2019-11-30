@@ -1,4 +1,10 @@
-import {getOffers, getCityList, getFilteredOffers} from './selectors.js';
+import {
+  getOffers,
+  getCityList,
+  getFilteredOffers,
+  getCity,
+  getCityOffers
+} from './selectors.js';
 
 
 describe(`Selectors  returns right data`, () => {
@@ -32,9 +38,12 @@ describe(`Selectors  returns right data`, () => {
         },
       ],
       cities: [`fall`, `fall2`]
+    },
+    localData: {
+      city: `Biysk`,
     }
   };
-  it(`function return state`, () => {
+  it(`function return Offers from state`, () => {
     expect(getOffers(state)).toEqual(
         [
           {
@@ -63,6 +72,10 @@ describe(`Selectors  returns right data`, () => {
           },
         ]
     );
+  });
+
+  it(`function return Offers from state`, () => {
+    expect(getCity(state)).toEqual(`Biysk`);
   });
 
   it(`function return right city list`, () => {
@@ -112,6 +125,18 @@ describe(`Selectors  returns right data`, () => {
                 }
               },
             ]
+          },
+        ]);
+  });
+
+  it(`function return right Offers list`, () => {
+    expect(getCityOffers(state)).toEqual(
+        [
+          {
+            id: 1,
+            city: {
+              name: `Biysk`,
+            }
           },
         ]);
   });

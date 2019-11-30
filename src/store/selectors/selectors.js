@@ -1,14 +1,13 @@
 import {createSelector} from "reselect";
 
-const NAME_SPACE = `externalData`;
-
 
 export const getOffers = (state) => {
-  return state[NAME_SPACE].offers;
+  return state[`externalData`].offers;
 };
 
-export const getCity = (city) => {
-  return city;
+
+export const getCity = (state) => {
+  return state[`localData`].city;
 };
 
 export const getCityList = createSelector(
@@ -17,6 +16,12 @@ export const getCityList = createSelector(
       const citiesList = offers.map((offer) => offer.city.name);
       return Array.from(new Set(citiesList));
     }
+);
+
+export const getCityOffers = createSelector(
+    getOffers,
+    getCity,
+    (offers, city) => offers.filter((offer) => offer.city.name === city)
 );
 
 export const getFilteredOffers = createSelector(
