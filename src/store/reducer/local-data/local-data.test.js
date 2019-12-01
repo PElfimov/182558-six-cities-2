@@ -5,8 +5,7 @@ describe(`localData returns right state`, () => {
   it(`with changing city action`, () => {
     const city = `Biysk`;
     const state = {
-      city: `Paris`,
-      cities: []
+      city: `Paris`
     };
     const action = {
       type: ActionType.CHANGE_CITY,
@@ -14,30 +13,9 @@ describe(`localData returns right state`, () => {
     };
 
     expect(localData(state, action)).toEqual({
-      city: `Biysk`,
-      cities: []
+      city: `Biysk`
     });
   });
 
-
-  it(`with setting cities list action`, () => {
-    const cities = [`Biysk`, `Berlin`];
-    const state = {
-      city: ``,
-      cities: []
-    };
-
-
-    const action = {
-      type: ActionType.SET_CITIES,
-      payload: cities
-    };
-
-
-    expect(localData(state, action)).toEqual({
-      city: ``,
-      cities: [`Biysk`, `Berlin`]
-    });
-  });
 });
 

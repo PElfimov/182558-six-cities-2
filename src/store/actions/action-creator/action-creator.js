@@ -10,7 +10,6 @@ const getFilteredOffers = (offers, city) => {
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  SET_CITIES: `SET_CITIES`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   ADD_LOGIN: `ADD_LOGIN`,
@@ -20,10 +19,6 @@ const ActionCreator = {
   changeCity: (city) => ({
     type: ActionType.CHANGE_CITY,
     payload: city
-  }),
-  setCities: (cities) => ({
-    type: ActionType.SET_CITIES,
-    payload: cities
   }),
   loadOffers: (offers) => ({
     type: ActionType.LOAD_OFFERS,

@@ -23,7 +23,6 @@ class App extends PureComponent {
   _initialState() {
     const cities = getCitiesListFromOffers(this.props.offers);
     const offers = getFilteredOffers(this.props.offers, cities[0]);
-    this.props.setCities(cities);
     this.props.changeCity(cities[0], offers);
 
   }
@@ -88,9 +87,7 @@ const mapStateToProps = (state, ownProps) =>
   });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCities: (cities) => {
-    dispatch(ActionCreator.setCities(cities));
-  },
+
   changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   }

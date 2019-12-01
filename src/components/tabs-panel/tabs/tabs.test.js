@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Tabs from './tabs';
+import {Tabs} from './tabs';
 
 it(`Tabs correctly renders after relaunch`, () => {
   const tree = renderer

@@ -10,16 +10,6 @@ describe(`Actions creator returns right action`, () => {
       payload: `Moscow`
     });
   });
-
-  it(`for setting cities list`, () => {
-    const cities = [`Moscow`, `Berlin`];
-    const action = ActionCreator.setCities(cities);
-
-    expect(action).toEqual({
-      type: ActionType.SET_CITIES,
-      payload: cities
-    });
-  });
 });
 
 
