@@ -96,9 +96,8 @@ const mapDispatchToProps = (dispatch) => ({
   setCities: (cities) => {
     dispatch(ActionCreator.setCities(cities));
   },
-  changeCity: (city, offers) => {
+  changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.setOffers(offers));
   }
 });
 

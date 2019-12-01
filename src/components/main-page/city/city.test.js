@@ -1,5 +1,5 @@
 import React from 'react';
-import City from './city';
+import {City} from './city';
 import Enzyme, {shallow} from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';

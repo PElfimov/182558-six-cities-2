@@ -82,7 +82,6 @@ const mapStateToProps = (state, ownProps) =>
 //   },
 //   changeCity: (city, offers) => {
 //     dispatch(ActionCreator.changeCity(city));
-//     dispatch(ActionCreator.setOffers(offers));
 //   }
 // });
 

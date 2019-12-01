@@ -11,23 +11,6 @@ describe(`Actions creator returns right action`, () => {
     });
   });
 
-  it(`for changing offers`, () => {
-    const offers = [
-      {
-        id: 1,
-        city: {
-          name: `Moscow`
-        }
-      }
-    ];
-    const action = ActionCreator.setOffers(offers);
-
-    expect(action).toEqual({
-      type: ActionType.SET_OFFERS,
-      payload: offers
-    });
-  });
-
   it(`for setting cities list`, () => {
     const cities = [`Moscow`, `Berlin`];
     const action = ActionCreator.setCities(cities);
