@@ -1,13 +1,3 @@
-const getCitiesListFromOffers = (offers) => {
-  const citiesList = offers.map((offer) => offer.city.name);
-
-  return Array.from(new Set(citiesList));
-};
-
-const getFilteredOffers = (offers, city) => {
-  return offers.filter((offer) => offer.city.name === city);
-};
-
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   LOAD_OFFERS: `LOAD_OFFERS`,
@@ -36,7 +26,5 @@ const ActionCreator = {
 
 export {
   ActionCreator,
-  ActionType,
-  getFilteredOffers,
-  getCitiesListFromOffers
+  ActionType
 };

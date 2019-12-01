@@ -4,7 +4,7 @@ import Header from "../header/header";
 import City from "../main-page/city/city";
 import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
-import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
+import {ActionCreator} from "../../store/actions/action-creator/action-creator";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
@@ -21,19 +21,14 @@ class App extends PureComponent {
   }
 
   _initialState() {
-    const cities = getCitiesListFromOffers(this.props.offers);
-    const offers = getFilteredOffers(this.props.offers, cities[0]);
-    this.props.changeCity(cities[0], offers);
-
-  }
-
-  replaceOffers(city) {
     const {offers} = this.props;
-    const citiesOffers = getFilteredOffers(offers, city);
-    this.props.changeCity(city, citiesOffers);
+    const city = offers[0].city.name;
+    this.props.changeCity(city);
   }
+
+
   componentDidUpdate(prevProps) {
-    if (this.props.offers.length !== prevProps.offers.length) {
+    if (this.props.offers !== prevProps.offers) {
       this._initialState();
     }
   }
@@ -85,7 +80,6 @@ const mapStateToProps = (state, ownProps) =>
   });
 
 const mapDispatchToProps = (dispatch) => ({
-
   changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   }
