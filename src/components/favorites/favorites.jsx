@@ -2,12 +2,18 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Header from '../header/header';
-import HotelCard from "../main-page/hotel-card/hotel-card";
-import ModelOffers from '../../store/model-offers/model-offers';
+import {getFavoriteOffers, getFavoriteCityList} from '../../store/selectors/selectors';
+import LiFragment from './li-fragment/li-fragment';
+
+const _getOffersFiltered = (city, offers) => {
+  const list = offers.filter((offer) => offer.city.name === city);
+  return list;
+};
 
 const Favorites = (props) => {
-  const {offers} = props;
 
+
+  const {offers, cities} = props;
   return (
     <div className="page">
       <Header />
@@ -16,27 +22,15 @@ const Favorites = (props) => {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="favorites__places">
-                  {offers.map((it) => {
-                    return (
-                      <HotelCard
-                        key={`${it.id}`}
-                        offer={it}
-                        onClick={() => {}}
-                        onHover={() => {}}
-                        type={`favorites`}
-                      />);
-                  })}
-                </div>
-              </li>
+              {cities.map((it) => {
+                return (
+                  <LiFragment
+                    key={`${it} - city`}
+                    offers={_getOffersFiltered(it, offers)}
+                    city={it}
+                  />);
+              })}
+
             </ul>
           </section>
         </div>
@@ -68,22 +62,18 @@ Favorites.propTypes = {
     host: PropTypes.object,
     description: PropTypes.string,
   })
-  ).isRequired
+  ).isRequired,
+  cities: PropTypes.array
 };
+
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
-    offers: ModelOffers.parseOffers(state.externalData.offers),
+    offers: getFavoriteOffers(state),
+    cities: getFavoriteCityList(state),
+    allOffers: state.externalData.offers,
   });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   setCities: (cities) => {
-//     dispatch(ActionCreator.setCities(cities));
-//   },
-//   changeCity: (city, offers) => {
-//     dispatch(ActionCreator.changeCity(city));
-//   }
-// });
 
 export {Favorites};
 

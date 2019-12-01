@@ -24,6 +24,20 @@ export const getCityOffers = createSelector(
     (offers, city) => offers.filter((offer) => offer.city.name === city)
 );
 
+export const getFavoriteOffers = createSelector(
+    getOffers,
+    (offers) => offers.filter((offer) => offer.isFavorite === true)
+);
+
+export const getFavoriteCityList = createSelector(
+    getFavoriteOffers,
+    (offers) => {
+      const citiesList = offers.map((offer) => offer.city.name);
+      return Array.from(new Set(citiesList));
+    }
+);
+
+
 export const getFilteredOffers = createSelector(
     getOffers,
     getCityList,

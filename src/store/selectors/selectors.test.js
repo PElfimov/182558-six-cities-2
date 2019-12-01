@@ -3,7 +3,8 @@ import {
   getCityList,
   getFilteredOffers,
   getCity,
-  getCityOffers
+  getCityOffers,
+  getFavoriteOffers
 } from './selectors.js';
 
 
@@ -14,24 +15,28 @@ describe(`Selectors  returns right data`, () => {
       offers: [
         {
           id: 1,
+          isFavorite: true,
           city: {
             name: `Biysk`,
           }
         },
         {
           id: 2,
+          isFavorite: false,
           city: {
             name: `Barnaul`,
           }
         },
         {
           id: 3,
+          isFavorite: true,
           city: {
             name: `Gorno-Altaysk`,
           }
         },
         {
           id: 4,
+          isFavorite: false,
           city: {
             name: `Gorno-Altaysk`,
           }
@@ -48,24 +53,28 @@ describe(`Selectors  returns right data`, () => {
         [
           {
             id: 1,
+            isFavorite: true,
             city: {
               name: `Biysk`,
             }
           },
           {
             id: 2,
+            isFavorite: false,
             city: {
               name: `Barnaul`,
             }
           },
           {
             id: 3,
+            isFavorite: true,
             city: {
               name: `Gorno-Altaysk`,
             }
           },
           {
             id: 4,
+            isFavorite: false,
             city: {
               name: `Gorno-Altaysk`,
             }
@@ -84,6 +93,27 @@ describe(`Selectors  returns right data`, () => {
     );
   });
 
+  it(`function return favorite city list`, () => {
+    expect(getFavoriteOffers(state)).toEqual(
+        [
+          {
+            id: 1,
+            isFavorite: true,
+            city: {
+              name: `Biysk`,
+            }
+          },
+          {
+            id: 3,
+            isFavorite: true,
+            city: {
+              name: `Gorno-Altaysk`,
+            }
+          },
+        ]
+    );
+  });
+
   it(`function return right data structure`, () => {
     expect(getFilteredOffers(state)).toEqual(
         [
@@ -92,6 +122,7 @@ describe(`Selectors  returns right data`, () => {
             offers: [
               {
                 id: 1,
+                isFavorite: true,
                 city: {
                   name: `Biysk`,
                 }
@@ -103,6 +134,7 @@ describe(`Selectors  returns right data`, () => {
             offers: [
               {
                 id: 2,
+                isFavorite: false,
                 city: {
                   name: `Barnaul`,
                 }
@@ -114,12 +146,14 @@ describe(`Selectors  returns right data`, () => {
             offers: [
               {
                 id: 3,
+                isFavorite: true,
                 city: {
                   name: `Gorno-Altaysk`,
                 }
               },
               {
                 id: 4,
+                isFavorite: false,
                 city: {
                   name: `Gorno-Altaysk`,
                 }
@@ -134,6 +168,7 @@ describe(`Selectors  returns right data`, () => {
         [
           {
             id: 1,
+            isFavorite: true,
             city: {
               name: `Biysk`,
             }
