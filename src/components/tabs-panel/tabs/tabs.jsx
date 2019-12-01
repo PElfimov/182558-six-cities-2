@@ -1,8 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 import LocationsCity from "../locations-city/locations-city";
 import propTypes from "./prop-types";
+import {getCityList} from "../../../store/selectors/selectors";
 
-export default function Tabs(props) {
+function Tabs(props) {
   const {cities, activeCity, onChangeCity} = props;
   return (
     <div className="tabs">
@@ -23,3 +25,26 @@ export default function Tabs(props) {
 }
 
 Tabs.propTypes = propTypes;
+
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    cities: getCityList(state),
+    activeCity: state.localData.city
+
+  });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   setCities: (cities) => {
+//     dispatch(ActionCreator.setCities(cities));
+//   },
+//   changeCity: (city) => {
+//     dispatch(ActionCreator.changeCity(city));
+//   }
+// });
+
+export {Tabs};
+
+export default connect(
+    mapStateToProps,
+    null
+)(Tabs);
