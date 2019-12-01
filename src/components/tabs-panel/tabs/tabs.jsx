@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import LocationsCity from "../locations-city/locations-city";
-import propTypes from "./prop-types";
 import {getCityList} from "../../../store/selectors/selectors";
 import {ActionCreator} from "../../../store/actions/action-creator/action-creator";
 
@@ -25,7 +25,11 @@ function Tabs(props) {
   );
 }
 
-Tabs.propTypes = propTypes;
+Tabs.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  changeCity: PropTypes.func.isRequired,
+  activeCity: PropTypes.string.isRequired,
+};
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
