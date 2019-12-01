@@ -28,7 +28,7 @@ class App extends PureComponent {
 
 
   componentDidUpdate(prevProps) {
-    if (this.props.offers !== prevProps.offers) {
+    if (this.props.offers.length !== prevProps.offers.length) {
       this._initialState();
     }
   }
