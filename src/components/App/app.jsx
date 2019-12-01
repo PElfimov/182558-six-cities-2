@@ -44,9 +44,7 @@ class App extends PureComponent {
         <Header />
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <Tabs
-            onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
-          />
+          <Tabs />
           <WithActiveCard />
         </main>
       </div>
