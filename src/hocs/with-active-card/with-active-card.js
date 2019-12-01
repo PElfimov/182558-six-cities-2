@@ -6,21 +6,24 @@ const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
     constructor(props) {
       super(props);
-      this.state = {activeCard: {}};
+      this.state = {activeCard: []};
       this.handleHover = this.handleHover.bind(this);
     }
 
     handleHover(data) {
+      const offer = Object.assign({}, data);
       this.setState({
-        activeCard: Object.assign(this.state.activeCard, data)
+        activeCard: offer,
       });
+
     }
 
     render() {
+      const {activeCard} = this.state;
       return <Component
         {...this.props}
         handleHover={this.handleHover}
-        activeCard={this.state.activeCard}
+        activeCard={activeCard}
       />;
     }
   }
