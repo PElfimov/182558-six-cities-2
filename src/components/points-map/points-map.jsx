@@ -56,19 +56,20 @@ class PointsMap extends React.Component {
 
   }
 
-
   componentDidUpdate(prevProps) {
 
     const {offers, activeCard} = this.props;
     const activeId = activeCard.id;
     const city = offers[0].city.coordinates;
-    if (prevProps.offers !== this.props.offers) {
+    if ((prevProps.offers !== this.props.offers) || (!this.el)) {
       if (this.el) {
         this.el.remove();
       }
       this.createArea({city, elem: this.ref.current});
     }
-    this.renderOffers(offers, activeId);
+    if (this.el) {
+      this.renderOffers(offers, activeId);
+    }
   }
 
   componentWillUnmount() {
