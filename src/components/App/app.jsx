@@ -40,7 +40,7 @@ class App extends PureComponent {
   }
 
   _getMainPage() {
-    const {city, cities, cityOffers} = this.props;
+    const {city, cities} = this.props;
     return (
       <div className="page page--gray page--main">
         <Header />
@@ -51,7 +51,7 @@ class App extends PureComponent {
             activeCity={city}
             onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
           />
-          <WithActiveCard offers={cityOffers} />
+          <WithActiveCard />
         </main>
       </div>
     );
@@ -86,7 +86,6 @@ App.propTypes = propTypes;
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
     city: state.localData.city,
-    cityOffers: state.localData.cityOffers,
     cities: state.localData.cities,
     offers: state.externalData.offers,
     isAuthorizationRequired: state.externalData.isAuthorizationRequired,

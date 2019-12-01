@@ -1,9 +1,11 @@
 import React from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
 import FilterHotels from "../filter-hotels/filter-hotels";
 import PointsMap from "../../points-map/points-map";
 import withHistory from './../../../hocs/with-history/with-history';
+import {getCityOffers} from "../../../store/selectors/selectors";
 
 const HotelCardWrapped = withHistory(HotelCard);
 
@@ -86,4 +88,13 @@ City.propTypes = {
   })
 };
 
-export default City;
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    offers: getCityOffers(state)});
+
+export {City};
+
+export default connect(
+    mapStateToProps,
+    null
+)(City);

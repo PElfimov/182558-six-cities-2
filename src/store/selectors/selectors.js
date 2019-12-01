@@ -2,7 +2,7 @@ import {createSelector} from "reselect";
 
 
 export const getOffers = (state) => {
-  return state[`externalData`].offers;
+  return [...state[`externalData`].offers];
 };
 
 
