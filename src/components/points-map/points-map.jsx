@@ -53,19 +53,21 @@ class PointsMap extends React.Component {
         .marker(point.coordinates, {icon: this.createIcon(isActiveMarker)})
         .addTo(this.markerGroup);
     }
-    // markerGroup.clearLayers();
+
   }
 
-  componentDidUpdate() {
+
+  componentDidUpdate(prevProps) {
 
     const {offers, activeCard} = this.props;
-    console.log(`new prpps `, activeCard);
     const activeId = activeCard.id;
     const city = offers[0].city.coordinates;
-    if (this.el) {
-      this.el.remove();
+    if (prevProps.offers !== this.props.offers) {
+      if (this.el) {
+        this.el.remove();
+      }
+      this.createArea({city, elem: this.ref.current});
     }
-    this.createArea({city, elem: this.ref.current});
     this.renderOffers(offers, activeId);
   }
 

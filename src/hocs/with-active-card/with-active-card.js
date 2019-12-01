@@ -6,7 +6,7 @@ const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
     constructor(props) {
       super(props);
-      this.state = {activeCard: []};
+      this.state = {activeCard: {}};
       this.handleHover = this.handleHover.bind(this);
     }
 
