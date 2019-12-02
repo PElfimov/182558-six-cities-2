@@ -5,71 +5,46 @@ exports[`LiFragment correctly render 1`] = `
   className="page"
 >
   <Connect(Header) />
-  <main
-    className="page__main page__main--favorites"
-  >
-    <div
-      className="page__favorites-container container"
-    >
-      <section
-        className="favorites"
-      >
-        <h1
-          className="favorites__title"
-        >
-          Saved listing
-        </h1>
-        <ul
-          className="favorites__list"
-        >
-          <LiFragment
-            city="Paris"
-            key="Paris - city"
-            offers={
-              Array [
-                Object {
-                  "city": Object {
-                    "name": "Paris",
-                  },
-                  "id": 2,
-                  "isFavorite": true,
-                },
-                Object {
-                  "city": Object {
-                    "name": "Paris",
-                  },
-                  "id": 3,
-                  "isFavorite": true,
-                },
-                Object {
-                  "city": Object {
-                    "name": "Paris",
-                  },
-                  "id": 4,
-                  "isFavorite": true,
-                },
-              ]
-            }
-          />
-          <LiFragment
-            city="Biysk"
-            key="Biysk - city"
-            offers={
-              Array [
-                Object {
-                  "city": Object {
-                    "name": "Biysk",
-                  },
-                  "id": 1,
-                  "isFavorite": true,
-                },
-              ]
-            }
-          />
-        </ul>
-      </section>
-    </div>
-  </main>
+  <MainFragment
+    cities={
+      Array [
+        "Paris",
+        "Biysk",
+      ]
+    }
+    offers={
+      Array [
+        Object {
+          "city": Object {
+            "name": "Biysk",
+          },
+          "id": 1,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 2,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 3,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 4,
+          "isFavorite": true,
+        },
+      ]
+    }
+  />
   <Footer />
 </div>
 `;
