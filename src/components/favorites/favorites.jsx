@@ -5,16 +5,29 @@ import Header from '../header/header';
 import {getFavoriteOffers, getFavoriteCityList} from '../../store/selectors/selectors';
 import Footer from './../footer/footer';
 import MainFragment from './main-fragment/main-fragment';
+import FavoritesEmpty from './favorites-empty/favorites-empty';
 
+
+const _getScreen = (offers, cities) =>{
+  if (offers.length !== 0) {
+    return (
+      <MainFragment
+        offers ={offers}
+        cities = {cities}/>
+    );
+  } else {
+    return (
+      <FavoritesEmpty/>
+    );
+  }
+};
 
 const Favorites = (props) => {
   const {offers, cities} = props;
   return (
     <div className="page">
       <Header />
-      <MainFragment
-        offers ={offers}
-        cities = {cities}/>
+      {_getScreen(offers, cities)}
       <Footer />
     </div>
   );
