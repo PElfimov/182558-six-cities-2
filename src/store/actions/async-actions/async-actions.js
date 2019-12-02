@@ -20,6 +20,15 @@ const Operation = {
         history.push(`/`);
       });
   },
+  getLogin: () => (dispatch, _, api) => {
+    return api.get(`/login`)
+      .then((response) => {
+        if (response) {
+          dispatch(ActionCreator.requireAuthorization(true));
+          dispatch(ActionCreator.addLogin(response.data));
+        }
+      });
+  },
   favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {
     const convertStatus = Number(status);
     return api.post(`/favorite/${id}/${convertStatus}`)
