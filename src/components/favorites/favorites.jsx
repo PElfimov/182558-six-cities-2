@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 import Header from '../header/header';
 import {getFavoriteOffers, getFavoriteCityList} from '../../store/selectors/selectors';
 import LiFragment from './li-fragment/li-fragment';
+import Footer from './../footer/footer';
 
 const _getOffersFiltered = (city, offers) => {
   const list = offers.filter((offer) => offer.city.name === city);
   return list;
 };
 
+
 const Favorites = (props) => {
-
-
   const {offers, cities} = props;
   return (
     <div className="page">
@@ -35,6 +35,7 @@ const Favorites = (props) => {
           </section>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

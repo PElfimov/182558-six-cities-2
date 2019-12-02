@@ -70,5 +70,6 @@ exports[`LiFragment correctly render 1`] = `
       </section>
     </div>
   </main>
+  <Footer />
 </div>
 `;
