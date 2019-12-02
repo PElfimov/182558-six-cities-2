@@ -3,13 +3,8 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Header from '../header/header';
 import {getFavoriteOffers, getFavoriteCityList} from '../../store/selectors/selectors';
-import LiFragment from './li-fragment/li-fragment';
 import Footer from './../footer/footer';
-
-const _getOffersFiltered = (city, offers) => {
-  const list = offers.filter((offer) => offer.city.name === city);
-  return list;
-};
+import MainFragment from './main-fragment/main-fragment';
 
 
 const Favorites = (props) => {
@@ -17,24 +12,9 @@ const Favorites = (props) => {
   return (
     <div className="page">
       <Header />
-      <main className="page__main page__main--favorites">
-        <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              {cities.map((it) => {
-                return (
-                  <LiFragment
-                    key={`${it} - city`}
-                    offers={_getOffersFiltered(it, offers)}
-                    city={it}
-                  />);
-              })}
-
-            </ul>
-          </section>
-        </div>
-      </main>
+      <MainFragment
+        offers ={offers}
+        cities = {cities}/>
       <Footer />
     </div>
   );
