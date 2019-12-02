@@ -10,9 +10,10 @@ const createAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.response.status === 401) {
+    if (err.response.isAxiosError) {
 
       dispatch(ActionCreator.requireAuthorization(false));
+      dispatch(ActionCreator.addLogin(null));
     }
 
     return err;

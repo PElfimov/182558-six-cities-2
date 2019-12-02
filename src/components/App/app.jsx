@@ -10,6 +10,8 @@ import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 import {Switch, Route} from "react-router-dom";
 import Favorites from '../favorites/favorites';
+import withAuth from '../../hocs/with-auth/with-auth';
+import Operation from '../../store/actions/async-actions/async-actions';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -28,9 +30,11 @@ class App extends PureComponent {
 
 
   componentDidUpdate(prevProps) {
+    const {isLogin} = this.props;
     if (this.props.offers.length !== prevProps.offers.length) {
       this._initialState();
     }
+    isLogin();
   }
 
   _getMainPage() {
@@ -55,7 +59,7 @@ class App extends PureComponent {
           this._getMainPage()
         } />
         <Route path="/login" exact component={SignInWrapped} />
-        <Route path="/favorites" component={Favorites} />
+        <Route path="/favorites" component={withAuth(Favorites)} />
         <Route
           render={() => (
             <h1>
@@ -82,7 +86,11 @@ const mapStateToProps = (state, ownProps) =>
 const mapDispatchToProps = (dispatch) => ({
   changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
+  },
+  isLogin: ()=>{
+    dispatch(Operation.getLogin());
   }
+
 });
 
 export {App};

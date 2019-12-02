@@ -19,7 +19,7 @@ const withAuth = (Component) => {
       }
     }
 
-    componentWillUpdate() {
+    componentDidUpdate() {
       const {isLogin} = this.props;
       isLogin();
     }
