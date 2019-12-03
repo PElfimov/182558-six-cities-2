@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {HotelCard} from './hotel-card';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 jest.mock(`../../../mocks/test-mocks`);
 
@@ -14,10 +15,13 @@ const offer = {
 
 it(`HotelCard correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<HotelCard
-      offer={offer}
-      onClick={jest.fn()}
-      onHover={jest.fn()} />)
+    .create(
+        <Router>
+          <HotelCard
+            offer={offer}
+            onClick={jest.fn()}
+            onHover={jest.fn()} />
+        </Router>)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

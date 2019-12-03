@@ -24,17 +24,8 @@ describe(`HotelCard component e2e tests`, () => {
     wrapper = shallow(<HotelCard
       offer={offer}
       onHover={callbackFunction}
-      onClick={callbackFunction}
     />);
   });
-
-
-  it(`Check to click on title offers`, () => {
-    const startButton = wrapper.find(`.jsTitle`);
-    startButton.simulate(`click`);
-    expect(callbackFunction).toHaveBeenCalledTimes(1);
-  });
-
 
   it(`Check data in callback function`, () => {
     const cardArea = wrapper.find(`.place-card`);
