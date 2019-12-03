@@ -8,7 +8,15 @@ exports[`SignIn correctly renders after relaunch 1`] = `
     render={[Function]}
   />
   <Route
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(WithCheckAuth)",
+        "type": [Function],
+      }
+    }
     exact={true}
     path="/login"
   />
@@ -22,7 +30,21 @@ exports[`SignIn correctly renders after relaunch 1`] = `
         "type": [Function],
       }
     }
+    exact={true}
     path="/favorites"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Offer)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/offer/:id"
   />
   <Route
     render={[Function]}
