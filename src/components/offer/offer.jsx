@@ -5,7 +5,7 @@ import Header from './../header/header';
 
 
 const Offer = (props)=>{
-  console.log(params); // получаем год
+  console.log(props); // получаем год
   return (
     <React.Fragment>
       <Header />
