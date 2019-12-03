@@ -3,40 +3,45 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import Header from './../header/header';
 import Gallery from "./gallery/gallery";
+import BookmarkButton from '../bookmark-button/bookmark-button';
+import Operation from '../../store/actions/async-actions/async-actions';
+import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
 
+const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 
 const Offer = (props)=>{
-  const {offers, match} = props;
+  const {offers, match, history} = props;
   const {id} = match.params;
   const offer = offers[id];
-  const {images} = offer;
+  const {images, isPremium, isFavorite} = offer;
+  console.log(id);
 
+  console.log(isFavorite);
 
-  // const {images} = offer;
-  // console.log(props.match.params); // получаем год
 
   return (
     <React.Fragment>
-      {console.log(offer)}
       <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <Gallery images={images}/>
           <div className="property__container container">
             <div className="property__wrapper">
+              {isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
-              </div>
+              </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   Beautiful &amp; luxurious studio at great location
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+
+                <BookmarkButtonWrapped
+                  isFavorite={isFavorite}
+                  history = {history}
+                  id = {Number(id) + Number(1)}
+                  type ={`property`}
+                />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -299,6 +304,7 @@ const Offer = (props)=>{
       </main>
     </React.Fragment>
   );
+
 };
 
 Offer.propTypes = {
@@ -326,13 +332,16 @@ Offer.propTypes = {
   })
   ).isRequired,
   id: PropTypes.number,
-  match: PropTypes.object
+  match: PropTypes.object,
+  history: PropTypes.object,
+  favoriteHotelHandler: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
     offers: state.externalData.offers
   });
+
 
 export {Offer};
 
