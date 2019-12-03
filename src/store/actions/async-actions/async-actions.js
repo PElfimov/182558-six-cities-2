@@ -23,7 +23,7 @@ const Operation = {
   getLogin: () => (dispatch, _, api) => {
     return api.get(`/login`)
       .then((response) => {
-        if (response) {
+        if (response.status === 200) {
           dispatch(ActionCreator.requireAuthorization(true));
           dispatch(ActionCreator.addLogin(response.data));
         }
