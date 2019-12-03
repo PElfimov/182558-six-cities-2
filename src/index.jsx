@@ -1,4 +1,5 @@
 import {createStore, applyMiddleware} from "redux";
+import persistState from 'redux-localstorage';
 import {Provider} from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -20,6 +21,7 @@ const init = () => {
       reducer,
       compose(
           applyMiddleware(thunk.withExtraArgument(api)),
+          persistState(),
           window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
       )
   );
