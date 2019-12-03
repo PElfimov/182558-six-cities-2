@@ -13,8 +13,7 @@ const withCheckAuth = (Component) => {
     _getScreen() {
       const {isAuthorization} = this.props;
       if (isAuthorization) {
-        return <Redirect to="/login" />;
-
+        return <Redirect to="/" />;
       } else {
         return <Component {...this.props} />;
       }
@@ -24,6 +23,7 @@ const withCheckAuth = (Component) => {
       const {isLogin} = this.props;
       isLogin();
     }
+
     render() {
       return (
         <React.Fragment>

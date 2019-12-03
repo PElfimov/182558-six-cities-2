@@ -13,13 +13,6 @@ class SignIn extends PureComponent {
     this._authFormSubmitHandler = this._authFormSubmitHandler.bind(this);
   }
 
-  componentDidUpdate() {
-    const {isAuthorizationRequired, history} = this.props;
-    if (isAuthorizationRequired) {
-      history.push(`/`);
-    }
-  }
-
 
   render() {
     const {email, password, addValueFormChangeHandler} = this.props;
@@ -85,12 +78,6 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = (state, ownProps) =>
-  Object.assign({}, ownProps, {
-    isAuthorizationRequired: state.externalData.isAuthorizationRequired,
-
-  });
-
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
@@ -102,4 +89,4 @@ SignIn.propTypes = {
 
 export {SignIn};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

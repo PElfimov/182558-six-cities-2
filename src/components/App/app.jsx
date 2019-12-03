@@ -12,6 +12,7 @@ import {Switch, Route} from "react-router-dom";
 import Favorites from '../favorites/favorites';
 import withAuth from '../../hocs/with-auth/with-auth';
 import Operation from '../../store/actions/async-actions/async-actions';
+import withCheckAuth from './../../hocs/with-check-auth/with-check-auth';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -50,7 +51,6 @@ class App extends PureComponent {
     );
   }
 
-
   render() {
 
     return (
@@ -58,7 +58,7 @@ class App extends PureComponent {
         <Route path="/" exact render={() =>
           this._getMainPage()
         } />
-        <Route path="/login" exact component={SignInWrapped} />
+        <Route path="/login" exact component={withCheckAuth(SignInWrapped)} />
         <Route path="/favorites" component={withAuth(Favorites)} />
         <Route
           render={() => (
