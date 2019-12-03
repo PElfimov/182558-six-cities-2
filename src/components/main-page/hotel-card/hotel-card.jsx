@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import BookmarkButton from "../../bookmark-button/bookmark-button";
 import Operation from './../../../store/actions/async-actions/async-actions';
 import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 
 function Premium() {
   return (
@@ -13,7 +14,7 @@ function Premium() {
 }
 
 function HotelCard(props) {
-  const {onClick, onHover, offer, history, favoriteHotelHandler, view = `cities`} = props;
+  const {onHover, offer, history, favoriteHotelHandler, view = `cities`} = props;
   const answer = offer;
   const {isPremium, isFavorite, cost, rating, name, type, previewImage, id} = offer;
 
@@ -53,9 +54,9 @@ function HotelCard(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a className="jsTitle" onClick={onClick} href="#">
+          <Link className="jsTitle" to={`/offer/${id}`} href="#">
             {name}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -93,7 +94,6 @@ HotelCard.propTypes = {
     host: PropTypes.object,
     description: PropTypes.string,
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   favoriteHotelHandler: PropTypes.func,
   history: PropTypes.object,

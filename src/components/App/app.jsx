@@ -13,6 +13,7 @@ import Favorites from '../favorites/favorites';
 import withAuth from '../../hocs/with-auth/with-auth';
 import Operation from '../../store/actions/async-actions/async-actions';
 import withCheckAuth from './../../hocs/with-check-auth/with-check-auth';
+import Offer from './../offer/offer';
 
 
 const WithActiveCard = withActiveCard(City);
@@ -59,7 +60,8 @@ class App extends PureComponent {
           this._getMainPage()
         } />
         <Route path="/login" exact component={withCheckAuth(SignInWrapped)} />
-        <Route path="/favorites" component={withAuth(Favorites)} />
+        <Route path="/favorites" exact component={withAuth(Favorites)} />
+        <Route path = "/offer/:id" exact component = {Offer}/>
         <Route
           render={() => (
             <h1>
