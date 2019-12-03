@@ -2,37 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import Header from './../header/header';
+import Gallery from "./gallery/gallery";
 
 
 const Offer = (props)=>{
-  console.log(props); // получаем год
+  const {offers, match} = props;
+  const {id} = match.params;
+  const offer = offers[id];
+  const {images} = offer;
+
+
+  // const {images} = offer;
+  // console.log(props.match.params); // получаем год
+
   return (
     <React.Fragment>
+      {console.log(offer)}
       <Header />
       <main className="page__main page__main--property">
         <section className="property">
-          <div className="property__gallery-container container">
-            <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio"/>
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio"/>
-              </div>
-            </div>
-          </div>
+          <Gallery images={images}/>
           <div className="property__container container">
             <div className="property__wrapper">
               <div className="property__mark">
@@ -110,7 +99,7 @@ const Offer = (props)=>{
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                    <img className="property__avatar user__avatar" src="/img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
                   </div>
                   <span className="property__user-name">
                     Angelina
@@ -134,7 +123,7 @@ const Offer = (props)=>{
                   <li className="reviews__item">
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
+                        <img className="reviews__avatar user__avatar" src="/img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
                       </div>
                       <span className="reviews__user-name">
                         Max
@@ -212,7 +201,7 @@ const Offer = (props)=>{
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="/img/room.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -244,7 +233,7 @@ const Offer = (props)=>{
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="/img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -276,7 +265,7 @@ const Offer = (props)=>{
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="/img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -313,8 +302,7 @@ const Offer = (props)=>{
 };
 
 Offer.propTypes = {
-  id: PropTypes.number.isRequired,
-  offer: PropTypes.exact({
+  offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number,
     city: PropTypes.exact({
       name: PropTypes.string,
@@ -335,12 +323,10 @@ Offer.propTypes = {
     goods: PropTypes.arrayOf(PropTypes.string),
     host: PropTypes.object,
     description: PropTypes.string,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
-  onHover: PropTypes.func.isRequired,
-  favoriteHotelHandler: PropTypes.func,
-  history: PropTypes.object,
-  view: PropTypes.string
+  })
+  ).isRequired,
+  id: PropTypes.number,
+  match: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) =>
