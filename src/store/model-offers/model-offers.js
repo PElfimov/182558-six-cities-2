@@ -17,7 +17,11 @@ export default class ModelOffers {
     this.bedrooms = data.bedrooms;
     this.maxAdults = data[`max_adults`];
     this.goods = [...data.goods];
-    this.host = Object.assign({}, data.host);
+    this.host.description = data.host.description;
+    this.host.id = data.host.id;
+    this.host.name = data.host.name;
+    this.host.isPro = data.host[`is_pro`];
+    this.host.avatarUrl = data.host[`avatar_url`];
     this.description = data.description;
   }
 
