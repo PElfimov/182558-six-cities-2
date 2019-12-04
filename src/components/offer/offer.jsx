@@ -5,6 +5,7 @@ import Header from './../header/header';
 import Gallery from "./gallery/gallery";
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
+import Goods from './goods/goods';
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 
@@ -12,7 +13,7 @@ const Offer = (props)=>{
   const {offers, match, history} = props;
   const {id} = match.params;
   const offer = offers[Number(id) - Number(1)];
-  const {images, isPremium, isFavorite} = offer;
+  const {images, isPremium, isFavorite, goods} = offer;
 
   return (
     <React.Fragment>
@@ -60,41 +61,7 @@ const Offer = (props)=>{
                 <b className="property__price-value">&euro;120</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
-              <div className="property__inside">
-                <h2 className="property__inside-title">What&apos;s inside</h2>
-                <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
-                </ul>
-              </div>
+              <Goods goods={goods}/>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
@@ -329,7 +296,8 @@ Offer.propTypes = {
   id: PropTypes.number,
   match: PropTypes.object,
   history: PropTypes.object,
-  favoriteHotelHandler: PropTypes.func
+  favoriteHotelHandler: PropTypes.func,
+  goods: PropTypes.arrayOf(PropTypes.string),
 };
 
 const mapStateToProps = (state, ownProps) =>
