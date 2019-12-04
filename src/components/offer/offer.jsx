@@ -12,7 +12,7 @@ const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 const Offer = (props)=>{
   const {offers, match, history} = props;
   const {id} = match.params;
-  const offer = offers[id];
+  const offer = offers[Number(id) - Number(1)];
   const {images, isPremium, isFavorite} = offer;
   console.log(id);
 
@@ -39,7 +39,7 @@ const Offer = (props)=>{
                 <BookmarkButtonWrapped
                   isFavorite={isFavorite}
                   history = {history}
-                  id = {Number(id) + Number(1)}
+                  id = {id}
                   type ={`property`}
                 />
               </div>
