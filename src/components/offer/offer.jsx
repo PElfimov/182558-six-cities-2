@@ -13,7 +13,16 @@ const Offer = (props)=>{
   const {offers, match, history} = props;
   const {id} = match.params;
   const offer = offers[Number(id) - Number(1)];
-  const {images, isPremium, isFavorite, goods} = offer;
+  const {
+    images,
+    isPremium,
+    isFavorite,
+    goods,
+    rating,
+    type,
+    bedrooms,
+    maxAdults
+  } = offer;
 
   return (
     <React.Fragment>
@@ -41,20 +50,20 @@ const Offer = (props)=>{
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: 96 + `%`}}></span>
+                  <span style={{width: rating * 20 + `%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Entire place
+                  {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
@@ -298,6 +307,10 @@ Offer.propTypes = {
   history: PropTypes.object,
   favoriteHotelHandler: PropTypes.func,
   goods: PropTypes.arrayOf(PropTypes.string),
+  rating: PropTypes.number,
+  bedrooms: PropTypes.number,
+  maxAdults: PropTypes.number,
+  type: PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) =>
