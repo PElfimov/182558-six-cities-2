@@ -17,7 +17,7 @@ export default function BookmarkButton(props) {
       )}
     type="button"
     onClick={onClick}>
-      <svg className={`${type}__bookmark-icon`} width={width} height={height}>
+      <svg className={`place-card__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
       <span className="visually-hidden">To bookmarks</span>
