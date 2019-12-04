@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import Header from './../header/header';
 import Gallery from "./gallery/gallery";
 import BookmarkButton from '../bookmark-button/bookmark-button';
-import Operation from '../../store/actions/async-actions/async-actions';
 import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
@@ -14,10 +13,6 @@ const Offer = (props)=>{
   const {id} = match.params;
   const offer = offers[Number(id) - Number(1)];
   const {images, isPremium, isFavorite} = offer;
-  console.log(id);
-
-  console.log(isFavorite);
-
 
   return (
     <React.Fragment>
