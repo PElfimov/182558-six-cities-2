@@ -23,7 +23,7 @@ exports[`LiFragment correctly render 1`] = `
   <div
     className="favorites__places"
   >
-    <Connect(HotelCard)
+    <HotelCard
       key="1"
       offer={
         Object {
@@ -38,7 +38,7 @@ exports[`LiFragment correctly render 1`] = `
       onHover={[Function]}
       type="favorites"
     />
-    <Connect(HotelCard)
+    <HotelCard
       key="2"
       offer={
         Object {
@@ -53,7 +53,7 @@ exports[`LiFragment correctly render 1`] = `
       onHover={[Function]}
       type="favorites"
     />
-    <Connect(HotelCard)
+    <HotelCard
       key="3"
       offer={
         Object {
@@ -68,7 +68,7 @@ exports[`LiFragment correctly render 1`] = `
       onHover={[Function]}
       type="favorites"
     />
-    <Connect(HotelCard)
+    <HotelCard
       key="4"
       offer={
         Object {
