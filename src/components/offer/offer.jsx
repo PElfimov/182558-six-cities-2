@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import Header from './../header/header';
 import Gallery from "./gallery/gallery";
 import BookmarkButton from '../bookmark-button/bookmark-button';
-import Operation from '../../store/actions/async-actions/async-actions';
 import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
+import Goods from "./goods/goods";
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 
@@ -13,11 +13,25 @@ const Offer = (props)=>{
   const {offers, match, history} = props;
   const {id} = match.params;
   const offer = offers[Number(id) - Number(1)];
-  const {images, isPremium, isFavorite} = offer;
-  console.log(id);
+  const {
+    images,
+    isPremium,
+    isFavorite,
+    name,
+    rating,
+    type,
+    bedrooms,
+    maxAdults,
+    cost,
+    goods} = offer;
 
-  console.log(isFavorite);
-
+  const _getPremiumMarker = () => {
+    return (
+      <div className="property__mark">
+        <span>Premium</span>
+      </div>
+    );
+  };
 
   return (
     <React.Fragment>
@@ -27,15 +41,9 @@ const Offer = (props)=>{
           <Gallery images={images}/>
           <div className="property__container container">
             <div className="property__wrapper">
-              {isPremium &&
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>}
+              {isPremium && _getPremiumMarker()}
               <div className="property__name-wrapper">
-                <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
-                </h1>
-
+                <h1 className="property__name">{name}</h1>
                 <BookmarkButtonWrapped
                   isFavorite={isFavorite}
                   history = {history}
@@ -45,61 +53,27 @@ const Offer = (props)=>{
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: 96 + `%`}}></span>
+                  <span style={{width: rating * 20 + `%`}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Entire place
+                  {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{cost}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
-              <div className="property__inside">
-                <h2 className="property__inside-title">What&apos;s inside</h2>
-                <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
-                </ul>
-              </div>
+              <Goods goods={goods}/>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
@@ -331,10 +305,17 @@ Offer.propTypes = {
     description: PropTypes.string,
   })
   ).isRequired,
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   match: PropTypes.object,
   history: PropTypes.object,
-  favoriteHotelHandler: PropTypes.func
+  favoriteHotelHandler: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  bedrooms: PropTypes.number.isRequired,
+  maxAdults: PropTypes.number.isRequired,
+  cost: PropTypes.number.isRequired,
+  goods: PropTypes.arrayOf(PropTypes.string),
 };
 
 const mapStateToProps = (state, ownProps) =>
