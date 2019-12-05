@@ -20,7 +20,7 @@ const _getPremiumMarker = () => {
 const Offer = (props)=>{
 
   const {offers, match, history} = props;
-  const {id} = match.params;
+  const id = Number(match.params.id);
   const offer = offers[Number(id) - Number(1)];
   const {
     images,
@@ -32,7 +32,8 @@ const Offer = (props)=>{
     bedrooms,
     maxAdults,
     host,
-    cost
+    cost,
+    description,
   } = offer;
 
   return (
@@ -76,7 +77,7 @@ const Offer = (props)=>{
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <Goods goods={goods}/>
-              <Host host={host}/>
+              <Host host={host} description = {description}/>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                 <ul className="reviews__list">
@@ -286,7 +287,6 @@ Offer.propTypes = {
     description: PropTypes.string,
   })
   ).isRequired,
-  id: PropTypes.number.isRequired,
   match: PropTypes.object,
   history: PropTypes.object,
   favoriteHotelHandler: PropTypes.func,

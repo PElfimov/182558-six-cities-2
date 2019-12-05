@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import classNames from 'classnames';
 
 const Host = (props)=> {
-  const {host} = props;
+  const {host, description} = props;
   const {
     id,
     name,
     isPro,
     avatarUrl,
-    description
   } = host;
+
   return (
     <div key={`${id}`} className="property__host">
       <h2 className="property__host-title">Meet the host</h2>
@@ -43,7 +43,8 @@ Host.propTypes = {
     name: PropTypes.string,
     isPro: PropTypes.bool,
     avatarUrl: PropTypes.string,
-    description: PropTypes.string,
-  }).isRequired};
+  }).isRequired,
+  description: PropTypes.string
+};
 
 export default Host;
