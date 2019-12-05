@@ -10,6 +10,7 @@ import Host from "./host/host";
 import Reviews from "../reviews/reviews";
 import PointsMap from './../points-map/points-map';
 import SmallOffersList from './small-offers-list/small-offers-list';
+import {getSmallHotelsList} from './../../store/selectors/selectors';
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 const _getPremiumMarker = () => {
@@ -85,7 +86,7 @@ const Offer = (props)=>{
             </div>
           </div>
           <section className="property__map map">
-            <PointsMap activeCard={offer} />
+            <PointsMap activeCard={offer} offers={getSmallHotelsList(offers, id)}/>
           </section>
         </section>
         <div className="container">
