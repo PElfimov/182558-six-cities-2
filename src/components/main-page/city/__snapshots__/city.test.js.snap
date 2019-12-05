@@ -100,7 +100,51 @@ exports[`SignIn correctly renders after relaunch 1`] = `
     <div
       className="cities__right-section"
     >
-      <Connect(PointsMap) />
+      <section
+        className="cities__map map"
+      >
+        <PointsMap
+          offers={
+            Array [
+              Object {
+                "cost": 120,
+                "isPremium": true,
+                "name": "Beautiful & luxurious apartment at great location",
+                "rating": 55,
+                "type": "Apartment",
+              },
+              Object {
+                "cost": 132,
+                "isPremium": false,
+                "name": "Wood and stone place",
+                "rating": 80,
+                "type": "Apartment",
+              },
+              Object {
+                "cost": 120,
+                "isPremium": true,
+                "name": "Canal View Prinsengracht",
+                "rating": 55,
+                "type": "Apartment",
+              },
+              Object {
+                "cost": 80,
+                "isPremium": true,
+                "name": "Nice, cozy, warm big bed apartment",
+                "rating": 100,
+                "type": "Apartment",
+              },
+              Object {
+                "cost": 120,
+                "isPremium": true,
+                "name": "Wood and stone place",
+                "rating": 88,
+                "type": "Private room",
+              },
+            ]
+          }
+        />
+      </section>
     </div>
   </div>
 </div>

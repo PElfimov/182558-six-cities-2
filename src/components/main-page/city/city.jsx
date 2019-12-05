@@ -32,7 +32,9 @@ const City = (props) => {
           </div>
         </section>
         <div className="cities__right-section">
-          <PointsMap activeCard={activeCard} />
+          <section className="cities__map map">
+            <PointsMap offers={offers} activeCard={activeCard} />
+          </section>
         </div>
       </div>
     </div>

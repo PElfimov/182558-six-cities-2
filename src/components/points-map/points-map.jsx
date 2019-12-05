@@ -1,8 +1,6 @@
 import leaflet from "leaflet";
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {getCityOffers} from '../../store/selectors/selectors';
 
 class PointsMap extends React.Component {
   constructor(props) {
@@ -14,9 +12,7 @@ class PointsMap extends React.Component {
 
   render() {
     return (
-      <section className="cities__map map">
-        <div style={{height: `100%`}} ref={this.ref}></div>
-      </section>
+      <div style={{height: `100%`}} ref={this.ref}></div>
     );
   }
 
@@ -124,11 +120,4 @@ PointsMap.propTypes = {
     description: PropTypes.string,
   })
 };
-
-const mapStateToProps = (state, ownProps) =>
-  Object.assign({}, ownProps, {
-    offers: getCityOffers(state),
-  });
-
-export {PointsMap};
-export default connect(mapStateToProps, null)(PointsMap);
+export default PointsMap;
