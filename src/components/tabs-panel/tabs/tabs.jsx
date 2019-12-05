@@ -3,10 +3,9 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import LocationsCity from "../locations-city/locations-city";
 import {getCityList} from "../../../store/selectors/selectors";
-import {ActionCreator} from "../../../store/actions/action-creator/action-creator";
 
 function Tabs(props) {
-  const {cities, activeCity, changeCity} = props;
+  const {cities, activeCity} = props;
   return (
     <div className="tabs">
       <section className="locations container">
@@ -16,7 +15,6 @@ function Tabs(props) {
               key={it + i}
               name={it}
               isActive={it === activeCity}
-              onClick={changeCity}
             />
           ))}
         </ul>
@@ -27,7 +25,6 @@ function Tabs(props) {
 
 Tabs.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  changeCity: PropTypes.func.isRequired,
   activeCity: PropTypes.string.isRequired,
 };
 
@@ -38,15 +35,6 @@ const mapStateToProps = (state, ownProps) =>
 
   });
 
-const mapDispatchToProps = (dispatch) => ({
-  changeCity: (city) => {
-    dispatch(ActionCreator.changeCity(city));
-  }
-});
-
 export {Tabs};
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Tabs);
+export default connect(mapStateToProps, null)(Tabs);

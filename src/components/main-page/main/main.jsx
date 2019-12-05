@@ -27,15 +27,15 @@ const Main = (props)=>{
 
 Main.propTypes = {
   match: PropTypes.object,
-  changeCity: PropTypes.func
+  changeCity: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   }
-
 });
+
 
 export {Main};
 
