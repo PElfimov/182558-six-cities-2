@@ -21,6 +21,6 @@ function Main() {
 
 Main.propTypes = {};
 
-export default Main;
+export {Main};
 
 

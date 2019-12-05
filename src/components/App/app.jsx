@@ -1,11 +1,7 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import Header from "../header/header";
-import City from "../main-page/city/city";
-import Tabs from "../tabs-panel/tabs/tabs";
 import propTypes from "./prop-types";
 import {ActionCreator} from "../../store/actions/action-creator/action-creator";
-import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 import {Switch, Route} from "react-router-dom";
@@ -14,9 +10,9 @@ import withAuth from '../../hocs/with-auth/with-auth';
 import Operation from '../../store/actions/async-actions/async-actions';
 import withCheckAuth from './../../hocs/with-check-auth/with-check-auth';
 import Offer from './../offer/offer';
+import Main from './../main-page/main/main';
 
 
-const WithActiveCard = withActiveCard(City);
 const SignInWrapped = withSignIn(SignIn);
 
 class App extends PureComponent {
@@ -39,26 +35,12 @@ class App extends PureComponent {
     isLogin();
   }
 
-  _getMainPage() {
-    return (
-      <div className="page page--gray page--main">
-        <Header />
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <Tabs />
-          <WithActiveCard />
-        </main>
-      </div>
-    );
-  }
 
   render() {
 
     return (
       <Switch>
-        <Route path="/" exact render={() =>
-          this._getMainPage()
-        } />
+        <Route path="/" exact component={Main} />
         <Route path="/login" exact component={withCheckAuth(SignInWrapped)} />
         <Route path="/favorites" exact component={withAuth(Favorites)} />
         <Route path = "/offer/:id" exact component = {Offer}/>
