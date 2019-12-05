@@ -4,7 +4,8 @@ import {
   getFilteredOffers,
   getCity,
   getCityOffers,
-  getFavoriteOffers
+  getFavoriteOffers,
+  getSmallHotelsList
 } from './selectors.js';
 
 
@@ -175,5 +176,64 @@ describe(`Selectors  returns right data`, () => {
           },
         ]);
   });
+
+  it(`function return right smallOffersList`, () => {
+
+    const offers = [
+      {
+        id: 1,
+        isFavorite: true,
+        city: {
+          name: `Biysk`,
+        },
+      },
+      {
+        id: 2,
+        isFavorite: true,
+        city: {
+          name: `Biysk`,
+        }
+      }, {
+        id: 3,
+        isFavorite: true,
+        city: {
+          name: `Gorno-Altaysk`,
+        }
+      },
+      {
+        id: 4,
+        isFavorite: false,
+        city: {
+          name: `Gorno-Altaysk`,
+        }
+      },
+      {
+        id: 5,
+        isFavorite: false,
+        city: {
+          name: `Biysk`,
+        }
+      },
+    ];
+
+    expect(getSmallHotelsList(offers, 1)).toEqual(
+        [
+          {
+            id: 2,
+            isFavorite: true,
+            city: {
+              name: `Biysk`,
+            }
+          },
+          {
+            id: 5,
+            isFavorite: false,
+            city: {
+              name: `Biysk`,
+            },
+          }
+        ]);
+  });
+
 });
 

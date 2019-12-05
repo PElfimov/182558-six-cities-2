@@ -10,6 +10,10 @@ export const getCity = (state) => {
   return state[`localData`].city;
 };
 
+export const getId = (id) => {
+  return id;
+};
+
 export const getCityList = createSelector(
     getOffers,
     (offers) => {
@@ -46,5 +50,27 @@ export const getFilteredOffers = createSelector(
       return Object.assign({}, {city: it, offers: filteredOffers});
     })
 );
+
+
+export const getSmallHotelsList = (offers, id) =>{
+  const listResult = [];
+  const city = offers[id - 1].city.name;
+  const lists = offers.filter((offer) => offer.city.name === city);
+  console.log(lists);
+  const maxLength = lists.length < 4 ? lists.length : 4;
+  for (let i = 0; i < maxLength; i++) {
+    if (lists[i].id === id) {
+      continue;
+    }
+    if (lists[i]) {
+      listResult.push(lists[i]);
+    }
+  }
+  if (listResult.length > 3) {
+    return listResult.slice(0, 2);
+  }
+  console.log(listResult);
+  return listResult;
+};
 
 
