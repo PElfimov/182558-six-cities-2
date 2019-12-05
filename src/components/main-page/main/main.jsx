@@ -1,10 +1,16 @@
 import React from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 import Tabs from './../../tabs-panel/tabs/tabs';
 import Header from './../../header/header';
 import withActiveCard from './../../../hocs/with-active-card/with-active-card';
 import City from './../city/city';
+import {ActionCreator} from "../../../store/actions/action-creator/action-creator";
 
-function Main() {
+const Main = (props)=>{
+  const {match, changeCity} = props;
+  const name = match.params.name;
+  changeCity(name);
 
   const WithActiveCard = withActiveCard(City);
   return (
@@ -17,10 +23,21 @@ function Main() {
       </main>
     </div>
   );
-}
+};
 
-Main.propTypes = {};
+Main.propTypes = {
+  match: PropTypes.object,
+  changeCity: PropTypes.func
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  changeCity: (city) => {
+    dispatch(ActionCreator.changeCity(city));
+  }
+
+});
 
 export {Main};
 
+export default connect(null, mapDispatchToProps)(Main);
 

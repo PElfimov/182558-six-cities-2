@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import propTypes from "./prop-types";
 import {ActionCreator} from "../../store/actions/action-creator/action-creator";
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
@@ -44,6 +43,7 @@ class App extends PureComponent {
         <Route path="/login" exact component={withCheckAuth(SignInWrapped)} />
         <Route path="/favorites" exact component={withAuth(Favorites)} />
         <Route path = "/offer/:id" exact component = {Offer}/>
+        <Route path = "/:name" exact component = {Main}/>
         <Route
           render={() => (
             <h1>
@@ -58,7 +58,7 @@ class App extends PureComponent {
   }
 }
 
-App.propTypes = propTypes;
+App.propTypes = {};
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {

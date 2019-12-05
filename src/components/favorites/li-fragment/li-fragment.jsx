@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HotelCard from '../../main-page/hotel-card/hotel-card';
+import {Link} from "react-router-dom";
 
 const LiFragment = (props) => {
   const {offers, city} = props;
@@ -8,9 +9,9 @@ const LiFragment = (props) => {
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
+          <Link className="locations__item-link" to={`/${city}`}>
             <span>{city}</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="favorites__places">
