@@ -13,7 +13,7 @@ function Premium() {
   );
 }
 
-function HotelCard(props) {
+const HotelCard = (props) => {
   const {onHover, offer, history, view = `cities`} = props;
   const answer = offer;
   const {isPremium, isFavorite, cost, rating, name, type, previewImage, id} = offer;
@@ -63,7 +63,7 @@ function HotelCard(props) {
       </div>
     </article>
   );
-}
+};
 
 HotelCard.propTypes = {
   offer: PropTypes.exact({

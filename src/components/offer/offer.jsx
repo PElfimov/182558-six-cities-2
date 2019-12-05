@@ -5,7 +5,12 @@ import Header from './../header/header';
 import Gallery from "./gallery/gallery";
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
+<<<<<<< HEAD
 import Goods from "./goods/goods";
+=======
+import Goods from './goods/goods';
+import Host from "./host/host";
+>>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 
@@ -17,11 +22,16 @@ const Offer = (props)=>{
     images,
     isPremium,
     isFavorite,
+<<<<<<< HEAD
     name,
+=======
+    goods,
+>>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
     rating,
     type,
     bedrooms,
     maxAdults,
+<<<<<<< HEAD
     cost,
     goods} = offer;
 
@@ -32,6 +42,10 @@ const Offer = (props)=>{
       </div>
     );
   };
+=======
+    host
+  } = offer;
+>>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
 
   return (
     <React.Fragment>
@@ -74,6 +88,7 @@ const Offer = (props)=>{
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <Goods goods={goods}/>
+<<<<<<< HEAD
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
@@ -96,6 +111,9 @@ const Offer = (props)=>{
                   </p>
                 </div>
               </div>
+=======
+              <Host host={host}/>
+>>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                 <ul className="reviews__list">
@@ -309,6 +327,7 @@ Offer.propTypes = {
   match: PropTypes.object,
   history: PropTypes.object,
   favoriteHotelHandler: PropTypes.func,
+<<<<<<< HEAD
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
@@ -316,6 +335,14 @@ Offer.propTypes = {
   maxAdults: PropTypes.number.isRequired,
   cost: PropTypes.number.isRequired,
   goods: PropTypes.arrayOf(PropTypes.string),
+=======
+  goods: PropTypes.arrayOf(PropTypes.string),
+  rating: PropTypes.number,
+  bedrooms: PropTypes.number,
+  maxAdults: PropTypes.number,
+  type: PropTypes.string,
+  host: PropTypes.object,
+>>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
 };
 
 const mapStateToProps = (state, ownProps) =>

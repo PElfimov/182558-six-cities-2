@@ -1,7 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {HotelCard} from './hotel-card';
+import HotelCard from './hotel-card';
 import {BrowserRouter as Router} from 'react-router-dom';
+import Enzyme, {shallow} from 'enzyme';
+import toJSON from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({adapter: new Adapter()});
 
 jest.mock(`../../../mocks/test-mocks`);
 
@@ -14,15 +17,11 @@ const offer = {
 };
 
 it(`HotelCard correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(
-        <Router>
-          <HotelCard
-            offer={offer}
-            onClick={jest.fn()}
-            onHover={jest.fn()} />
-        </Router>)
+  const tree = shallow(<Router>
+    <HotelCard
+      offer={offer}
+      onHover={jest.fn()} />
+  </Router>);
 
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(toJSON(tree)).toMatchSnapshot();
 });
