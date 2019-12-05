@@ -34,8 +34,8 @@ const data = [{
     name: `Angelina`,
     [`is_pro`]: true,
     [`avatar_url`]: `/sss.jpg`,
-    description: `Bla bla`,
-  }
+  },
+  description: `Bla bla`,
 }];
 
 
@@ -67,8 +67,8 @@ describe(`localData returns right state`, () => {
         name: `Angelina`,
         isPro: true,
         avatarUrl: `/sss.jpg`,
-        description: `Bla bla`,
       },
+      description: `Bla bla`,
     }]);
   });
 });

@@ -44,8 +44,8 @@ describe(`load data test group`, () => {
           name: `Angelina`,
           [`is_pro`]: true,
           [`avatar_url`]: `/sss.jpg`,
-          description: `Bla bla`,
         },
+        description: `Bla bla`,
       }]);
 
     return offersLoader(dispatch, null, api)
@@ -77,8 +77,8 @@ describe(`load data test group`, () => {
               name: `Angelina`,
               isPro: true,
               avatarUrl: `/sss.jpg`,
-              description: `Bla bla`,
             },
+            description: `Bla bla`,
           }]
         });
       });
