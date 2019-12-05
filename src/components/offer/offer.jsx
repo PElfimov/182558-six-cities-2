@@ -5,16 +5,20 @@ import Header from './../header/header';
 import Gallery from "./gallery/gallery";
 import BookmarkButton from '../bookmark-button/bookmark-button';
 import withFavoriteHandler from '../../hocs/with-favorite-handler/with-favorite-handler';
-<<<<<<< HEAD
-import Goods from "./goods/goods";
-=======
 import Goods from './goods/goods';
 import Host from "./host/host";
->>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
 
 const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
+const _getPremiumMarker = () => {
+  return (
+    <div className="property__mark">
+      <span>Premium</span>
+    </div>
+  );
+};
 
 const Offer = (props)=>{
+
   const {offers, match, history} = props;
   const {id} = match.params;
   const offer = offers[Number(id) - Number(1)];
@@ -22,30 +26,14 @@ const Offer = (props)=>{
     images,
     isPremium,
     isFavorite,
-<<<<<<< HEAD
-    name,
-=======
     goods,
->>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
     rating,
     type,
     bedrooms,
     maxAdults,
-<<<<<<< HEAD
-    cost,
-    goods} = offer;
-
-  const _getPremiumMarker = () => {
-    return (
-      <div className="property__mark">
-        <span>Premium</span>
-      </div>
-    );
-  };
-=======
-    host
+    host,
+    cost
   } = offer;
->>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
 
   return (
     <React.Fragment>
@@ -88,32 +76,7 @@ const Offer = (props)=>{
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <Goods goods={goods}/>
-<<<<<<< HEAD
-              <div className="property__host">
-                <h2 className="property__host-title">Meet the host</h2>
-                <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="/img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
-                  </div>
-                  <span className="property__user-name">
-                    Angelina
-                  </span>
-                  <span className="property__user-status">
-                    Pro
-                  </span>
-                </div>
-                <div className="property__description">
-                  <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
-                  </p>
-                </div>
-              </div>
-=======
               <Host host={host}/>
->>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                 <ul className="reviews__list">
@@ -327,22 +290,13 @@ Offer.propTypes = {
   match: PropTypes.object,
   history: PropTypes.object,
   favoriteHotelHandler: PropTypes.func,
-<<<<<<< HEAD
-  name: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  bedrooms: PropTypes.number.isRequired,
-  maxAdults: PropTypes.number.isRequired,
-  cost: PropTypes.number.isRequired,
-  goods: PropTypes.arrayOf(PropTypes.string),
-=======
   goods: PropTypes.arrayOf(PropTypes.string),
   rating: PropTypes.number,
   bedrooms: PropTypes.number,
   maxAdults: PropTypes.number,
   type: PropTypes.string,
   host: PropTypes.object,
->>>>>>> 98906bf1633da4dc0cf7f9c89d9cad2e337833f4
+  cost: PropTypes.number,
 };
 
 const mapStateToProps = (state, ownProps) =>

@@ -22,7 +22,7 @@ export default class ModelOffers {
       name: data.host.name,
       isPro: data.host[`is_pro`],
       avatarUrl: data.host[`avatar_url`],
-      description: data.description,
+      description: data.host.description,
     };
 
 

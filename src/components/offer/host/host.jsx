@@ -41,8 +41,8 @@ Host.propTypes = {
   host: PropTypes.exact({
     id: PropTypes.number,
     name: PropTypes.string,
-    [`is_pro`]: PropTypes.bool,
-    [`avatar_url`]: PropTypes.string,
+    isPro: PropTypes.bool,
+    avatarUrl: PropTypes.string,
     description: PropTypes.string,
   }).isRequired};
 

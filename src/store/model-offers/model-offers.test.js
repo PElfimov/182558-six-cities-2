@@ -29,8 +29,13 @@ const data = [{
   bedrooms: 6,
   [`max_adults`]: 4,
   goods: [`lorem`, `lorem`],
-  host: {data: false},
-  description: `lorem`,
+  host: {
+    id: 4,
+    name: `Angelina`,
+    [`is_pro`]: true,
+    [`avatar_url`]: `/sss.jpg`,
+    description: `Bla bla`,
+  }
 }];
 
 
@@ -57,8 +62,13 @@ describe(`localData returns right state`, () => {
       bedrooms: 6,
       maxAdults: 4,
       goods: [`lorem`, `lorem`],
-      host: {data: false},
-      description: `lorem`,
+      host: {
+        id: 4,
+        name: `Angelina`,
+        isPro: true,
+        avatarUrl: `/sss.jpg`,
+        description: `Bla bla`,
+      },
     }]);
   });
 });
