@@ -39,6 +39,9 @@ const Offer = (props)=>{
     cost,
     description,
   } = offer;
+  const smallHotelsList = getSmallHotelsList(offers, id);
+  smallHotelsList.push(offer);
+
 
   return (
     <React.Fragment>
@@ -86,7 +89,9 @@ const Offer = (props)=>{
             </div>
           </div>
           <section className="property__map map">
-            <PointsMap activeCard={offer} offers={getSmallHotelsList(offers, id)}/>
+            <PointsMap
+              activeCard={offer}
+              offers={smallHotelsList}/>
           </section>
         </section>
         <div className="container">

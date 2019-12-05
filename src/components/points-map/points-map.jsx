@@ -18,7 +18,7 @@ class PointsMap extends React.Component {
 
   createIcon(isActive) {
     return leaflet.icon({
-      iconUrl: isActive ? `img/pin-active.svg` : `img/pin.svg`,
+      iconUrl: isActive ? `/img/pin-active.svg` : `/img/pin.svg`,
       iconSize: [30, 30]
     });
   }
@@ -50,6 +50,17 @@ class PointsMap extends React.Component {
         .addTo(this.markerGroup);
     }
 
+  }
+
+  componentDidMount() {
+    const {offers, activeCard} = this.props;
+    const activeId = activeCard.id;
+    const city = offers[0].city.coordinates;
+    this.createArea({city, elem: this.ref.current});
+    if (this.el) {
+      this.renderOffers(offers, activeId);
+
+    }
   }
 
   componentDidUpdate(prevProps) {
