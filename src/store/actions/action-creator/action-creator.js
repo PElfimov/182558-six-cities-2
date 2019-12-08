@@ -3,6 +3,7 @@ const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   ADD_LOGIN: `ADD_LOGIN`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`
 };
 
 const ActionCreator = {
@@ -22,6 +23,12 @@ const ActionCreator = {
     type: ActionType.ADD_LOGIN,
     payload: loginData,
   }),
+  loadReviews: (reviews) => {
+    return {
+      type: ActionType.LOAD_REVIEWS,
+      payload: reviews,
+    };
+  },
 };
 
 export {

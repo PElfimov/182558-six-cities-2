@@ -1,5 +1,6 @@
 import {ActionCreator} from "../action-creator/action-creator";
 import ModelOffers from '../../model-offers/model-offers';
+import ModelReviews from '../../model-reviews/model-reviews';
 
 const Operation = {
   loadOffers: () => (dispatch, _, api) => {
@@ -27,6 +28,22 @@ const Operation = {
           dispatch(ActionCreator.requireAuthorization(true));
           dispatch(ActionCreator.addLogin(response.data));
         }
+      });
+  },
+  loadReviews: (hotelId) => (dispatch, _, api) => {
+    return api.get(`/comments/${hotelId}`)
+      .then((response) => {
+        const reviews = ModelReviews.parseReviews(response.data);
+        dispatch(ActionCreator.loadReviews(reviews));
+      });
+  },
+  addReview: (hotelId, rating, comment) => (dispatch, _, api) => {
+    return api.post(`/comments/${hotelId}`, {
+      rating,
+      comment
+    })
+      .then((response) => {
+        dispatch(ActionCreator.loadReviews(response.data));
       });
   },
   favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {

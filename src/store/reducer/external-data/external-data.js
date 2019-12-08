@@ -4,6 +4,7 @@ const externalState = {
   offers: [],
   isAuthorizationRequired: false,
   login: null,
+  reviews: [],
 };
 
 const reducer = (state = externalState, action) => {
@@ -17,6 +18,9 @@ const reducer = (state = externalState, action) => {
     });
     case ActionType.ADD_LOGIN: return Object.assign({}, state, {
       login: action.payload,
+    });
+    case ActionType.LOAD_REVIEWS: return Object.assign({}, state, {
+      reviews: action.payload,
     });
 
   }
