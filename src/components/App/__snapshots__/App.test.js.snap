@@ -3,6 +3,15 @@
 exports[`SignIn correctly renders after relaunch 1`] = `
 <Switch>
   <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Main)",
+        "type": [Function],
+      }
+    }
     exact={true}
     path="/"
   />
@@ -44,6 +53,19 @@ exports[`SignIn correctly renders after relaunch 1`] = `
     }
     exact={true}
     path="/offer/:id"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Main)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/:name"
   />
   <Route
     render={[Function]}

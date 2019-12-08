@@ -9,7 +9,10 @@ import {ActionCreator} from "../../../store/actions/action-creator/action-creato
 
 const Main = (props)=>{
   const {match, changeCity} = props;
-  const name = match.params.name;
+  let name;
+  if (match) {
+    name = match.params.name;
+  }
   if (name) {
     changeCity(name);
   }

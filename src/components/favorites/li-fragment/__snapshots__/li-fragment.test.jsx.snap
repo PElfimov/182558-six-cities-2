@@ -10,14 +10,14 @@ exports[`LiFragment correctly render 1`] = `
     <div
       className="locations__item"
     >
-      <a
+      <Link
         className="locations__item-link"
-        href="#"
+        to="/Paris"
       >
         <span>
           Paris
         </span>
-      </a>
+      </Link>
     </div>
   </div>
   <div
