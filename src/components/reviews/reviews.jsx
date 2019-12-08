@@ -8,11 +8,11 @@ import Operation from '../../store/actions/async-actions/async-actions';
 
 // https://github.com/htmlacademy-react/508859-six-cities-2/blob/master/src/components/detail-info/detail-info.jsx
 const Reviews = (props) => {
-  const {reviews, loadReviews} = props;
-  loadReviews(12);
+  const {reviews, loadReviews, id} = props;
+  loadReviews(id);
   return (
     <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ReviewsList reviews={reviews}/>
       <form className="reviews__form form" action="#" method="post">
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -77,7 +77,8 @@ Reviews.propTypes = {
     comment: PropTypes.string,
     date: PropTypes.string})
   ).isRequired,
-  loadReviews: PropTypes.func.isRequired
+  loadReviews: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 

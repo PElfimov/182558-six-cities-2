@@ -85,7 +85,7 @@ const Offer = (props)=>{
               </div>
               <Goods goods={goods}/>
               <Host host={host} description = {description}/>
-              <Reviews />
+              <Reviews id = {id}/>
             </div>
           </div>
           <section className="property__map map">
