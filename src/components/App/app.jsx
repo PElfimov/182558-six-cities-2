@@ -84,7 +84,7 @@ App.propTypes = {
   })
   ).isRequired,
   changeCity: PropTypes.func,
-  isLogin: PropTypes.bool
+  isLogin: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) =>
