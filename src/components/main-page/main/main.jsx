@@ -10,7 +10,10 @@ import {ActionCreator} from "../../../store/actions/action-creator/action-creato
 const Main = (props)=>{
   const {match, changeCity} = props;
   const name = match.params.name;
-  changeCity(name);
+  if (name) {
+    changeCity(name);
+  }
+
 
   const WithActiveCard = withActiveCard(City);
   return (
