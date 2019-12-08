@@ -1,9 +1,15 @@
 import React, {PureComponent, Fragment} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import Operation from '../../../store/actions/async-actions/async-actions';
 
-import Operation from '../../operation/operation';
-import {RATINGS} from '../../constants';
+const RATINGS = [
+  {title: `perfect`, stars: `5`},
+  {title: `good`, stars: `4`},
+  {title: `not bad`, stars: `3`},
+  {title: `badly`, stars: `2`},
+  {title: `terribly`, stars: `1`}
+];
 
 class CommentForm extends PureComponent {
 
@@ -97,7 +103,7 @@ CommentForm.propTypes = {
   comment: PropTypes.string.isRequired,
   addReview: PropTypes.func,
   addValueFormChangeHandler: PropTypes.func.isRequired,
-  idHotel: PropTypes.string.isRequired
+  idHotel: PropTypes.number.isRequired
 };
 
 export {CommentForm};

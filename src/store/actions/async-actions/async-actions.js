@@ -43,7 +43,8 @@ const Operation = {
       comment
     })
       .then((response) => {
-        dispatch(ActionCreator.loadReviews(response.data));
+        const reviews = ModelReviews.parseReviews(response.data);
+        dispatch(ActionCreator.loadReviews(reviews));
       });
   },
   favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {
