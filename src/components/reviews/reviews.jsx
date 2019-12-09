@@ -9,7 +9,6 @@ import CommentForm from './comment-form/comment-form';
 
 const CommentFormWrapped = withCommentForm(CommentForm);
 
-// https://github.com/htmlacademy-react/508859-six-cities-2/blob/master/src/components/detail-info/detail-info.jsx
 const Reviews = (props) => {
   const {reviews, loadReviews, id, isAuthorizationRequired} = props;
   let sumReviews = 0;
