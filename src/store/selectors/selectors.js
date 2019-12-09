@@ -71,4 +71,26 @@ export const getSmallHotelsList = (offers, id) =>{
   return listResult;
 };
 
+const SortName = {
+  POPULAR: `Popular`,
+  PRICE_LH: `Price: low to high`,
+  PRICE_HL: `Price: high to low`,
+  TOP_RATED: `Top rated first`
+};
+
+export const sortOfferList = (offers, sortName) => {
+  switch (sortName) {
+    case SortName.POPULAR:
+      return offers.slice();
+    case SortName.PRICE_LH:
+      return offers.slice().sort((prev, curr) => prev.price - curr.price);
+    case SortName.PRICE_HL:
+      return offers.slice().sort((prev, curr) => curr.price - prev.price);
+    case SortName.TOP_RATED:
+      return offers.slice().sort((prev, curr) => curr.rating - prev.rating);
+    default:
+      throw new Error(`Undefined SortName element`);
+  }
+};
+
 
