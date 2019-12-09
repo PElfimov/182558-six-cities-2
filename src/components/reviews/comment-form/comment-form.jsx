@@ -1,13 +1,7 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const RATINGS = [
-  {title: `perfect`, stars: `5`},
-  {title: `good`, stars: `4`},
-  {title: `not bad`, stars: `3`},
-  {title: `badly`, stars: `2`},
-  {title: `terribly`, stars: `1`}
-];
+const nameStarts = [`terribly`, `badly`, `not bad`, `good`, `perfect`];
 
 class CommentForm extends PureComponent {
 
@@ -18,8 +12,9 @@ class CommentForm extends PureComponent {
 
   render() {
     const {comment, addValueFormChangeHandler, rating} = this.props;
+
     let disabledButton = `disabled`;
-    if (rating !== 0 && comment.length >= 50 && comment.length <= 300) {
+    if (rating !== `0` && comment.length >= 50 && comment.length <= 300) {
       disabledButton = ``;
     }
     return <form className="reviews__form form" action="#" method="post" onSubmit={this._commentFormSubmitHandler}>
@@ -30,32 +25,32 @@ class CommentForm extends PureComponent {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {
-          RATINGS.map(({stars, title}) => (
-            <Fragment key={`${stars}-stars`}>
-              <input
-                className="form__rating-input visually-hidden"
-                name="rating"
-                value={stars}
-                id={`${stars}-stars`}
-                type="radio"
-                onChange={(evt) => addValueFormChangeHandler(evt, `rating`)}
-              />
-              <label
-                htmlFor={`${stars}-stars`}
-                className="reviews__rating-label form__rating-label"
-                title={title}
+        { this._getRatingCheck(rating).map((it, index) => (
+          <Fragment key={`${index + 1}-stars`}>
+            <input
+              className="form__rating-input visually-hidden"
+              name="rating"
+              value={index + 1}
+              id={`${index + 1}-stars`}
+              type="radio"
+              checked={it}
+              onChange={(evt) => addValueFormChangeHandler(evt, `rating`)}
+            />
+            <label
+              htmlFor={`${index + 1}-stars`}
+              className="reviews__rating-label form__rating-label"
+              title={nameStarts[index]}
+            >
+              <svg
+                className="form__star-image"
+                width="37"
+                height="33"
               >
-                <svg
-                  className="form__star-image"
-                  width="37"
-                  height="33"
-                >
-                  <use xlinkHref="#icon-star"></use>
-                </svg>
-              </label>
-            </Fragment>
-          ))
+                <use xlinkHref="#icon-star"></use>
+              </svg>
+            </label>
+          </Fragment>
+        )).reverse()
         }
       </div>
       <textarea
@@ -87,9 +82,25 @@ class CommentForm extends PureComponent {
   _commentFormSubmitHandler(evt) {
     evt.preventDefault();
     const {rating, comment, addReview, idHotel} = this.props;
-    if (rating !== 0 && comment.length >= 50 && comment.length <= 300) {
+    if (rating !== `0` && comment.length >= 50 && comment.length <= 300) {
       addReview(idHotel, rating, comment);
     }
+  }
+
+  _getRatingCheck(rating) {
+
+
+    const checkArray = [false, false, false, false, false];
+    const checkArrayResult = checkArray.map((it, index)=>{
+      if (index === (rating - 1)) {
+        it = true;
+      } else {
+        it = false;
+      }
+      return it;
+    });
+
+    return rating === `0` ? checkArray : checkArrayResult;
   }
 }
 
