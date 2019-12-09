@@ -19,9 +19,9 @@ exports[`SignIn correctly renders after relaunch 1`] = `
         className="places__found"
       >
         5
-         places to stay in Amsterdam
+         places to stay in 
       </b>
-      <FilterHotels />
+      <WithSortList />
       <div
         className="cities__places-list places__list tabs__content"
       >

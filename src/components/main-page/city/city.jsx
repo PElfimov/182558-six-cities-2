@@ -2,12 +2,15 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import HotelCard from "../hotel-card/hotel-card";
-import FilterHotels from "../filter-hotels/filter-hotels";
+
 import PointsMap from "../../points-map/points-map";
 import withHistory from './../../../hocs/with-history/with-history';
 import {getCityOffers} from "../../../store/selectors/selectors";
+import SortList from '../../sort-list/sort-list';
+import withSortList from '../../../hocs/with-sort-list/with-sort-list';
 
 const HotelCardWrapped = withHistory(HotelCard);
+const SortListWrapped = withSortList(SortList);
 
 const City = (props) => {
   const {offers, handleHover, activeCard, activeCity} = props;
@@ -18,7 +21,7 @@ const City = (props) => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{sumOffers} places to stay in {activeCity}</b>
-          <FilterHotels />
+          <SortListWrapped />
           <div className="cities__places-list places__list tabs__content">
             {offers.map((it) => {
               return (
