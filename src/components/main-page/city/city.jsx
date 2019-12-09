@@ -10,14 +10,14 @@ import {getCityOffers} from "../../../store/selectors/selectors";
 const HotelCardWrapped = withHistory(HotelCard);
 
 const City = (props) => {
-  const {offers, handleHover, activeCard} = props;
+  const {offers, handleHover, activeCard, activeCity} = props;
   const sumOffers = offers.length;
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{sumOffers} places to stay in Amsterdam</b>
+          <b className="places__found">{sumOffers} places to stay in {activeCity}</b>
           <FilterHotels />
           <div className="cities__places-list places__list tabs__content">
             {offers.map((it) => {
@@ -87,12 +87,14 @@ City.propTypes = {
     goods: PropTypes.arrayOf(PropTypes.string),
     host: PropTypes.object,
     description: PropTypes.string,
-  })
+  }),
+  activeCity: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
-    offers: getCityOffers(state)});
+    offers: getCityOffers(state),
+    activeCity: state.localData.city});
 
 export {City};
 
