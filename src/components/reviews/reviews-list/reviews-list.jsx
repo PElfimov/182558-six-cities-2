@@ -5,7 +5,7 @@ import ReviewItem from '../reviews-item/reviews-item';
 const ReviewsList = (props) => {
   const {reviews} = props;
   return <ul className="reviews__list">
-    {reviews.map((review) => <ReviewItem review={review} key={`review${review.id}`}/>)}
+    {reviews.map((review) => <ReviewItem review={review} key={`review${review.id}`}/>).reverse()}
   </ul>;
 };
 ReviewsList.propTypes = {
