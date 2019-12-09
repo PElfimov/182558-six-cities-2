@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
-import {CommentForm} from './comment-form';
+import CommentForm from './comment-form';
 
 
 const comment = `Bla Bla`;

@@ -75,14 +75,14 @@ exports[`SignIn correctly renders after relaunch 1`] = `
         <div
           className="locations__item"
         >
-          <a
+          <Link
             className="locations__item-link"
-            href="#"
+            to="/Amsterdam"
           >
             <span>
               Amsterdam
             </span>
-          </a>
+          </Link>
         </div>
       </section>
     </div>
