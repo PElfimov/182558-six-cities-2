@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import {compose} from "redux";
 import PropTypes from 'prop-types';
 
 import Operation from './../../store/actions/async-actions/async-actions';
@@ -45,16 +46,22 @@ const withCommentForm = (Component) => {
     addReview: PropTypes.func,
   };
 
-  const mapDispatchToProps = (dispatch) => ({
-    addReview: (idHotel, rating, comment) => {
-      dispatch(Operation.addReview(idHotel, rating, comment));
-    }
-  });
 
-  return connect(null, mapDispatchToProps)(WithCommentForm);
+  return WithCommentForm;
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  addReview: (idHotel, rating, comment) => {
+    dispatch(Operation.addReview(idHotel, rating, comment));
+  }
+});
 
-export default withCommentForm;
+const composedHoc = compose(
+    connect(null, mapDispatchToProps),
+    withCommentForm
+);
+
+export {withCommentForm};
+export default composedHoc;
 
 
