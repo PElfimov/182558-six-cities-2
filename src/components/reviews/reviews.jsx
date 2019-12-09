@@ -12,10 +12,14 @@ const CommentFormWrapped = withCommentForm(CommentForm);
 // https://github.com/htmlacademy-react/508859-six-cities-2/blob/master/src/components/detail-info/detail-info.jsx
 const Reviews = (props) => {
   const {reviews, loadReviews, id, isAuthorizationRequired} = props;
+  let sumReviews = 0;
+  if (reviews) {
+    sumReviews = reviews.length;
+  }
   loadReviews(id);
   return (
     <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{sumReviews}</span></h2>
       <ReviewsList reviews={reviews}/>
       {isAuthorizationRequired && <CommentFormWrapped idHotel={id} />}
     </section>

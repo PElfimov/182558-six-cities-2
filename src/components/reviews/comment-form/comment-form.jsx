@@ -1,7 +1,5 @@
 import React, {PureComponent, Fragment} from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import Operation from '../../../store/actions/async-actions/async-actions';
 
 const RATINGS = [
   {title: `perfect`, stars: `5`},
@@ -15,12 +13,15 @@ class CommentForm extends PureComponent {
 
   constructor(props) {
     super(props);
-
     this._commentFormSubmitHandler = this._commentFormSubmitHandler.bind(this);
   }
 
   render() {
-    const {comment, addValueFormChangeHandler} = this.props;
+    const {comment, addValueFormChangeHandler, rating} = this.props;
+    let disabledButton = `disabled`;
+    if (rating !== 0 && comment.length >= 50 && comment.length <= 300) {
+      disabledButton = ``;
+    }
     return <form className="reviews__form form" action="#" method="post" onSubmit={this._commentFormSubmitHandler}>
       <label
         className="reviews__label form__label"
@@ -75,7 +76,7 @@ class CommentForm extends PureComponent {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled=""
+          disabled={disabledButton}
         >
           Submit
         </button>
@@ -92,12 +93,6 @@ class CommentForm extends PureComponent {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addReview: (idHotel, rating, comment) => {
-    dispatch(Operation.addReview(idHotel, rating, comment));
-  }
-});
-
 CommentForm.propTypes = {
   rating: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
@@ -106,6 +101,5 @@ CommentForm.propTypes = {
   idHotel: PropTypes.number.isRequired
 };
 
-export {CommentForm};
+export default CommentForm;
 
-export default connect(null, mapDispatchToProps)(CommentForm);
