@@ -16,7 +16,6 @@ describe(`withCommentForm  HOC work correct`, () => {
     const wrapper = shallow(
         <MockComponentWrapped addReview={jest.fn()}/>
 
-
     );
     expect(wrapper.state().rating).toEqual(`0`);
     expect(wrapper.state().comment).toEqual(``);
