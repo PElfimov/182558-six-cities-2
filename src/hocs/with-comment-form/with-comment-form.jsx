@@ -12,16 +12,16 @@ const withCommentForm = (Component) => {
         comment: ``
       };
       this._addValueFormChangeHandler = this._addValueFormChangeHandler.bind(this);
+      this._addReview = this._addReview.bind(this);
     }
 
     render() {
       const {rating, comment} = this.state;
-      const {addReview} = this.props;
       return <Component
         {...this.props}
         rating={rating}
         comment={comment}
-        addReview = {addReview}
+        addReview = {this._addReview}
         addValueFormChangeHandler={this._addValueFormChangeHandler}
       />;
     }
@@ -30,19 +30,15 @@ const withCommentForm = (Component) => {
       this.setState({[nameInput]: evt.target.value});
     }
 
-    // _addReview(idHotel, rating, comment) {
-    //   console.log(this.props);
+    _addReview(idHotel, rating, comment) {
+      const {addReview} = this.props;
+      this.setState({
+        rating: `0`,
+        comment: ``
+      });
+      addReview(idHotel, rating, comment);
 
-    //   const {addReview} = this.props;
-    //   console.log(idHotel, rating, comment);
-
-    //   addReview(idHotel, rating, comment);
-    //   this.setState({
-    //     rating: 0,
-    //     comment: ``
-    //   }
-    //   );
-    // }
+    }
   }
 
   WithCommentForm.propTypes = {
