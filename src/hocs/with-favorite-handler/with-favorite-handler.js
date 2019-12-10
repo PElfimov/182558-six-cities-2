@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {compose} from "redux";
 import PropTypes from 'prop-types';
 import Operation from '../../store/actions/async-actions/async-actions';
+
 
 const withFavoriteHandler = (Component) => {
   const WithFavoriteHandler = (props)=> {
@@ -33,12 +35,19 @@ const withFavoriteHandler = (Component) => {
   };
 
 
-  const mapDispatchToProps = (dispatch) => ({
-    favoriteHotelHandler: (id, status, history) => {
-      dispatch(Operation.favoriteHotelHandler(id, status, history));
-    }
-  });
-  return connect(null, mapDispatchToProps)(WithFavoriteHandler);
+  return WithFavoriteHandler;
 };
 
-export default withFavoriteHandler;
+const mapDispatchToProps = (dispatch) => ({
+  favoriteHotelHandler: (id, status, history) => {
+    dispatch(Operation.favoriteHotelHandler(id, status, history));
+  }
+});
+
+const composedHoc = compose(
+    connect(null, mapDispatchToProps),
+    withFavoriteHandler
+);
+
+export {withFavoriteHandler};
+export default composedHoc;
