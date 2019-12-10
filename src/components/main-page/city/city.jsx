@@ -104,7 +104,7 @@ City.propTypes = {
     host: PropTypes.object,
     description: PropTypes.string,
   }),
-  activeCity: PropTypes.string.isRequired,
+  activeCity: PropTypes.string,
   activeSortName: PropTypes.string.isRequired,
 };
 

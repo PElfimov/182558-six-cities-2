@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Redirect} from "react-router-dom";
 import {connect} from 'react-redux';
+import {compose} from "redux";
 import PropTypes from 'prop-types';
 import Operation from '../../store/actions/async-actions/async-actions';
 
@@ -38,18 +39,25 @@ const withAuth = (Component) => {
   };
 
 
-  const mapStateToProps = (state, ownProps) =>
-    Object.assign({}, ownProps, {
-      isAuthorization: state.externalData.isAuthorizationRequired,
-
-    });
-
-  const mapDispatchToProps = (dispatch) => ({
-    isLogin: () => {
-      dispatch(Operation.getLogin());
-    }
-  });
-  return connect(mapStateToProps, mapDispatchToProps)(WithAuth);
+  return WithAuth;
 };
 
-export default withAuth;
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    isAuthorization: state.externalData.isAuthorizationRequired,
+
+  });
+
+const mapDispatchToProps = (dispatch) => ({
+  isLogin: () => {
+    dispatch(Operation.getLogin());
+  }
+});
+
+const composedHoc = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuth
+);
+
+export {withAuth};
+export default composedHoc;
