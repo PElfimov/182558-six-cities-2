@@ -169,7 +169,6 @@ exports[`CommentForm correctly renders after relaunch 1`] = `
     </p>
     <button
       className="reviews__submit form__submit button"
-      disabled="disabled"
       type="submit"
     >
       Submit

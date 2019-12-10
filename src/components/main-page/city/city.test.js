@@ -44,7 +44,12 @@ const offers = [
 ];
 
 it(`SignIn correctly renders after relaunch`, () => {
-  const tree = shallow(<City offers={offers} handleHover={jest.fn()} />);
+  const tree = shallow(
+      <City
+        offers={offers}
+        handleHover={jest.fn() }
+        activeSortName={`Popular`}
+      />);
 
   expect(toJSON(tree)).toMatchSnapshot();
 });

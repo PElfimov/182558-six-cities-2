@@ -94,6 +94,7 @@ City.propTypes = {
     description: PropTypes.string,
   }),
   activeCity: PropTypes.string.isRequired,
+  activeSortName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) =>

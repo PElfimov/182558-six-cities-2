@@ -89,7 +89,7 @@ export const sortOfferList = (offers, sortName) => {
     case SortName.TOP_RATED:
       return offers.slice().sort((prev, curr) => curr.rating - prev.rating);
     default:
-      throw new Error(`Undefined SortName element`);
+      return new Error(`Undefined SortName element`);
   }
 };
 
