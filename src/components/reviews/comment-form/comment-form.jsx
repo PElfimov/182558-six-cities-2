@@ -11,12 +11,15 @@ class CommentForm extends PureComponent {
   }
 
   render() {
-    const {comment, addValueFormChangeHandler, rating} = this.props;
+    const {
+      comment,
+      addValueFormChangeHandler,
+      rating,
+      disabledButton,
+      disabledTextAea,
+      disabledInput} = this.props;
 
-    let disabledButton = `disabled`;
-    if (rating !== `0` && comment.length >= 50 && comment.length <= 300) {
-      disabledButton = ``;
-    }
+
     return <form className="reviews__form form" action="#" method="post" onSubmit={this._commentFormSubmitHandler}>
       <label
         className="reviews__label form__label"
@@ -35,6 +38,7 @@ class CommentForm extends PureComponent {
               type="radio"
               checked={it}
               onChange={(evt) => addValueFormChangeHandler(evt, `rating`)}
+              disabled={disabledInput}
             />
             <label
               htmlFor={`${index + 1}-stars`}
@@ -60,6 +64,7 @@ class CommentForm extends PureComponent {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         onChange={(evt) => addValueFormChangeHandler(evt, `comment`)}
+        disabled={disabledTextAea}
       ></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -109,7 +114,11 @@ CommentForm.propTypes = {
   comment: PropTypes.string.isRequired,
   addReview: PropTypes.func,
   addValueFormChangeHandler: PropTypes.func.isRequired,
-  idHotel: PropTypes.number.isRequired
+  idHotel: PropTypes.number.isRequired,
+  disabledButton: PropTypes.string,
+  disabledTextAea: PropTypes.string,
+  disabledInput: PropTypes.string
+
 };
 
 export default CommentForm;
