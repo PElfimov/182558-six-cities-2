@@ -30,6 +30,7 @@ class SortList extends PureComponent {
   constructor(props) {
     super(props);
     this._handleSortElemClick = this._handleSortElemClick.bind(this);
+    this.props.onSortElemClick(`Popular`);
   }
 
   _handleSortElemClick(name, openSort, changeSort) {
