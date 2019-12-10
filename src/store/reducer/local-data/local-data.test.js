@@ -19,7 +19,7 @@ describe(`localData returns right state`, () => {
     });
   });
 
-  it(`with start local state`, () => {
+  it(`with changing sort Name action`, () => {
     const sort = `Price: low to high`;
     const state = {
       city: `Biysk`,
@@ -33,6 +33,13 @@ describe(`localData returns right state`, () => {
     expect(localData(state, action)).toEqual({
       city: `Biysk`,
       activeSortName: `Price: low to high`
+    });
+  });
+
+  it(`return start state`, () => {
+    expect(localData(undefined, {})).toEqual({
+      city: ``,
+      activeSortName: `Popular`
     });
   });
 
