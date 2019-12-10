@@ -37,14 +37,18 @@ const Operation = {
         dispatch(ActionCreator.loadReviews(reviews));
       });
   },
-  addReview: (hotelId, rating, comment) => (dispatch, _, api) => {
+  addReview: (hotelId, rating, comment, unblockedForm, addResponseErr) => (dispatch, _, api) => {
     return api.post(`/comments/${hotelId}`, {
       rating,
       comment
     })
       .then((response) => {
         const reviews = ModelReviews.parseReviews(response.data);
+        unblockedForm();
         dispatch(ActionCreator.loadReviews(reviews));
+      })
+      .catch((response) => {
+        addResponseErr(response);
       });
   },
   favoriteHotelHandler: (id, status, history) => (dispatch, getState, api) => {

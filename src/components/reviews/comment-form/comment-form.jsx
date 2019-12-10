@@ -16,8 +16,9 @@ class CommentForm extends PureComponent {
       addValueFormChangeHandler,
       rating,
       disabledButton,
-      disabledTextAea,
-      disabledInput} = this.props;
+      disabledTextArea,
+      disabledInput,
+      errorResponse} = this.props;
 
 
     return <form className="reviews__form form" action="#" method="post" onSubmit={this._commentFormSubmitHandler}>
@@ -57,6 +58,7 @@ class CommentForm extends PureComponent {
         )).reverse()
         }
       </div>
+      {errorResponse && <p style={{color: `red`}}>Server Error</p>}
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
@@ -64,7 +66,7 @@ class CommentForm extends PureComponent {
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         onChange={(evt) => addValueFormChangeHandler(evt, `comment`)}
-        disabled={disabledTextAea}
+        disabled={disabledTextArea}
       ></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -116,8 +118,9 @@ CommentForm.propTypes = {
   addValueFormChangeHandler: PropTypes.func.isRequired,
   idHotel: PropTypes.number.isRequired,
   disabledButton: PropTypes.string,
-  disabledTextAea: PropTypes.string,
-  disabledInput: PropTypes.string
+  disabledTextArea: PropTypes.string,
+  disabledInput: PropTypes.string,
+  errorResponse: PropTypes.bool
 
 };
 

@@ -13,11 +13,14 @@ const withCommentForm = (Component) => {
         comment: ``,
         disabledButton: `disabled`,
         disabledInput: ``,
-        disabledTextAea: ``,
+        disabledTextArea: ``,
+        errorResponse: false
       };
       this._addValueFormChangeHandler = this._addValueFormChangeHandler.bind(this);
       this._addReview = this._addReview.bind(this);
       this._checkDisabledButton = this._checkDisabledButton.bind(this);
+      this.addResponseErr = this.addResponseErr.bind(this);
+      this.unblockedForm = this.unblockedForm.bind(this);
     }
 
     componentDidUpdate() {
@@ -26,14 +29,14 @@ const withCommentForm = (Component) => {
 
 
     render() {
-      const {rating, comment, disabledButton, disabledInput, disabledTextAea, errorResponse} = this.state;
+      const {rating, comment, disabledButton, disabledInput, disabledTextArea, errorResponse} = this.state;
       return <Component
         {...this.props}
         rating={rating}
         comment={comment}
         disabledButton={disabledButton}
         disabledInput= {disabledInput}
-        disabledTextAea={disabledTextAea}
+        disabledTextArea={disabledTextArea}
         errorResponse = {errorResponse}
         addReview={this._addReview}
         addValueFormChangeHandler={this._addValueFormChangeHandler}
@@ -41,8 +44,8 @@ const withCommentForm = (Component) => {
     }
 
     _checkDisabledButton() {
-      const {comment, rating} = this.state;
-      if (rating !== `0` && comment.length >= 50 && comment.length <= 300) {
+      const {comment, rating, disabledTextArea} = this.state;
+      if (rating !== `0` && comment.length >= 50 && comment.length <= 300 && disabledTextArea === ``) {
         this.setState({disabledButton: ``});
       } else {
         this.setState({disabledButton: `disabled`});
@@ -55,11 +58,30 @@ const withCommentForm = (Component) => {
 
     _addReview(idHotel, rating, comment) {
       const {addReview} = this.props;
+
+      this.setState({
+        disabledButton: `disabled`,
+        disabledInput: `disabled`,
+        disabledTextArea: `disabled`,
+      });
+      addReview(idHotel, rating, comment, this.unblockedForm, this.addResponseErr);
+
+    }
+
+    unblockedForm() {
       this.setState({
         rating: `0`,
-        comment: ``
+        comment: ``,
+        disabledInput: ``,
+        disabledTextArea: ``,
       });
-      addReview(idHotel, rating, comment);
+
+    }
+
+    addResponseErr() {
+      this.setState({
+        errorResponse: true,
+      });
 
     }
   }
@@ -73,8 +95,8 @@ const withCommentForm = (Component) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addReview: (idHotel, rating, comment) => {
-    dispatch(Operation.addReview(idHotel, rating, comment));
+  addReview: (idHotel, rating, comment, unblockedForm, addResponseErr) => {
+    dispatch(Operation.addReview(idHotel, rating, comment, unblockedForm, addResponseErr));
   }
 });
 
