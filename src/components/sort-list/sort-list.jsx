@@ -1,5 +1,3 @@
-// https://github.com/htmlacademy-react/508859-six-cities-2/blob/master/src/constants.js
-
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';

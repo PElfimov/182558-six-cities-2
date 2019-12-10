@@ -5,7 +5,7 @@ import HotelCard from "../hotel-card/hotel-card";
 
 import PointsMap from "../../points-map/points-map";
 import withHistory from './../../../hocs/with-history/with-history';
-import {getCityOffers} from "../../../store/selectors/selectors";
+import {getCityOffers, sortOfferList} from "../../../store/selectors/selectors";
 import SortList from '../../sort-list/sort-list';
 import withSortList from '../../../hocs/with-sort-list/with-sort-list';
 
@@ -13,8 +13,10 @@ const HotelCardWrapped = withHistory(HotelCard);
 const SortListWrapped = withSortList(SortList);
 
 const City = (props) => {
-  const {offers, handleHover, activeCard, activeCity} = props;
+  const {offers, handleHover, activeCard, activeCity, activeSortName} = props;
   const sumOffers = offers.length;
+  const currentOffers = sortOfferList(offers, activeSortName);
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -23,7 +25,7 @@ const City = (props) => {
           <b className="places__found">{sumOffers} places to stay in {activeCity}</b>
           <SortListWrapped />
           <div className="cities__places-list places__list tabs__content">
-            {offers.map((it) => {
+            {currentOffers.map((it) => {
               return (
                 <HotelCardWrapped
                   key={`${it.id}`}
@@ -97,7 +99,8 @@ City.propTypes = {
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
     offers: getCityOffers(state),
-    activeCity: state.localData.city});
+    activeCity: state.localData.city,
+    activeSortName: state.localData.activeSortName});
 
 export {City};
 

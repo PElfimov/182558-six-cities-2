@@ -83,9 +83,9 @@ export const sortOfferList = (offers, sortName) => {
     case SortName.POPULAR:
       return offers.slice();
     case SortName.PRICE_LH:
-      return offers.slice().sort((prev, curr) => prev.price - curr.price);
+      return offers.slice().sort((prev, curr) => prev.cost - curr.cost);
     case SortName.PRICE_HL:
-      return offers.slice().sort((prev, curr) => curr.price - prev.price);
+      return offers.slice().sort((prev, curr) => curr.cost - prev.cost);
     case SortName.TOP_RATED:
       return offers.slice().sort((prev, curr) => curr.rating - prev.rating);
     default:
