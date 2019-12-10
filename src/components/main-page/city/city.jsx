@@ -8,6 +8,7 @@ import withHistory from './../../../hocs/with-history/with-history';
 import {getCityOffers, sortOfferList} from "../../../store/selectors/selectors";
 import SortList from '../../sort-list/sort-list';
 import withSortList from '../../../hocs/with-sort-list/with-sort-list';
+import MainEmpty from "../../main-empty/main-empty";
 
 const HotelCardWrapped = withHistory(HotelCard);
 const SortListWrapped = withSortList(SortList);
@@ -17,32 +18,42 @@ const City = (props) => {
   const sumOffers = offers.length;
   const currentOffers = sortOfferList(offers, activeSortName);
 
-  return (
-    <div className="cities">
-      <div className="cities__places-container container">
-        <section className="cities__places places">
-          <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{sumOffers} places to stay in {activeCity}</b>
-          <SortListWrapped />
-          <div className="cities__places-list places__list tabs__content">
-            {currentOffers.map((it) => {
-              return (
-                <HotelCardWrapped
-                  key={`${it.id}`}
-                  offer={it}
-                  onClick={() => {}}
-                  onHover={handleHover}
-                />);
-            })}
-          </div>
-        </section>
-        <div className="cities__right-section">
-          <section className="cities__map map">
-            <PointsMap offers={offers} activeCard={activeCard} />
+  const getScreen = (count) =>{
+    if (count) {
+      return (<div className="cities">
+        <div className="cities__places-container container">
+          <section className="cities__places places">
+            <h2 className="visually-hidden">Places</h2>
+            <b className="places__found">{sumOffers} places to stay in {activeCity}</b>
+            <SortListWrapped />
+            <div className="cities__places-list places__list tabs__content">
+              {currentOffers.map((it) => {
+                return (
+                  <HotelCardWrapped
+                    key={`${it.id}`}
+                    offer={it}
+                    onClick={() => {}}
+                    onHover={handleHover}
+                  />);
+              })}
+            </div>
           </section>
+          <div className="cities__right-section">
+            <section className="cities__map map">
+              <PointsMap offers={offers} activeCard={activeCard} />
+            </section>
+          </div>
         </div>
-      </div>
-    </div>
+      </div>);
+    } else {
+      return <MainEmpty name={activeCity}/>;
+    }
+  };
+
+  return (
+    <React.Fragment>
+      {getScreen(sumOffers)}
+    </React.Fragment>
   );
 };
 
