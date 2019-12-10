@@ -15,7 +15,7 @@ exports[`Tabs correctly renders after relaunch 1`] = `
       >
         <a
           className="locations__item-link tabs__item  tabs__item--active"
-          href="#"
+          href="/City1"
           onClick={[Function]}
         >
           <span>
@@ -28,7 +28,7 @@ exports[`Tabs correctly renders after relaunch 1`] = `
       >
         <a
           className="locations__item-link tabs__item "
-          href="#"
+          href="/City2"
           onClick={[Function]}
         >
           <span>
@@ -41,7 +41,7 @@ exports[`Tabs correctly renders after relaunch 1`] = `
       >
         <a
           className="locations__item-link tabs__item "
-          href="#"
+          href="/City3"
           onClick={[Function]}
         >
           <span>

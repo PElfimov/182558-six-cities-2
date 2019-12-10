@@ -4,9 +4,10 @@ const externalState = {
   offers: [],
   isAuthorizationRequired: false,
   login: null,
+  reviews: [],
 };
 
-const externalData = (state = externalState, action) => {
+const reducer = (state = externalState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS: return Object.assign({}, state, {
       offers: action.payload
@@ -18,10 +19,13 @@ const externalData = (state = externalState, action) => {
     case ActionType.ADD_LOGIN: return Object.assign({}, state, {
       login: action.payload,
     });
+    case ActionType.LOAD_REVIEWS: return Object.assign({}, state, {
+      reviews: action.payload,
+    });
 
   }
 
   return state;
 };
 
-export default externalData;
+export default reducer;

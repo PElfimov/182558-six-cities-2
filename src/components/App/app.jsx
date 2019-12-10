@@ -1,18 +1,18 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import Header from "../header/header";
-import City from "../main-page/city/city";
-import Tabs from "../tabs-panel/tabs/tabs";
-import propTypes from "./prop-types";
-import {ActionCreator, getCitiesListFromOffers, getFilteredOffers} from "../../store/actions/action-creator/action-creator";
-import withActiveCard from "../../hocs/with-active-card/with-active-card";
-import ModelOffers from '../../store/model-offers/model-offers';
+import PropTypes from 'prop-types';
+import {ActionCreator} from "../../store/actions/action-creator/action-creator";
 import SignIn from '../sign-in/sign-in';
 import withSignIn from '../../hocs/with-sign-in/with-sign-in';
 import {Switch, Route} from "react-router-dom";
+import Favorites from '../favorites/favorites';
+import withAuth from '../../hocs/with-auth/with-auth';
+import Operation from '../../store/actions/async-actions/async-actions';
+import withCheckAuth from './../../hocs/with-check-auth/with-check-auth';
+import Offer from './../offer/offer';
+import Main from './../main-page/main/main';
 
 
-const WithActiveCard = withActiveCard(City);
 const SignInWrapped = withSignIn(SignIn);
 
 class App extends PureComponent {
@@ -21,40 +21,18 @@ class App extends PureComponent {
   }
 
   _initialState() {
-    const cities = getCitiesListFromOffers(this.props.offers);
-    const offers = getFilteredOffers(this.props.offers, cities[0]);
-    this.props.setCities(cities);
-    this.props.changeCity(cities[0], offers);
-
-  }
-
-  replaceOffers(city) {
     const {offers} = this.props;
-    const citiesOffers = getFilteredOffers(offers, city);
-    this.props.changeCity(city, citiesOffers);
+    const city = offers[0].city.name;
+    this.props.changeCity(city);
   }
+
+
   componentDidUpdate(prevProps) {
+    const {isLogin} = this.props;
     if (this.props.offers.length !== prevProps.offers.length) {
       this._initialState();
     }
-  }
-
-  _getMainPage() {
-    const {city, cities, cityOffers} = this.props;
-    return (
-      <div className="page page--gray page--main">
-        <Header />
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <Tabs
-            cities={cities}
-            activeCity={city}
-            onChangeCity={(selectedCity) => this.replaceOffers(selectedCity)}
-          />
-          <WithActiveCard offers={cityOffers} />
-        </main>
-      </div>
-    );
+    isLogin();
   }
 
 
@@ -62,10 +40,11 @@ class App extends PureComponent {
 
     return (
       <Switch>
-        <Route path="/" exact render={() =>
-          this._getMainPage()
-        } />
-        <Route path="/login" component={SignInWrapped} />
+        <Route path="/" exact component={Main} />
+        <Route path="/login" exact component={withCheckAuth(SignInWrapped)} />
+        <Route path="/favorites" exact component={withAuth(Favorites)} />
+        <Route path = "/offer/:id" exact component = {Offer}/>
+        <Route path = "/:name" exact component = {Main}/>
         <Route
           render={() => (
             <h1>
@@ -80,26 +59,49 @@ class App extends PureComponent {
   }
 }
 
-App.propTypes = propTypes;
+App.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.exact({
+    id: PropTypes.number,
+    city: PropTypes.exact({
+      name: PropTypes.string,
+      coordinates: PropTypes.arrayOf(PropTypes.number),
+      zoom: PropTypes.number,
+    }),
+    isPremium: PropTypes.bool,
+    isFavorite: PropTypes.bool,
+    cost: PropTypes.number,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    type: PropTypes.string,
+    coordinates: PropTypes.array,
+    previewImage: PropTypes.string,
+    images: PropTypes.arrayOf(PropTypes.string),
+    bedrooms: PropTypes.number,
+    maxAdults: PropTypes.number,
+    goods: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.object,
+    description: PropTypes.string,
+  })
+  ).isRequired,
+  changeCity: PropTypes.func,
+  isLogin: PropTypes.func
+};
 
 const mapStateToProps = (state, ownProps) =>
   Object.assign({}, ownProps, {
-    city: state.localData.city,
-    cityOffers: state.localData.cityOffers,
-    cities: state.localData.cities,
-    offers: ModelOffers.parseOffers(state.externalData.offers),
+    offers: state.externalData.offers,
     isAuthorizationRequired: state.externalData.isAuthorizationRequired,
 
   });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCities: (cities) => {
-    dispatch(ActionCreator.setCities(cities));
-  },
-  changeCity: (city, offers) => {
+  changeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.setOffers(offers));
+  },
+  isLogin: ()=>{
+    dispatch(Operation.getLogin());
   }
+
 });
 
 export {App};

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 
 import Header from '../header/header';
@@ -12,6 +13,7 @@ class SignIn extends PureComponent {
 
     this._authFormSubmitHandler = this._authFormSubmitHandler.bind(this);
   }
+
 
   render() {
     const {email, password, addValueFormChangeHandler} = this.props;
@@ -52,9 +54,9 @@ class SignIn extends PureComponent {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to="/Amsterdam">
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
@@ -77,13 +79,13 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   checkLogin: PropTypes.func,
   addValueFormChangeHandler: PropTypes.func.isRequired,
   history: PropTypes.object,
+  isAuthorizationRequired: PropTypes.bool
 };
 
 export {SignIn};

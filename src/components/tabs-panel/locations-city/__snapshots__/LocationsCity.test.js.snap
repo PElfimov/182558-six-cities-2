@@ -6,7 +6,7 @@ exports[`LocationsCity correctly renders after relaunch 1`] = `
 >
   <a
     className="locations__item-link tabs__item  tabs__item--active"
-    href="#"
+    href="/Paris"
     onClick={[Function]}
   >
     <span>

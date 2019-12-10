@@ -1,20 +1,10 @@
-const getCitiesListFromOffers = (offers) => {
-  const citiesList = offers.map((offer) => offer.city.name);
-
-  return Array.from(new Set(citiesList));
-};
-
-const getFilteredOffers = (offers, city) => {
-  return offers.filter((offer) => offer.city.name === city);
-};
-
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  SET_OFFERS: `SET_OFFERS`,
-  SET_CITIES: `SET_CITIES`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   ADD_LOGIN: `ADD_LOGIN`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
+  CHANGE_SORT: `CHANGE_SORT`
 };
 
 const ActionCreator = {
@@ -22,13 +12,9 @@ const ActionCreator = {
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-  setOffers: (items) => ({
-    type: ActionType.SET_OFFERS,
-    payload: items
-  }),
-  setCities: (cities) => ({
-    type: ActionType.SET_CITIES,
-    payload: cities
+  changeSortName: (sortName) => ({
+    type: ActionType.CHANGE_SORT,
+    payload: sortName,
   }),
   loadOffers: (offers) => ({
     type: ActionType.LOAD_OFFERS,
@@ -42,11 +28,15 @@ const ActionCreator = {
     type: ActionType.ADD_LOGIN,
     payload: loginData,
   }),
+  loadReviews: (reviews) => {
+    return {
+      type: ActionType.LOAD_REVIEWS,
+      payload: reviews,
+    };
+  },
 };
 
 export {
   ActionCreator,
-  ActionType,
-  getFilteredOffers,
-  getCitiesListFromOffers
+  ActionType
 };

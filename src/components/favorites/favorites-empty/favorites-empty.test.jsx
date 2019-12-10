@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilterHotels from './filter-hotels';
+import FavoritesEmpty from './favorites-empty';
 
-it(`FilterHotels correctly renders after relaunch`, () => {
+it(`HotelCard correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<FilterHotels />)
+    .create(<FavoritesEmpty />)
 
     .toJSON();
   expect(tree).toMatchSnapshot();

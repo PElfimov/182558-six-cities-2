@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignIn correctly renders after relaunch 1`] = `
+<div
+  className="page page--gray page--main"
+>
+  <Connect(Header) />
+  <main
+    className="page__main page__main--index"
+  >
+    <h1
+      className="visually-hidden"
+    >
+      Cities
+    </h1>
+    <Connect(Tabs) />
+    <WithActiveCard />
+  </main>
+</div>
+`;

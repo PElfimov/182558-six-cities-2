@@ -4,18 +4,20 @@ import classNames from 'classnames';
 
 
 export default function BookmarkButton(props) {
-  const {isBookmarkAdded, onClick} = props;
+  const {isBookmarkAdded, onClick, type = `place-card`} = props;
+  const width = type === `place-card` ? 18 : 31;
+  const height = type === `place-card` ? 19 : 32;
 
   return (
     <button className={
       classNames(
-          `place-card__bookmark-button `,
+          `${type}__bookmark-button `,
           `button`,
-          {"place-card__bookmark-button--active": isBookmarkAdded}
+          isBookmarkAdded && `${type}__bookmark-button--active`
       )}
     type="button"
     onClick={onClick}>
-      <svg className="place-card__bookmark-icon" width="18" height="19">
+      <svg className={`place-card__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
       <span className="visually-hidden">To bookmarks</span>
@@ -26,5 +28,6 @@ export default function BookmarkButton(props) {
 
 BookmarkButton.propTypes = {
   isBookmarkAdded: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  type: PropTypes.string
 };

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiFragment correctly render 1`] = `
+<div
+  className="page"
+>
+  <Connect(Header) />
+  <MainFragment
+    cities={
+      Array [
+        "Paris",
+        "Biysk",
+      ]
+    }
+    offers={
+      Array [
+        Object {
+          "city": Object {
+            "name": "Biysk",
+          },
+          "id": 1,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 2,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 3,
+          "isFavorite": true,
+        },
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 4,
+          "isFavorite": true,
+        },
+      ]
+    }
+  />
+  <Footer />
+</div>
+`;

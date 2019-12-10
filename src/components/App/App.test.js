@@ -5,6 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import {App} from './app';
 Enzyme.configure({adapter: new Adapter()});
 
+
 const offers = [
   {
     id: 1,

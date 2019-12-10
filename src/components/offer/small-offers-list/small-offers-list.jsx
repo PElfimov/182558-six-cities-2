@@ -1,6 +1,26 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from "prop-types";
+import HotelCard from './../../main-page/hotel-card/hotel-card';
+import {getSmallHotelsList} from './../../../store/selectors/selectors';
 
-export default {
+const SmallOffersList = (props) =>{
+  const {offers, id} = props;
+  const list = getSmallHotelsList(offers, id);
+  return (
+    <React.Fragment>
+      {list.map((it)=>{
+        return (
+          <HotelCard
+            key={`${it.id}`}
+            offer={it}
+            onHover={()=>{}}
+          />);
+      })}
+    </React.Fragment>
+  );
+};
+
+SmallOffersList.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.number,
     city: PropTypes.exact({
@@ -23,5 +43,8 @@ export default {
     host: PropTypes.object,
     description: PropTypes.string,
   })
-  ).isRequired
+  ).isRequired,
+  id: PropTypes.number.isRequired
 };
+
+export default SmallOffersList;

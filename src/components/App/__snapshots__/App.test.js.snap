@@ -3,13 +3,69 @@
 exports[`SignIn correctly renders after relaunch 1`] = `
 <Switch>
   <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Main)",
+        "type": [Function],
+      }
+    }
     exact={true}
     path="/"
-    render={[Function]}
   />
   <Route
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(WithCheckAuth)",
+        "type": [Function],
+      }
+    }
+    exact={true}
     path="/login"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(WithAuth)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/favorites"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Offer)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/offer/:id"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "displayName": "Connect(Main)",
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/:name"
   />
   <Route
     render={[Function]}

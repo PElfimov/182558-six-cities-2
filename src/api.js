@@ -11,8 +11,8 @@ const createAPI = (dispatch) => {
   const onSuccess = (response) => response;
   const onFail = (err) => {
     if (err.response.status === 401) {
-
       dispatch(ActionCreator.requireAuthorization(false));
+      dispatch(ActionCreator.addLogin(null));
     }
 
     return err;

@@ -5,9 +5,8 @@ describe(`localData returns right state`, () => {
   it(`with changing city action`, () => {
     const city = `Biysk`;
     const state = {
-      city: `Paris`,
-      offers: [],
-      cities: []
+      city: ``,
+      activeSortName: `Popular`
     };
     const action = {
       type: ActionType.CHANGE_CITY,
@@ -16,80 +15,33 @@ describe(`localData returns right state`, () => {
 
     expect(localData(state, action)).toEqual({
       city: `Biysk`,
-      offers: [],
-      cities: []
+      activeSortName: `Popular`,
     });
   });
 
-
-  it(`with changing offers action`, () => {
-    const offers = [
-      {
-        id: 1,
-        city: {name: `Moscow`}
-      },
-      {
-        id: 2,
-        city: {name: `St Petersburg`}
-      },
-      {
-        id: 3,
-        city: {name: `Barnaul`}
-      }
-    ];
+  it(`with changing sort Name action`, () => {
+    const sort = `Price: low to high`;
     const state = {
-      city: ``,
-      cityOffers: [],
-      cities: []
+      city: `Biysk`,
+      activeSortName: `Popular`
     };
-
-
     const action = {
-      type: ActionType.SET_OFFERS,
-      payload: offers
+      type: ActionType.CHANGE_SORT,
+      payload: sort
     };
-
 
     expect(localData(state, action)).toEqual({
-      city: ``,
-      cityOffers: [
-        {
-          id: 1,
-          city: {name: `Moscow`}
-        },
-        {
-          id: 2,
-          city: {name: `St Petersburg`}
-        },
-        {
-          id: 3,
-          city: {name: `Barnaul`}
-        }
-      ],
-      cities: []
+      city: `Biysk`,
+      activeSortName: `Price: low to high`
     });
   });
 
-  it(`with setting cities list action`, () => {
-    const cities = [`Biysk`, `Berlin`];
-    const state = {
+  it(`return start state`, () => {
+    expect(localData(undefined, {})).toEqual({
       city: ``,
-      offers: [],
-      cities: []
-    };
-
-
-    const action = {
-      type: ActionType.SET_CITIES,
-      payload: cities
-    };
-
-
-    expect(localData(state, action)).toEqual({
-      city: ``,
-      offers: [],
-      cities: [`Biysk`, `Berlin`]
+      activeSortName: `Popular`
     });
   });
+
 });
 

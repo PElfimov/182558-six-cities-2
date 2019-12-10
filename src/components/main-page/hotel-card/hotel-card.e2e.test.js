@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {HotelCard} from './hotel-card';
+import HotelCard from './hotel-card';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -24,17 +24,8 @@ describe(`HotelCard component e2e tests`, () => {
     wrapper = shallow(<HotelCard
       offer={offer}
       onHover={callbackFunction}
-      onClick={callbackFunction}
     />);
   });
-
-
-  it(`Check to click on title offers`, () => {
-    const startButton = wrapper.find(`.jsTitle`);
-    startButton.simulate(`click`);
-    expect(callbackFunction).toHaveBeenCalledTimes(1);
-  });
-
 
   it(`Check data in callback function`, () => {
     const cardArea = wrapper.find(`.place-card`);

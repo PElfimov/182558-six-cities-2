@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiFragment correctly render 1`] = `
+<li
+  className="favorites__locations-items"
+>
+  <div
+    className="favorites__locations locations locations--current"
+  >
+    <div
+      className="locations__item"
+    >
+      <Link
+        className="locations__item-link"
+        to="/Paris"
+      >
+        <span>
+          Paris
+        </span>
+      </Link>
+    </div>
+  </div>
+  <div
+    className="favorites__places"
+  >
+    <HotelCard
+      key="1"
+      offer={
+        Object {
+          "city": Object {
+            "name": "Biysk",
+          },
+          "id": 1,
+          "isFavorite": true,
+        }
+      }
+      onClick={[Function]}
+      onHover={[Function]}
+      type="favorites"
+    />
+    <HotelCard
+      key="2"
+      offer={
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 2,
+          "isFavorite": true,
+        }
+      }
+      onClick={[Function]}
+      onHover={[Function]}
+      type="favorites"
+    />
+    <HotelCard
+      key="3"
+      offer={
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 3,
+          "isFavorite": true,
+        }
+      }
+      onClick={[Function]}
+      onHover={[Function]}
+      type="favorites"
+    />
+    <HotelCard
+      key="4"
+      offer={
+        Object {
+          "city": Object {
+            "name": "Paris",
+          },
+          "id": 4,
+          "isFavorite": true,
+        }
+      }
+      onClick={[Function]}
+      onHover={[Function]}
+      type="favorites"
+    />
+  </div>
+</li>
+`;

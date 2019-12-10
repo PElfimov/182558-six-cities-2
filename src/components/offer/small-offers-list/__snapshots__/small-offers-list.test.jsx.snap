@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HotelCard correctly renders after relaunch 1`] = `
+<Fragment>
+  <HotelCard
+    key="2"
+    offer={
+      Object {
+        "city": Object {
+          "coordinates": Array [
+            53.550341,
+            10.000654,
+          ],
+          "name": "barnaul",
+          "zoom": 13,
+        },
+        "cost": 132,
+        "id": 2,
+        "isPremium": false,
+        "name": "Wood and stone place",
+        "rating": 80,
+        "type": "Apartment",
+      }
+    }
+    onHover={[Function]}
+  />
+  <HotelCard
+    key="3"
+    offer={
+      Object {
+        "city": Object {
+          "coordinates": Array [
+            53.550341,
+            10.000654,
+          ],
+          "name": "barnaul",
+          "zoom": 13,
+        },
+        "cost": 120,
+        "id": 3,
+        "isPremium": true,
+        "name": "Canal View Prinsengracht",
+        "rating": 55,
+        "type": "Apartment",
+      }
+    }
+    onHover={[Function]}
+  />
+  <HotelCard
+    key="4"
+    offer={
+      Object {
+        "city": Object {
+          "coordinates": Array [
+            53.550341,
+            10.000654,
+          ],
+          "name": "barnaul",
+          "zoom": 13,
+        },
+        "cost": 80,
+        "id": 4,
+        "isPremium": true,
+        "name": "Nice, cozy, warm big bed apartment",
+        "rating": 100,
+        "type": "Apartment",
+      }
+    }
+    onHover={[Function]}
+  />
+</Fragment>
+`;

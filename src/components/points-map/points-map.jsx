@@ -2,7 +2,7 @@ import leaflet from "leaflet";
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class PointsMap extends React.Component {
+class PointsMap extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
@@ -12,15 +12,13 @@ export default class PointsMap extends React.Component {
 
   render() {
     return (
-      <section className="cities__map map">
-        <div style={{height: `100%`}} ref={this.ref}></div>
-      </section>
+      <div style={{height: `100%`}} ref={this.ref}></div>
     );
   }
 
   createIcon(isActive) {
     return leaflet.icon({
-      iconUrl: isActive ? `img/pin-active.svg` : `img/pin.svg`,
+      iconUrl: isActive ? `/img/pin-active.svg` : `/img/pin.svg`,
       iconSize: [30, 30]
     });
   }
@@ -51,18 +49,34 @@ export default class PointsMap extends React.Component {
         .marker(point.coordinates, {icon: this.createIcon(isActiveMarker)})
         .addTo(this.markerGroup);
     }
-    // markerGroup.clearLayers();
+
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     const {offers, activeCard} = this.props;
     const activeId = activeCard.id;
     const city = offers[0].city.coordinates;
-    if (this.el) {
-      this.el.remove();
-    }
     this.createArea({city, elem: this.ref.current});
-    this.renderOffers(offers, activeId);
+    if (this.el) {
+      this.renderOffers(offers, activeId);
+
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+
+    const {offers, activeCard} = this.props;
+    const activeId = activeCard.id;
+    const city = offers[0].city.coordinates;
+    if ((prevProps.offers !== this.props.offers) || (!this.el)) {
+      if (this.el) {
+        this.el.remove();
+      }
+      this.createArea({city, elem: this.ref.current});
+    }
+    if (this.el) {
+      this.renderOffers(offers, activeId);
+    }
   }
 
   componentWillUnmount() {
@@ -117,3 +131,4 @@ PointsMap.propTypes = {
     description: PropTypes.string,
   })
 };
+export default PointsMap;

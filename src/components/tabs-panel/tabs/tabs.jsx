@@ -1,9 +1,11 @@
 import React from "react";
+import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import LocationsCity from "../locations-city/locations-city";
-import propTypes from "./prop-types";
+import {getCityList} from "../../../store/selectors/selectors";
 
-export default function Tabs(props) {
-  const {cities, activeCity, onChangeCity} = props;
+function Tabs(props) {
+  const {cities, activeCity} = props;
   return (
     <div className="tabs">
       <section className="locations container">
@@ -13,7 +15,6 @@ export default function Tabs(props) {
               key={it + i}
               name={it}
               isActive={it === activeCity}
-              onClick={onChangeCity}
             />
           ))}
         </ul>
@@ -22,4 +23,18 @@ export default function Tabs(props) {
   );
 }
 
-Tabs.propTypes = propTypes;
+Tabs.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activeCity: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state, ownProps) =>
+  Object.assign({}, ownProps, {
+    cities: getCityList(state),
+    activeCity: state.localData.city
+
+  });
+
+export {Tabs};
+
+export default connect(mapStateToProps, null)(Tabs);

@@ -1,5 +1,5 @@
 import React from 'react';
-import City from './city';
+import {City} from './city';
 import Enzyme, {shallow} from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
@@ -44,7 +44,12 @@ const offers = [
 ];
 
 it(`SignIn correctly renders after relaunch`, () => {
-  const tree = shallow(<City offers={offers} handleHover={jest.fn()} />);
+  const tree = shallow(
+      <City
+        offers={offers}
+        handleHover={jest.fn() }
+        activeSortName={`Popular`}
+      />);
 
   expect(toJSON(tree)).toMatchSnapshot();
 });

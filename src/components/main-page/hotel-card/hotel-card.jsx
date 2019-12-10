@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BookmarkButton from "../../bookmark-button/bookmark-button";
-import Operation from './../../../store/actions/async-actions/async-actions';
-import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
+import withFavoriteHandler from '../../../hocs/with-favorite-handler/with-favorite-handler';
 
+const BookmarkButtonWrapped = withFavoriteHandler(BookmarkButton);
 function Premium() {
   return (
     <div className="place-card__mark">
@@ -12,8 +13,8 @@ function Premium() {
   );
 }
 
-function HotelCard(props) {
-  const {onClick, onHover, offer, history, favoriteHotelHandler} = props;
+const HotelCard = (props) => {
+  const {onHover, offer, history, view = `cities`} = props;
   const answer = offer;
   const {isPremium, isFavorite, cost, rating, name, type, previewImage, id} = offer;
 
@@ -22,9 +23,9 @@ function HotelCard(props) {
       onMouseOver={() => {
         onHover(answer);
       }}
-      className="cities__place-card place-card">
+      className={`${view}__place-card place-card`}>
       {isPremium && <Premium />}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${view}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img
             className="place-card__image"
@@ -41,9 +42,10 @@ function HotelCard(props) {
             <b className="place-card__price-value">&euro;{cost}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton
-            isBookmarkAdded={isFavorite}
-            onClick={_isFavoriteHotelHandler}
+          <BookmarkButtonWrapped
+            isFavorite={isFavorite}
+            history = {history}
+            id = {id}
           />
         </div>
         <div className="place-card__rating rating">
@@ -53,22 +55,15 @@ function HotelCard(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a className="jsTitle" onClick={onClick} href="#">
+          <Link className="jsTitle" to={`/offer/${id}`} href="#">
             {name}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
-
-  function _isFavoriteHotelHandler(evt) {
-    evt.preventDefault();
-    let status = isFavorite ? 0 : 1;
-    favoriteHotelHandler(id, status, history);
-  }
-
-}
+};
 
 HotelCard.propTypes = {
   offer: PropTypes.exact({
@@ -93,19 +88,11 @@ HotelCard.propTypes = {
     host: PropTypes.object,
     description: PropTypes.string,
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   favoriteHotelHandler: PropTypes.func,
   history: PropTypes.object,
+  view: PropTypes.string
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  favoriteHotelHandler: (id, status, history) => {
-    dispatch(Operation.favoriteHotelHandler(id, status, history));
-  }
-});
 
-
-export {HotelCard};
-
-export default connect(null, mapDispatchToProps)(HotelCard);
+export default HotelCard;
