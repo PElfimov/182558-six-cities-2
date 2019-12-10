@@ -5,7 +5,8 @@ describe(`localData returns right state`, () => {
   it(`with changing city action`, () => {
     const city = `Biysk`;
     const state = {
-      city: `Paris`
+      city: ``,
+      activeSortName: `Popular`
     };
     const action = {
       type: ActionType.CHANGE_CITY,
@@ -13,7 +14,25 @@ describe(`localData returns right state`, () => {
     };
 
     expect(localData(state, action)).toEqual({
-      city: `Biysk`
+      city: `Biysk`,
+      activeSortName: `Popular`,
+    });
+  });
+
+  it(`with start local state`, () => {
+    const sort = `Price: low to high`;
+    const state = {
+      city: `Biysk`,
+      activeSortName: `Popular`
+    };
+    const action = {
+      type: ActionType.CHANGE_SORT,
+      payload: sort
+    };
+
+    expect(localData(state, action)).toEqual({
+      city: `Biysk`,
+      activeSortName: `Price: low to high`
     });
   });
 
